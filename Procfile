@@ -1,0 +1,1 @@
+web: gunicorn fedex_economy_market:app --log-file=-
