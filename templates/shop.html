@@ -13,7 +13,7 @@
         <p>{{content}}</p>
         <script type="text/javascript">
             $(document).ready(function() {
-                var socket = io.connect('http://127.0.0.1:5000/profile');
+                var socket = io.connect('{{sc}}profile');
 
                 	socket.on('connect', function() {
                         alert('we are connected');

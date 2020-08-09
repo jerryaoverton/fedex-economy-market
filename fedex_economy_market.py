@@ -28,25 +28,25 @@ def register():
 @app.route('/shop')
 def shop():
     _content = "Here is some stuff you can buy"
-    return render_template('shop.html', content=_content)
+    return render_template('shop.html', content=_content, sc=smart_contract)
 
 
 @app.route('/pay')
 def pay():
     _msg = "This is where you pay $$$"
-    return render_template('pay.html', msg=_msg)
+    return render_template('pay.html', msg=_msg, sc=smart_contract)
 
 
 @app.route('/update_order')
 def update_order():
     _msg = "create or update your order here"
-    return render_template('update_order.html', msg=_msg)
+    return render_template('update_order.html', msg=_msg, sc=smart_contract)
 
 
 @app.route('/review_orders')
 def review_orders():
     _msg = "See updated orders here"
-    return render_template('review_orders.html', msg=_msg)
+    return render_template('review_orders.html', msg=_msg, sc=smart_contract)
 
 
 @app.route('/balance')
@@ -67,7 +67,7 @@ def balance():
 def profile():
     user_id = request.args['user_id']
     _msg = "The profile for " + user_id
-    return render_template('profile.html', msg=_msg)
+    return render_template('profile.html', msg=_msg, sc=smart_contract)
 
 
 if __name__ == '__main__':

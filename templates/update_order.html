@@ -18,7 +18,7 @@
             var order = "{'supplier': '" + supplier + "', 'customer': '" + customer + "', 'payment_method': '" + payment_method + "', 'price': '" + price + "', 'order_details': '" + order_details + "', 'tc': '" + tc + "', 'status': '" + status + "', 'status_date': '" + status_date + "'}";
             var xhttp = new XMLHttpRequest();
 
-            req = "http://127.0.0.1:5000/update_order?order=" + order
+            req = "{{sc}}update_order?order=" + order
             xhttp.open("GET", req, true);
             xhttp.send();
 

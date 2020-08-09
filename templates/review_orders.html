@@ -9,7 +9,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
 
-                var socket = io.connect('http://127.0.0.1:5000/order');
+                var socket = io.connect('{{sc}}order');
 
                 	socket.on('connect', function() {
                         alert('we are connected');
