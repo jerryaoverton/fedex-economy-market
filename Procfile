@@ -1,1 +1,1 @@
-web: gunicorn --worker-class eventlet -w 1 edex_economy_market:app
+web: gunicorn --worker-class eventlet -w 1 fedex_economy_market:app
