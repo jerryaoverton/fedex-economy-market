@@ -37,7 +37,7 @@
 
         var xhttp = new XMLHttpRequest();
 
-        req = "{{sc}}update_profile?user_id=joverton&profile=" + profile
+        req = "{{sc}}update_profile?user_id={{email}}&profile=" + profile
         xhttp.open("GET", req, true);
         xhttp.send();
 

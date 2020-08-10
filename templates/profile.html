@@ -442,15 +442,12 @@
               <div class="ms-profile-skills">
                 <h2 class="section-title">TAG</h2>
                 <ul class="ms-skill-list">
-                  {% set list =  profile.tag.split(',') %}
-                  {% for item in list %}
-                  <li class="ms-skill">{{item}}</li>
-                  <!-- <li class="ms-skill">PROGRAMMER</li>
-                  <li class="ms-skill">DESIGNER</li>
-                  <li class="ms-skill">TECHNOLOGIST</li>
-                  <li class="ms-skill">BUSINESS</li>
-                  <li class="ms-skill">SERVICE PROVIDER</li> -->
-                  {%endfor%}
+                  {% if profile.tag is defined %}
+                    {% set list =  profile.tag.split(',') %}
+                    {% for item in list %}
+                      <li class="ms-skill">{{item}}</li>
+                    {%endfor%}
+                  {%endif%}
                 </ul>
               </div>
 

@@ -6,7 +6,8 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # smart_contract = os.environ['SMART_CONTRACT']
-smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+# smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+smart_contract = 'http://127.0.0.1:5000/'
 
 @app.route('/')
 def home():
@@ -63,7 +64,7 @@ def logIn():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    return render_template('dashboard.html', email=user_id, profile=profile)
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
 
 @app.route('/register',  methods = ['POST'])
 def register():
@@ -79,16 +80,25 @@ def register():
     AddressLine1 = request.form['AddressLine1']
     AddressLine2 = request.form['AddressLine2']
     profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,
-                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2,}
+                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2, "phone": phone}
     data = {"id":user_id,"token":0,"profile": profiledata}
     
-    print(data)
 
     # register user with the smart contract
     svc = '/register_user'
     params = '?user_id=' + user_id
     url = smart_contract + svc + params
     _msg = requests.get(url).content
+
+    # update profile
+    print("profile")
+    print(json.dumps(profiledata))
+
+    svc = '/update_profile'
+    params = '?user_id=' + user_id + "&profile='"+ json.dumps(profiledata) + "'"
+    url = smart_contract + svc + params
+    _status = requests.get(url).content
+    print(_status)
     # req = requests.post(smart_contract + svc, json=data)
 
     return render_template('dashboard.html',email=user_id, profile=profiledata)
@@ -104,11 +114,11 @@ def profile():
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
     print('below profile')
-    print((profile.decode('utf-8')))
-    profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "area_code":6 , "phone":67868698 ,"RegistrationType":'Individual' , "status":'Active' }
+    print((json.loads(profile.decode('utf-8'))))
+    # profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "area_code":6 , "phone":67868698 ,"RegistrationType":'Individual' , "status":'Active' }
     # _msg = "The profile for " + user_id
 
-    return render_template('profile.html', profile=profiledata, email = user_id, sc=smart_contract)
+    return render_template('profile.html', profile=json.loads(profile.decode('utf-8')), email = user_id, sc=smart_contract)
 
 
 @app.route('/updateProfile')
@@ -119,10 +129,10 @@ def updateProfile():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "status":'Active' ,"area_code":6 , "phone":67868698}
+    # profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "status":'Active' ,"area_code":6 , "phone":67868698}
     # _msg = "The profile for " + user_id
 
-    return render_template('update_profile.html',email=user_id, profile=profiledata, sc=smart_contract)
+    return render_template('update_profile.html',email=user_id, profile=json.loads(profile.decode('utf-8')), sc=smart_contract)
 
 
 @app.route('/shop')
