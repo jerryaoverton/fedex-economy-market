@@ -105,10 +105,10 @@ def profile():
     profile = requests.get(url).content
     print('below profile')
     print((profile.decode('utf-8')))
-    # profile = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "area_code":6 , "phone":67868698 ,"RegistrationType":'Individual' , "status":'Active' }
+    profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "area_code":6 , "phone":67868698 ,"RegistrationType":'Individual' , "status":'Active' }
     # _msg = "The profile for " + user_id
 
-    return render_template('profile.html', profile=profile, email = user_id, sc=smart_contract)
+    return render_template('profile.html', profile=profiledata, email = user_id, sc=smart_contract)
 
 
 @app.route('/updateProfile')
@@ -119,10 +119,10 @@ def updateProfile():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    # profile = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "status":'Active' ,"area_code":6 , "phone":67868698}
+    profiledata = {"image_url":'https://via.placeholder.com/270x270' ,"first_name": 's', "last_name": 'a', "description": 'this is a text', "tag":'p , g' , "rating" :4 , "status":'Active' ,"area_code":6 , "phone":67868698}
     # _msg = "The profile for " + user_id
 
-    return render_template('update_profile.html',email=user_id, profile=profile, sc=smart_contract)
+    return render_template('update_profile.html',email=user_id, profile=profiledata, sc=smart_contract)
 
 
 @app.route('/shop')
