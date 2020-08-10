@@ -48,8 +48,13 @@ def signUp():
 
 @app.route('/dashboard')
 def dashboard():
-    # fetch userdata
-    return render_template('dashboard.html', email='s@s.com')
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    profile = requests.get(url).content
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
 
 @app.route('/myBusiness')
 def myBusiness():
@@ -80,7 +85,7 @@ def register():
     AddressLine1 = request.form['AddressLine1']
     AddressLine2 = request.form['AddressLine2']
     profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,
-                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2, "phone": phone}
+                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2, "phone": phone , "drone_status": "Idle" , "properties":"type:Quadcopter, capacity:2kgs, flyduration:10mins"}
     data = {"id":user_id,"token":0,"profile": profiledata}
     
 

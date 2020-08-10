@@ -442,9 +442,8 @@
               <div class="ms-profile-skills">
                 <h2 class="section-title">TAG</h2>
                 <ul class="ms-skill-list">
-                  {% if profile.tag %}
-                    <!-- {% set tag = profile.tag |default('') %} -->
-                      {% set list = profile.tag.split(',')  %}
+                  {% if profile.tags %}
+                      {% set list = profile.tags.split(',')  %}
                     {% for item in list %}
                       <li class="ms-skill">{{item}}</li>
                     {%endfor%}

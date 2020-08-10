@@ -36,7 +36,8 @@
         var profile = "{'image_url': '" + image_url + "', 'first_name': '" + first_name + "','last_name': '" + last_name +
                    "','area_code': '" + area_code + "','phone': '" + phone + "', 'description': '" + description + 
                      "', 'tags': '" + tags + "', 'rating': '" + rating + "', 'status': '" + status + 
-                     "'}";
+                     "' , 'RegistrationType': '{{profile.RegistrationType}}', 'BusinessType': '{{profile.BusinessType}}' , 'BusinessAddress': '{{profile.BusinessAddress}}', " + 
+                     "'drone_status': 'Idle' , 'properties':'type:Quadcopter, capacity:2kgs, flyduration:10mins' }";
 
         var xhttp = new XMLHttpRequest();
 
@@ -458,7 +459,7 @@
                 </tr>
                 <tr>
                     <th>Tags</th>
-                    <td><input class="form-control" name="tags_Txt" type="text" id="tags_Txt" value="{{profile.tag}}" placeholder="Enter comma separated tags"/></td>
+                    <td><input class="form-control" name="tags_Txt" type="text" id="tags_Txt" value="{{profile.tags}}" placeholder="Enter comma separated tags"/></td>
                 </tr>
                 <tr>
                     <th>Rating</th>
