@@ -1,1 +1,1 @@
-web: gunicorn fedex_economy_market:app --log-file=-
+web: gunicorn --worker-class eventlet -w 1 edex_economy_market:app

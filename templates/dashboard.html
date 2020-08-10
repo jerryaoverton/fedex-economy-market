@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mylo Dashboard!</title>
+  <!-- Iconic Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery UI -->
+  <link href="../static/css/jquery-ui.min.css" rel="stylesheet">
+  <!-- mylo styles -->
+  <link href="../static/css/styleDB.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+
+</head>
+
+<body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
+
+  <!-- Preloader -->
+  <div id="preloader-wrap">
+    <div class="spinner spinner-8">
+      <div class="ms-circle1 ms-child"></div>
+      <div class="ms-circle2 ms-child"></div>
+      <div class="ms-circle3 ms-child"></div>
+      <div class="ms-circle4 ms-child"></div>
+      <div class="ms-circle5 ms-child"></div>
+      <div class="ms-circle6 ms-child"></div>
+      <div class="ms-circle7 ms-child"></div>
+      <div class="ms-circle8 ms-child"></div>
+      <div class="ms-circle9 ms-child"></div>
+      <div class="ms-circle10 ms-child"></div>
+      <div class="ms-circle11 ms-child"></div>
+      <div class="ms-circle12 ms-child"></div>
+    </div>
+  </div>
+
+  <!-- Overlays -->
+  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+
+  <!-- Sidebar Navigation Left -->
+  <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+
+    <!-- Logo -->
+    <div class="logo-sn ms-d-block-lg">
+      <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+    </div>
+
+    <!-- Navigation -->
+    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+        <!-- Dashboard -->
+        <li class="menu-item">
+          <a href="/dashboard">
+            <span><img src="../static/images/Dashboard.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+          </a>
+        </li>
+        <!-- Wallet -->
+        <li class="menu-item">
+          <a href="/wallet">
+            <span><img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+          </a>
+        </li>
+    
+        <!-- Services | Offer -->
+        <li class="menu-item">
+            <a href="/servicesoffer">
+              <span><img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
+            </a>
+        </li>
+        <!-- Shop -->
+        <li class="menu-item">
+            <a href="/shop">
+              <span><img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
+            </a>
+        </li>
+        <!-- My Business -->
+        <li class="menu-item">
+            <a href="/myBusiness">
+              <span><img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness</span>
+            </a>
+        </li>
+    </ul>
+
+  </aside>
+
+  <!-- Sidebar Right -->
+  <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
+
+  </aside>
+
+  <!-- Main Content -->
+  <main class="body-content">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar ms-navbar">
+
+      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+
+      <div class="logo-sn logo-sm ms-d-block-sm">
+        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
+      </div>
+
+      <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+        <li class="ms-nav-item ms-search-form pb-0 py-0">
+          <form class="ms-form" method="post">
+            <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+              <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
+              <i class="flaticon-search text-disabled"></i>
+            </div>
+          </form>
+        </li>
+        <li class="ms-nav-item dropdown">
+          <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
+            <li class="dropdown-menu-header">
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="ms-scrollable ms-dropdown-list">
+              <a class="media p-2" href="#">
+                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                </div>
+                <div class="media-body">
+                  <span>Hey man, looking forward to your new project.</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                </div>
+              </a>
+              <a class="media p-2" href="#">
+                <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
+                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                </div>
+                <div class="media-body">
+                  <span>Dear John, I was told you bought mylo! Send me your feedback</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
+                </div>
+              </a>
+              <a class="media p-2" href="#">
+                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                </div>
+                <div class="media-body">
+                  <span>How many people are we inviting to the dashboard?</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
+                </div>
+              </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-menu-footer text-center">
+              <a href="../apps/email.html">Go to Inbox</a>
+            </li>
+          </ul>
+        </li>
+        <li class="ms-nav-item dropdown">
+          <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+            <li class="dropdown-menu-header">
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="ms-scrollable ms-dropdown-list">
+              <a class="media p-2" href="#">
+                <div class="media-body">
+                  <span>12 ways to improve your crypto dashboard</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                </div>
+              </a>
+              <a class="media p-2" href="#">
+                <div class="media-body">
+                  <span>You have newly registered users</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
+                </div>
+              </a>
+              <a class="media p-2" href="#">
+                <div class="media-body">
+                  <span>Your account was logged in from an unauthorized IP</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
+                </div>
+              </a>
+              <a class="media p-2" href="#">
+                <div class="media-body">
+                  <span>An application form has been submitted</span>
+                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
+                </div>
+              </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-menu-footer text-center">
+              <a href="#">View all Notifications</a>
+            </li>
+          </ul>
+        </li>
+        <li class="ms-nav-item">
+          <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+        </li>
+        <li class="ms-nav-item ms-nav-user dropdown">
+          <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+            <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
+          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+            <li class="dropdown-menu-header">
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="ms-dropdown-list">
+              <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+              <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
+              <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-menu-footer">
+              <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
+            </li>
+            <li class="dropdown-menu-footer">
+              <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+
+    </nav>
+
+
+    <!-- Body Content Wrapper -->
+ <div class="ms-content-wrapper">
+      <div class="row">
+
+        <div class="col-xl-3 col-md-6">
+          <div class="ms-card card-gradient-success ms-widget ms-infographics-widget">
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <h6>FEx COIN Balance</h6>
+                <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 850</p>
+                <p class="fs-12"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="ms-card card-gradient-secondary ms-widget ms-infographics-widget">
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <h6>Exchange Rate</h6>
+                <p class="ms-card-change"> 1 = $ 0.12</p>
+                <p class="fs-12"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="ms-card card-gradient-warning ms-widget ms-infographics-widget">
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <h6>Total Income</h6>
+                <p class="ms-card-change"> <i class="material-icons">arrow_upward</i>9560</p>
+                <p class="fs-12"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="ms-card card-gradient-info ms-widget ms-infographics-widget">
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <h6>     </h6>
+                <p class="ms-card-change"> Add FEx Coins</p>
+                <p class="fs-12"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-xl-6 col-md-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Recent Buyers</h6>
+            </div>
+            <div class="ms-panel-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover thead-light">
+                  <thead>
+                    <tr>
+                      <th scope="col">User</th>
+                      <th scope="col">Service</th>
+                      <th scope="col">Product ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="ms-table-f-w"> <img src="https://via.placeholder.com/270x270" alt="people"> Chihoo Hwang </td>
+                      <td>Wordpress Template</td>
+                      <td>67384917</td>
+                    </tr>
+                    <tr>
+                      <td class="ms-table-f-w"> <img src="https://via.placeholder.com/270x270" alt="people"> Ajay Suryavanash </td>
+                      <td>Business Card</td>
+                      <td>789393819</td>
+                    </tr>
+                    <tr>
+                      <td class="ms-table-f-w"> <img src="https://via.placeholder.com/270x270" alt="people"> John Doe </td>
+                      <td>App Customization</td>
+                      <td>137893137</td>
+                    </tr>
+                    <tr>
+                      <td class="ms-table-f-w"> <img src="https://via.placeholder.com/270x270" alt="people"> Alesdro Guitto </td>
+                      <td>Dashboard Design</td>
+                      <td>235193138</td>
+                    </tr>
+                    <tr>
+                      <td class="ms-table-f-w"> <img src="https://via.placeholder.com/270x270" alt="people"> Manbir Sahwny </td>
+                      <td>Theme Development</td>
+                      <td>19938917</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-6 col-md-12">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-header">
+              <h6>Project Timeline</h6>
+            </div>
+            <div class="ms-panel-body">
+              <ul class="ms-activity-log">
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-success">
+                   <i class="flaticon-tick-inside-circle"></i>
+                 </div>
+                 <h6>Lorem ipsum dolor sit</h6>
+                 <span> <i class="material-icons">event</i>1 January, 2018</span>
+                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-danger">
+                   <i class="flaticon-alert-1"></i>
+                 </div>
+                 <h6>Lorem ipsum dolor sit</h6>
+                 <span> <i class="material-icons">event</i>1 March, 2020</span>
+                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+               </li>
+             </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-7 col-md-12">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-header header-mini">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h6>Project Sales</h6>
+                  <p>Monitor how much sales your product does</p>
+                </div>
+                <div class="btn-group btn-group-toggle ms-graph-metrics" data-toggle="buttons">
+                  <label class="btn btn-sm btn-outline-primary active day">
+                    <input type="radio" checked=""> Day
+                  </label>
+                  <label class="btn btn-sm btn-outline-primary month">
+                    <input type="radio"> Month
+                  </label>
+                  <label class="btn btn-sm btn-outline-primary year">
+                    <input type="radio"> Year
+                  </label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between ms-graph-meta">
+                <div class="ms-graph-labels">
+                  <span class="ms-graph-decrease"></span> <p>Traffic</p>
+                  <span class="ms-graph-regular"></span> <p>Sales</p>
+                </div>
+              </div>
+            </div>
+            <div class="ms-panel-body">
+              <canvas id="pm-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-5 col-md-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>most sellings projects</h6>
+            </div>
+            <div class="ms-panel-body">
+              <span class="progress-label">HTML & CSS Projects</span><span class="progress-status">83%</span>
+              <div class="progress progress-tiny">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="progress-label">Wordpress Projects</span><span class="progress-status">50%</span>
+              <div class="progress progress-tiny">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="progress-label">PSD Projects</span><span class="progress-status">75%</span>
+              <div class="progress progress-tiny">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span class="progress-label">Code Snippets</span><span class="progress-status">92%</span>
+              <div class="progress progress-tiny">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Top Sales</h6>
+              <p>Your highest selling projects</p>
+            </div>
+            <div class="ms-panel-body p-0">
+              <div class="ms-quick-stats">
+                <div class="ms-stats-grid">
+                  <p class="ms-text-success">+47.18%</p>
+                  <p class="ms-text-dark">8,033</p>
+                  <span>Admin Dashboard</span>
+                </div>
+                <div class="ms-stats-grid">
+                  <p class="ms-text-success">+17.24%</p>
+                  <p class="ms-text-dark">6,039</p>
+                  <span>Wordpress Theme</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Latest Projects</h6>
+              <p>Some of your latest works</p>
+            </div>
+            <div class="ms-panel-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="ms-card">
+                    <div class="ms-card-body">
+                      <div class="media fs-14">
+                        <div class="mr-2 align-self-center">
+                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                        </div>
+                        <div class="media-body">
+                          <h6>John Doe </h6>
+                          <div class="dropdown float-right">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class="ms-dropdown-list">
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Comment</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Share</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Favorite</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
+                        </div>
+
+                      </div>
+                      <h6>This is a project name</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                    </div>
+                    <div class="ms-card-img">
+                      <img src="https://via.placeholder.com/530x240" alt="card_img">
+                    </div>
+                    <div class="ms-card-footer text-disabled d-flex">
+                      <div class="ms-card-options">
+                        <i class="material-icons">favorite</i> 982
+                      </div>
+                      <div class="ms-card-options">
+                        <i class="material-icons">comment</i> 785
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="ms-card">
+                    <div class="ms-card-body">
+                      <div class="media fs-14">
+                        <div class="mr-2 align-self-center">
+                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                        </div>
+                        <div class="media-body">
+                          <h6>John Doe </h6>
+                          <div class="dropdown float-right">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class="ms-dropdown-list">
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Comment</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Share</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Favorite</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
+                        </div>
+
+                      </div>
+                      <h6>This is a project name</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                    </div>
+                    <div class="ms-card-img">
+                      <img src="https://via.placeholder.com/530x240" alt="card_img">
+                    </div>
+                    <div class="ms-card-footer text-disabled d-flex">
+                      <div class="ms-card-options">
+                        <i class="material-icons">favorite</i> 982
+                      </div>
+                      <div class="ms-card-options">
+                        <i class="material-icons">comment</i> 785
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="ms-card">
+                    <div class="ms-card-body">
+                      <div class="media fs-14">
+                        <div class="mr-2 align-self-center">
+                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                        </div>
+                        <div class="media-body">
+                          <h6>John Doe </h6>
+                          <div class="dropdown float-right">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li class="ms-dropdown-list">
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Comment</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Share</span>
+                                  </div>
+                                </a>
+                                <a class="media p-2" href="#">
+                                  <div class="media-body">
+                                    <span>Favorite</span>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
+                        </div>
+
+                      </div>
+                      <h6>This is a project name</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                    </div>
+                    <div class="ms-card-img">
+                      <img src="https://via.placeholder.com/530x240" alt="card_img">
+                    </div>
+                    <div class="ms-card-footer text-disabled d-flex">
+                      <div class="ms-card-options">
+                        <i class="material-icons">favorite</i> 982
+                      </div>
+                      <div class="ms-card-options">
+                        <i class="material-icons">comment</i> 785
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  
+  </main>
+  <!-- SCRIPTS -->
+  <!-- Global Required Scripts Start -->
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/perfect-scrollbar.js"> </script>
+  <script src="../static/js/jquery-ui.min.js"> </script>
+  <!-- Global Required Scripts End -->
+
+  <!-- Page Specific Scripts Start -->
+  <script src="../static/js/Chart.bundle.min.js"> </script>
+  <script src="../static/js/project-management.js"> </script>
+  <!-- Page Specific Scripts Finish -->
+
+  <!-- mylo core JavaScript -->
+  <script src="../static/js/framework.js"></script>
+
+  <!-- Settings -->
+  <script src="../static/js/settings.js"></script>
+
+</body>
+
+</
