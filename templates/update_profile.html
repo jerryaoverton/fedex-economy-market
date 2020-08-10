@@ -44,19 +44,13 @@
         req = "{{sc}}update_profile?user_id={{email}}&profile=" + profile
         xhttp.open("GET", req, true);
 
-        xhttp.onload = function (e) {
-  if (xhttp.readyState === 4) {
-    if (xhttp.status === 200) {
-      window.location.replace("/profile?user_id={{email}}");
-    } else {
-      console.error(xhttp.statusText);
-    }
-  }
-};
+ 
+ 
 
         xhttp.send();
-
+      
         alert('update sent');
+        window.location.replace("/profile?user_id={{email}}");
      
     }
 </script>
