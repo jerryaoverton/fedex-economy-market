@@ -83,12 +83,12 @@ def register():
     countrycode = request.form['countrycode']
     BusinessType = request.form.get('BusinessType', None)
     ServiceType = request.form.get('ServiceType', None)
-    ServiceCost = request.form.get('ServiceCost',None)
+    ServiceFee = request.form.get('ServiceFee',None)
 
     
 
     profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,"area_code":area_code,"BusinessType":BusinessType,"street": street, "phone": phone , "city" :city , "stateorprovince" :stateorprovince , "postalcode" : postalcode , "countrycode" :countrycode,
-                        "ServiceType":ServiceType, "ServiceCost": ServiceCost, "properties":"type:Quadcopter,capacity:2kgs,flyduration:10mins"}
+                        "ServiceType":ServiceType, "ServiceFee": ServiceFee, "properties":"type:Quadcopter,capacity:2kgs,flyduration:10mins"}
     
     data = {"id":user_id,"token":0,"profile": profiledata}
     
