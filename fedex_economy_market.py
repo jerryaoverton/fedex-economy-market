@@ -5,9 +5,9 @@ import json
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-smart_contract = os.environ['SMART_CONTRACT']
+# smart_contract = os.environ['SMART_CONTRACT']
 # smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
-# smart_contract = 'http://127.0.0.1:5000/'
+smart_contract = 'http://127.0.0.1:5000/'
 
 @app.route('/')
 def home():
@@ -54,7 +54,15 @@ def dashboard():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
+
+    # get user_balance
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
 
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
@@ -104,7 +112,7 @@ def register():
     print(json.dumps(profiledata))
 
     svc = '/update_profile'
-    params = '?user_id=' + user_id + "&profile='"+ json.dumps(profiledata) + "'"
+    params = '?user_id=' + user_id + "&profile="+ str(profiledata) 
     url = smart_contract + svc + params
     _status = requests.get(url).content
     print(_status)
@@ -145,13 +153,61 @@ def updateProfile():
 
 @app.route('/myBusiness')
 def myBusiness():
-    _content = "Here is some stuff you can buy"
+    _content = "Here is my business"
     return render_template('myBusiness.html', content=_content , sc=smart_contract)
 
 @app.route('/shop')
 def shop():
-    return render_template('shop.html', content=_content , sc=smart_contract)
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    profile = requests.get(url).content
 
+    # get shops data
+    svc = '/list_users'
+    url = smart_contract + svc
+    all_users = requests.get(url).content
+   
+
+    all_users_json = eval(all_users.decode('utf-8'))
+    print('json print')
+    # print(all_users_json)
+    # print(json.loads(all_users_json))
+    shops = []
+
+    for user in all_users_json:
+        for key,value in user.items():
+            if key =='profile':
+                try:
+                    if value['RegistrationType'] == 'Business':
+                        shops.append(user)
+                except Exception:
+                    continue
+
+    # shops.append({"user_id": 'b@gmail.com', "profile":{"first_name":'ann b', "last_name":'pizza', "description":'i m a pizza shop'} })
+    print(str(shops))    
+
+    return render_template('shop.html', email=user_id, profile=json.loads(profile.decode('utf-8')), shops=shops, sc=smart_contract)
+
+@app.route('/order' ,  methods = ['POST'])
+def order():
+    print(request.form)
+    user_id = request.form['user_id']
+    business_id = request.form['business_id']
+    price = request.form['price']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+
+    return render_template('order.html',sc=smart_contract , email=user_id, business_id = business_id, price=price, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
 
 @app.route('/pay')
 def pay():
