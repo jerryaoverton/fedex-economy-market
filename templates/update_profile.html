@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
@@ -18,6 +18,12 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../../M-favicon.png">
+
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="../static/css/custom_style.css">
+  <!-- Custom Tailwind CSS -->
+  <link rel="stylesheet" href="../static/css/custom_tailwind.css">
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script type="text/javascript">
@@ -93,42 +99,51 @@
       <a class="pl-0 ml-0 text-center" href="pages/dashboard/index.html"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
-    <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
-        <!-- Dashboard -->
-        <li class="menu-item">
-          <a href="/dashboard?user_id={{email}}">
-            <span><img src="../static/images/Dashboard.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+   
+     <!-- Navigation -->
+     <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+      <!-- Dashboard -->
+      <li class="menu-item ">
+        <a href="/dashboard?user_id={{email}}">
+          <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+            <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+        </a>
+      </li>
+      <!-- Wallet -->
+      <li class="menu-item">
+        <a href="/wallet">
+          <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+            <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+        </a>
+      </li>
+  
+      <!-- Services | Offer -->
+      <li class="menu-item">
+          <a href="/servicesoffer">
+            <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
           </a>
-        </li>
-        <!-- Wallet -->
-        <li class="menu-item">
-          <a href="/wallet">
-            <span><img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+      </li>
+      <!-- Shop -->
+      <li class="menu-item">
+          <a href="/shop">
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
           </a>
-        </li>
-    
-        <!-- Services | Offer -->
-        <li class="menu-item">
-            <a href="/servicesoffer">
-              <span><img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-            </a>
-        </li>
-        <!-- Shop -->
-        <li class="menu-item">
-            <a href="/shop">
-              <span><img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
-            </a>
-        </li>
-        {% if profile.RegistrationType|string() == 'Business' %}
-        <!-- My Business -->
-        <li class="menu-item">
-            <a href="/myBusiness">
-              <span><img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness</span>
-            </a>
-        </li>
-        {%endif%}
-    </ul>
+      </li>
+      <!-- My Business -->
+      {% if profile.RegistrationType|string() == 'Business' %}
+      <li class="menu-item">
+          <a href="/myBusiness">
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
+            </span>
+            
+          </a>
+      </li>
+      {%endif%}
+  </ul>
+
 
   </aside>
 

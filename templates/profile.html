@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
@@ -18,7 +18,10 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../../M-favicon.png">
-
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="../static/css/custom_style.css">
+<!-- Custom Tailwind CSS -->
+<link rel="stylesheet" href="../static/css/custom_tailwind.css">
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -89,42 +92,50 @@
       <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
-    <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+      <!-- Navigation -->
+      <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item ">
           <a href="/dashboard?user_id={{email}}">
-            <span><img src="../static/images/Dashboard.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+            <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
           </a>
         </li>
         <!-- Wallet -->
         <li class="menu-item">
           <a href="/wallet">
-            <span><img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
           </a>
         </li>
-
+    
         <!-- Services | Offer -->
         <li class="menu-item">
             <a href="/servicesoffer">
-              <span><img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
         </li>
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop">
-              <span><img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
             </a>
         </li>
-        {% if profile.RegistrationType|string() == 'Business' %}
         <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
-              <span><img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
+              </span>
+              
             </a>
         </li>
         {%endif%}
     </ul>
+
 
   </aside>
 
@@ -391,7 +402,7 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
-              <a class="media fs-14 p-2" href="/profile"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+              <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
               <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
               <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
             </li>
