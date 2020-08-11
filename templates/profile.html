@@ -497,6 +497,26 @@
                     <td>{{email}}</td>
                   </tr>
                   <tr>
+                    <tr>
+                      <th scope="row">Street</th>
+                      <td>{{profile.street}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">City</th>
+                      <td>{{profile.city}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">State/Province</th>
+                      <td>{{profile.stateorprovince}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Postal Code</th>
+                      <td>{{profile.postalcode}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Country Code</th>
+                      <td>{{profile.countrycode}}</td>
+                    </tr>
                     <th scope="row">Area Code</th>
                     <td>{{profile.area_code}}</td>
                   </tr>
@@ -512,7 +532,25 @@
                     <th scope="row">Language</th>
                     <td>English (US)</td>
                   </tr>
-              
+
+            {% if profile.RegistrationType|string() == 'ServiceProvider'%}
+                  <tr>
+                    <th scope="row">Service Type</th>
+                    <td>{{profile.ServiceType}}</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Service Cost</th>
+                    <td>{{profile.ServiceCost}}</td>
+                  </tr>
+{%endif%}
+
+{% if profile.RegistrationType|string() == 'Business'%}
+                  <tr>
+                    <th scope="row">Business Type</th>
+                    <td>{{profile.BusinessType}}</td>
+                  </tr>
+{%endif%}
                 </tbody>
               </table>
             </div>

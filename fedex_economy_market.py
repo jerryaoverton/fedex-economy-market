@@ -56,11 +56,6 @@ def dashboard():
     profile = requests.get(url).content
     return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
 
-@app.route('/myBusiness')
-def myBusiness():
-    _content = "Here is some stuff you can buy"
-    return render_template('myBusiness.html', content=_content , sc=smart_contract)
-
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
     user_id = request.form['username']
@@ -81,11 +76,20 @@ def register():
     RegistrationType = request.form['RegistrationType']
     area_code = request.form['area_code']
     phone = request.form['phone']
+    street = request.form['street']
+    city = request.form['city']
+    stateorprovince = request.form['stateorprovince']
+    postalcode= request.form['postalcode']
+    countrycode = request.form['countrycode']
     BusinessType = request.form.get('BusinessType', None)
-    AddressLine1 = request.form['AddressLine1']
-    AddressLine2 = request.form['AddressLine2']
-    profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,
-                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2, "phone": phone , "drone_status": "Idle" , "properties":"type:Quadcopter, capacity:2kgs, flyduration:10mins"}
+    ServiceType = request.form.get('ServiceType', None)
+    ServiceCost = request.form.get('ServiceCost',None)
+
+    
+
+    profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,"area_code":area_code,"BusinessType":BusinessType,"street": street, "phone": phone , "city" :city , "stateorprovince" :stateorprovince , "postalcode" : postalcode , "countrycode" :countrycode,
+                        "ServiceType":ServiceType, "ServiceCost": ServiceCost, "properties":"type:Quadcopter,capacity:2kgs,flyduration:10mins"}
+    
     data = {"id":user_id,"token":0,"profile": profiledata}
     
 
@@ -139,10 +143,13 @@ def updateProfile():
 
     return render_template('update_profile.html',email=user_id, profile=json.loads(profile.decode('utf-8')), sc=smart_contract)
 
+@app.route('/myBusiness')
+def myBusiness():
+    _content = "Here is some stuff you can buy"
+    return render_template('myBusiness.html', content=_content , sc=smart_contract)
 
 @app.route('/shop')
 def shop():
-    _content = "Here is some stuff you can buy"
     return render_template('shop.html', content=_content , sc=smart_contract)
 
 

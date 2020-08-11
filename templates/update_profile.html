@@ -39,11 +39,19 @@
         var rating = document.getElementById("rating_Txt").value;
         var status = document.getElementById("status_Txt").value;
 
+
+        var postalcode = document.getElementById("postal_code_Txt").value;
+        var countrycode = document.getElementById("country_code_Txt").value;
+        var street = document.getElementById("street_Txt").value;
+        var city = document.getElementById("city_Txt").value;
+        var stateorprovince = document.getElementById("state_Txt").value;
+
         var profile = "{'image_url': '" + image_url + "', 'first_name': '" + first_name + "','last_name': '" + last_name +
                    "','area_code': '" + area_code + "','phone': '" + phone + "', 'description': '" + description + 
-                     "', 'tags': '" + tags + "', 'rating': '" + rating + "', 'status': '" + status + 
-                     "' , 'RegistrationType': '{{profile.RegistrationType}}', 'BusinessType': '{{profile.BusinessType}}' , 'BusinessAddress': '{{profile.BusinessAddress}}', " + 
-                     "'drone_status': 'Idle' , 'properties':'type:Quadcopter, capacity:2kgs, flyduration:10mins' }";
+                     "', 'tags': '" + tags + "', 'rating': '" + rating + "', 'status': '" + status + "', 'countrycode': '" + countrycode + 
+                     "', 'postalcode': '" + postalcode + "', 'street': '" + street + "', 'city': '" + city + "', 'stateorprovince': '" + stateorprovince +   
+                     "' , 'RegistrationType': '{{profile.RegistrationType}}', 'BusinessType': '{{profile.BusinessType}}' ,  " + 
+                     " 'ServiceType': '{{profile.ServiceType}}' ,'ServiceCost': '{{profile.ServiceCost}}' , 'properties':'type:Quadcopter,capacity:2kgs,flyduration:10mins' }";
 
         var xhttp = new XMLHttpRequest();
 
@@ -462,6 +470,30 @@
                   <th>Last Name</th>
                   <td><input class="form-control" name="last_name_Txt" type="text" id="last_name_Txt" value="{{profile.last_name}}" /></td>
               </tr>
+              <tr>
+                <th>Street</th>
+                <td><input class="form-control" name="street_Txt" type="text" id="street_Txt" value="{{profile.street}}" /></td>
+            </tr>
+
+            <tr>
+              <th>City</th>
+              <td><input class="form-control" name="city_Txt" type="text" id="city_Txt" value="{{profile.city}}" /></td>
+          </tr>
+
+          <tr>
+            <th>State/Province</th>
+            <td><input class="form-control" name="state_Txt" type="text" id="state_Txt" value="{{profile.stateorprovince}}" /></td>
+        </tr>
+
+        <tr>
+          <th>Postal Code</th>
+          <td><input class="form-control" name="postal_code_Txt" type="text" id="postal_code_Txt" value="{{profile.postalcode}}" /></td>
+      </tr>
+
+      <tr>
+        <th>Country code</th>
+        <td><input class="form-control" name="country_code_Txt" type="text" id="country_code_Txt" value="{{profile.countrycode}}" /></td>
+    </tr>
               <tr>
                 <th>Area code</th>
                 <td><input class="form-control" name="area_code_Txt" type="text" id="area_code_Txt" value="{{profile.area_code}}" /></td>

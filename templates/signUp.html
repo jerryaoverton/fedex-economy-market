@@ -63,7 +63,7 @@
                             <div class="value">
                                 <div class="input-group" >
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="RegistrationType" onchange="showorhidebusinessfields()" id="choose_reg" >
+                                        <select name="RegistrationType" onchange="showorhidebusinessorSPfields()" id="choose_reg" >
                                             <option disabled="disabled" selected="selected">Choose option</option>
                                             <option value="Business">Business</option>
                                         <option value="Individual">Individual</option>
@@ -104,39 +104,91 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div id ="Business_Fields" hidden>
+
                         <div class="form-row m-b-55">
-                            <div class="name">Business Address</div>
+                            <div class="name">Address</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="AddressLine1">
-                                            <label class="label--desc">Address Line 1</label>
+                                            <input class="input--style-5" type="text" name="street">
+                                            <label class="label--desc">Street</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="AddressLine2">
-                                            <label class="label--desc">Address Line 2</label>
+                                            <input class="input--style-5" type="text" name="city">
+                                            <label class="label--desc">City</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="stateorprovince">
+                                            <label class="label--desc">State/Province</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="postalcode">
+                                            <label class="label--desc">Postal Code</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="countrycode">
+                                            <label class="label--desc">Country Code</label>
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                        
+                            </div>
+                     </div>
+
+
+                        
+                        <div id ="Business_Fields" hidden>
+                            <div class="form-row">
+                                <div class="name">Business Type</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="BusinessType">
+                                                <option disabled="disabled" selected="selected">Choose option</option>
+                                                <option value="RestaurantandFoodDelivery">Restaurant & Food Delivery</option>
+                                            <option value="ToursandTravels">Tours & Travels</option>
+                                            <option value="CarRentalsandCabs">Car Rentals and Cabs</option>
+                                            <option value="Retail" >Retail</option>
+                                            <option value="Other">Other</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+              
 
+                      
+                    </div>
+
+                    <div id ="SP_Fields" hidden >
                         <div class="form-row">
-                            <div class="name">Business Type</div>
+                            <div class="name">Service Provider Type</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="BusinessType">
+                                        <select name="ServiceType">
                                             <option disabled="disabled" selected="selected">Choose option</option>
-                                            <option value="Business">Restaurant & Food Delivery</option>
-                                        <option value="Individual">Tours & Travels</option>
-                                        <option value="Developer">Car Rentals and Cabs</option>
-                                        <option value="ServiceProvider" >Retail</option>
+                                            <option value="DroneMaintenance">Drone Maintenance</option>
+                                        <option value="DroneCharging">Drone Charging</option>
                                         <option value="Other">Other</option>
                                         </select>
                                         <div class="select-dropdown"></div>
@@ -144,8 +196,21 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="name">Service Provider Cost</div>
+                        <div class="input-group-desc">
+                            <input class="input--style-5" type="text" name="ServiceCost">
+                            <label class="label--desc">Service Provider Cost</label>
+                        </div>
                     </div>
 
+
+
+                    </div>
+                       
+
+                        
                         <br/><br/>
                             <button class="btn btn--radius-2 btn--red" type="submit" style="background-color: #F26522;margin-left: 10%;" id="registerCustomer">Register</button>
                             <a href="/signIn" style="color: #F26522; margin-left: 30%;">I am already a member </a>
@@ -166,15 +231,45 @@
     <!-- Main JS-->
     <script src="../static/js/global.js"></script>
     <script>
-        function showorhidebusinessfields()
+        function showorhidebusinessorSPfields()
         {
             if($('#choose_reg').val() == "Business")
-            $('#Business_Fields').show();
-            else
+               { $('#Business_Fields').show();
+                  $('#SP_Fields').hide();
+             }
+
+            if($('#choose_reg').val() == "ServiceProvider")
+            {$('#SP_Fields').show();
             $('#Business_Fields').hide();
+            }
+            
+            // else if($('#choose_reg').val() == "Individual" | "other" | "Developer")
+            // $('#Business_Fields').hide();
+            // $('#SP_Fields').hide()
+
         }
 
+//         $('#choose_reg').change(function(){
+
+// selection = $('this').value();
+// switch(selection)
+// {
+//     case 'Business':
+//         $('#Business_Fields').show();
+//         break;
+//     case 'Service Provider':
+//         $('#SP_Fields').show();
+//         break;
+//     case 'default':
+//            $('#SP_Fields').hide();
+//            $('#Business_Fields').hide();
+//            break;
+// }
+// });
     </script>
+
+
+ 
     <!-- <script type="text/javascript">
         document.getElementById("registerCustomer").onclick = function () {
             location.href = "/dashboard";
