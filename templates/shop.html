@@ -1,30 +1,501 @@
-<html>
-    <head>
-        <title>Shop</title>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-            <script type="text/javascript">
-                function hire_bot() {
-                    alert('bot hired!');
-                }
-            </script>
-    </head>
-    <body>
-        <p>{{content}}</p>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var socket = io.connect('{{sc}}profile');
+<!DOCTYPE html>
+<html lang="en">
 
-                	socket.on('connect', function() {
-                        alert('we are connected');
-                    });
+<head>
 
-                socket.on('message', function(msg) {
-                    $("#messages").append('<li>'+msg+'</li>');
-                    console.log('Received message');
-                });
-            });
-        </script>
-        <ul id="messages"></ul>
-    </body>
-</html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fedex Economy</title>
+  <!-- Iconic Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery UI -->
+  <link href="../static/css/jquery-ui.min.css" rel="stylesheet">
+  <!-- mylo styles -->
+  <link href="../static/css/styleDB.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../../M-favicon.png">
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="../static/css/custom_style.css">
+<!-- Custom Tailwind CSS -->
+<link rel="stylesheet" href="../static/css/custom_tailwind.css">
+</head>
+
+<body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
+
+
+
+    <!-- Preloader -->
+    <div id="preloader-wrap">
+      <div class="spinner spinner-8">
+        <div class="ms-circle1 ms-child"></div>
+        <div class="ms-circle2 ms-child"></div>
+        <div class="ms-circle3 ms-child"></div>
+        <div class="ms-circle4 ms-child"></div>
+        <div class="ms-circle5 ms-child"></div>
+        <div class="ms-circle6 ms-child"></div>
+        <div class="ms-circle7 ms-child"></div>
+        <div class="ms-circle8 ms-child"></div>
+        <div class="ms-circle9 ms-child"></div>
+        <div class="ms-circle10 ms-child"></div>
+        <div class="ms-circle11 ms-child"></div>
+        <div class="ms-circle12 ms-child"></div>
+      </div>
+    </div>
+  
+    <!-- Overlays -->
+    <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+    <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+  
+    <!-- Sidebar Navigation Left -->
+    <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+  
+      <!-- Logo -->
+      <div class="logo-sn ms-d-block-lg">
+        <a class="pl-0 ml-0 text-center" href="pages/dashboard/index.html"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+      </div>
+  
+     
+       <!-- Navigation -->
+       <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+        <!-- Dashboard -->
+        <li class="menu-item ">
+          <a href="/dashboard?user_id={{email}}">
+            <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+          </a>
+        </li>
+        <!-- Wallet -->
+        <li class="menu-item">
+          <a href="/wallet">
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+          </a>
+        </li>
+    
+        <!-- Services | Offer -->
+        <li class="menu-item">
+            <a href="/servicesoffer">
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
+            </a>
+        </li>
+        <!-- Shop -->
+        <li class="menu-item">
+            <a href="/shop">
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
+            </a>
+        </li>
+        <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
+        <li class="menu-item">
+            <a href="/myBusiness">
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
+              </span>
+              
+            </a>
+        </li>
+        {%endif%}
+    </ul>
+  
+  
+    </aside>
+  
+    <!-- Sidebar Right -->
+    <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
+  
+      <div class="ms-aside-header">
+        <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-3" role="tablist">
+          <li role="presentation" class="fs-12"><a href="#activityLog" aria-controls="activityLog" class="active" role="tab" data-toggle="tab"> Activity Log</a></li>
+          <li role="presentation" class="fs-12"><a href="#recentPosts" aria-controls="recentPosts" role="tab" data-toggle="tab"> Settings </a></li>
+          <li><button type="button" class="close ms-toggler text-center" data-target="#ms-recent-activity" data-toggle="slideRight"><span aria-hidden="true">&times;</span></button></li>
+        </ul>
+      </div>
+  
+      <div class="ms-aside-body">
+  
+         <div class="tab-content">
+  
+           <div role="tabpanel" class="tab-pane active fade show" id="activityLog">
+             <ul class="ms-activity-log">
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-light">
+                   <i class="flaticon-gear"></i>
+                 </div>
+                 <h6>Update 1.0.0 Pushed</h6>
+                 <span> <i class="material-icons">event</i>1 January, 2019</span>
+                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-success">
+                   <i class="flaticon-tick-inside-circle"></i>
+                 </div>
+                 <h6>Profile Updated</h6>
+                 <span> <i class="material-icons">event</i>4 March, 2018</span>
+                 <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-warning">
+                   <i class="flaticon-alert-1"></i>
+                 </div>
+                 <h6>Your payment is due</h6>
+                 <span> <i class="material-icons">event</i>1 January, 2019</span>
+                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-danger">
+                   <i class="flaticon-alert"></i>
+                 </div>
+                 <h6>Database Error</h6>
+                 <span> <i class="material-icons">event</i>4 March, 2018</span>
+                 <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-info">
+                   <i class="flaticon-information"></i>
+                 </div>
+                 <h6>Checkout what's Trending</h6>
+                 <span> <i class="material-icons">event</i>1 January, 2019</span>
+                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+               </li>
+               <li>
+                 <div class="ms-btn-icon btn-pill icon btn-secondary">
+                   <i class="flaticon-diamond"></i>
+                 </div>
+                 <h6>Your Dashboard is ready</h6>
+                 <span> <i class="material-icons">event</i>4 March, 2018</span>
+                 <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+               </li>
+             </ul>
+             <a href="#" class="btn btn-primary d-block"> View All </a>
+           </div>
+  
+           <div role="tabpanel" class="tab-pane fade" id="recentPosts">
+  
+             <h6>General Settings</h6>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Location Tracking</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox">
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Allow Notifications</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox">
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Allow Popups</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox" checked>
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <h6>Log Settings</h6>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Enable Logging</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox" checked>
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Audit Logs</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox">
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Error Logs</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox" checked>
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <h6>Advanced Settings</h6>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Enable Logging</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox" checked>
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Audit Logs</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox">
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+             <div class="ms-form-group">
+               <span class="ms-option-name fs-14">Error Logs</span>
+               <label class="ms-switch float-right">
+                 <input type="checkbox" checked>
+                 <span class="ms-switch-slider round"></span>
+               </label>
+             </div>
+  
+           </div>
+  
+         </div>
+  
+      </div>
+  
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="body-content">
+  
+      <!-- Navigation Bar -->
+      <nav class="navbar ms-navbar">
+  
+        <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+          <span class="ms-toggler-bar bg-primary"></span>
+          <span class="ms-toggler-bar bg-primary"></span>
+          <span class="ms-toggler-bar bg-primary"></span>
+        </div>
+  
+        <div class="logo-sn logo-sm ms-d-block-sm">
+          <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
+        </div>
+  
+        <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+          <li class="ms-nav-item ms-search-form pb-0 py-0">
+            <form class="ms-form" method="post">
+              <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+                <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
+                <i class="flaticon-search text-disabled"></i>
+              </div>
+            </form>
+          </li>
+          <li class="ms-nav-item dropdown">
+            <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
+              <li class="dropdown-menu-header">
+                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="ms-scrollable ms-dropdown-list">
+                <a class="media p-2" href="#">
+                  <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                  </div>
+                  <div class="media-body">
+                    <span>Hey man, looking forward to your new project.</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                  </div>
+                </a>
+                <a class="media p-2" href="#">
+                  <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
+                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                  </div>
+                  <div class="media-body">
+                    <span>Dear John, I was told you bought mylo! Send me your feedback</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
+                  </div>
+                </a>
+                <a class="media p-2" href="#">
+                  <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                  </div>
+                  <div class="media-body">
+                    <span>How many people are we inviting to the dashboard?</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
+                  </div>
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-menu-footer text-center">
+                <a href="../apps/email.html">Go to Inbox</a>
+              </li>
+            </ul>
+          </li>
+          <li class="ms-nav-item dropdown">
+            <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+              <li class="dropdown-menu-header">
+                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="ms-scrollable ms-dropdown-list">
+                <a class="media p-2" href="#">
+                  <div class="media-body">
+                    <span>12 ways to improve your crypto dashboard</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                  </div>
+                </a>
+                <a class="media p-2" href="#">
+                  <div class="media-body">
+                    <span>You have newly registered users</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
+                  </div>
+                </a>
+                <a class="media p-2" href="#">
+                  <div class="media-body">
+                    <span>Your account was logged in from an unauthorized IP</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
+                  </div>
+                </a>
+                <a class="media p-2" href="#">
+                  <div class="media-body">
+                    <span>An application form has been submitted</span>
+                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
+                  </div>
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-menu-footer text-center">
+                <a href="#">View all Notifications</a>
+              </li>
+            </ul>
+          </li>
+          <li class="ms-nav-item">
+            <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+          </li>
+          <li class="ms-nav-item ms-nav-user dropdown">
+            <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
+            <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+              <li class="dropdown-menu-header">
+                <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Anny Farisha</span></h6>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="ms-dropdown-list">
+                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+                <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
+                <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-menu-footer">
+                <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
+              </li>
+              <li class="dropdown-menu-footer">
+                <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+  
+        <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+          <span class="ms-toggler-bar bg-primary"></span>
+          <span class="ms-toggler-bar bg-primary"></span>
+          <span class="ms-toggler-bar bg-primary"></span>
+        </div>
+  
+      </nav>
+  
+  
+      <!-- Body Content Wrapper -->
+      <div class="ms-content-wrapper" >
+  
+        <br/><br/>
+  
+        <div class="row" style="margin-left: 150px;">
+  
+         
+          <div class="col-xl-10 col-md-16">
+            <div class="ms-panel ms-panel-fh">
+              <div class="ms-panel-body" style="width: 1000px;">
+                <br/>
+                <h1 class="title" style="color: #472F92; padding-left: 40%; font-size: xx-large"><b>-----&nbsp;Basic Information&nbsp;-----</b></h1>
+  <br/><br/>
+                <table class="table ms-profile-information" style="width: 1000px;margin-left: 50px; ">
+                  <tbody>
+                  <tr >
+                      <th>Image URL</th>
+                      <td><input class="form-control"  name="image_url_Txt" type="text" id="image_url_Txt" value="{{profile.image_url}}" /></td>
+                  </tr>
+                  <tr>
+                      <th>First Name</th>
+                      <td><input class="form-control" name="first_name_Txt" type="text" id="first_name_Txt" value="{{profile.first_name}}" /></td>
+                  </tr>
+                  <tr>
+                    <th>Last Name</th>
+                    <td><input class="form-control" name="last_name_Txt" type="text" id="last_name_Txt" value="{{profile.last_name}}" /></td>
+                </tr>
+                <tr>
+                  <th>Area code</th>
+                  <td><input class="form-control" name="area_code_Txt" type="text" id="area_code_Txt" value="{{profile.area_code}}" /></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td><input class="form-control" name="phone_Txt" type="text" id="phone_Txt" value="{{profile.phone}}"/></td>
+            </tr>
+                  <tr>
+                      <th>Description</th>
+                      <td><input class="form-control" name="description_Txt" type="text" id="description_Txt" value="{{profile.description}}"></td>
+                  </tr>
+                  <tr>
+                      <th>Tags</th>
+                      <td><input class="form-control" name="tags_Txt" type="text" id="tags_Txt" value="{{profile.tags}}" placeholder="Enter comma separated tags"/></td>
+                  </tr>
+                  <tr>
+                      <th>Rating</th>
+                      <td><input class="form-control" name="rating_Txt" type="text" id="rating_Txt" value="{{profile.rating}}"/></td>
+                  </tr>
+                  <tr>
+                      <th>Status</th>
+                      <td>
+                           <select class="custom-select" name="status_Txt" id="status_Txt">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td/>
+                      <td>
+                        <div class="container-login100-form-btn">
+                          <button onclick="update_profile()" class="login100-form-btn btn btn--radius-2 btn--red" type="submit" style="color:whitesmoke;background-color: #F26522" >Update Your Profile</button>
+                      </div>
+                      </td>
+                  </tr>
+                  </tbody>
+  
+              </table>
+  
+                
+              </div>
+            </div>
+          </div>
+  
+  
+  
+        </div>
+  
+  
+      </div>
+  
+    </main>
+  
+  
+   
+  
+  
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/perfect-scrollbar.js"> </script>
+    <script src="../static/js/jquery-ui.min.js"> </script>
+    <!-- Global Required Scripts End -->
+  
+    <!-- mylo core JavaScript -->
+    <script src="../static/js/framework.js"></script>
+  
+    <!-- Settings -->
+    <script src="../static/js/settings.js"></script>
+  
+  </body>
+  
+  </html>
+  
