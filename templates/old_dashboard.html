@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mylo Dashboard!</title>
   <!-- Iconic Fonts -->
+  <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
   <!-- Bootstrap core CSS -->
@@ -18,6 +19,11 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+  <link rel="stylesheet" href="../static/css/custom_style.css">
+  <!-- Custom Tailwind CSS -->
+  <link rel="stylesheet" href="../static/css/custom_tailwind.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 
 </head>
 
@@ -49,41 +55,48 @@
   <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
 
     <!-- Logo -->
-    <div class="logo-sn ms-d-block-lg">
+    <div class="logo-sn ms-d-block-lg tw-ml-10 tw-mt-3">
       <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
     <!-- Navigation -->
     <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item ">
           <a href="/dashboard">
-            <span><img src="../static/images/Dashboard.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+            <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
           </a>
         </li>
         <!-- Wallet -->
         <li class="menu-item">
           <a href="/wallet">
-            <span><img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
           </a>
         </li>
     
         <!-- Services | Offer -->
         <li class="menu-item">
             <a href="/servicesoffer">
-              <span><img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
         </li>
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop">
-              <span><img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
             </a>
         </li>
         <!-- My Business -->
         <li class="menu-item">
             <a href="/myBusiness">
-              <span><img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
+              </span>
+              
             </a>
         </li>
     </ul>
@@ -238,58 +251,49 @@
 
 
     <!-- Body Content Wrapper -->
- <div class="ms-content-wrapper">
+    <div class="ms-content-wrapper">
+      <div class="row tw-mb-4">
+        <div class="col-xl-3 col-md-6">
+            <div class="tw-info-card-content card-gradient-green">
+                <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                    &nbsp;850
+                </span>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="tw-info-card-content card-gradient-purple">
+                <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                    &nbsp;1 = $ 0.12
+                </span>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="tw-info-card-content card-gradient-aqua">
+                <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                    &nbsp;9,650
+                </span>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="tw-flex tw-items-center tw-h-full">
+                <div class="card-gradient-limegreen tw-h-full tw-flex tw-items-center tw-p-3 tw-rounded-l">
+                    <svg class="svg-inline--fa fa-plus fa-w-8" style="font-size: 48px;color: white;" aria-hidden="true" data-prefix="fa" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                        <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+                    </svg>
+                </div>
+                <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
+                    <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                </div>
+            </div>
+        </div>
+      </div>
       <div class="row">
-
-        <div class="col-xl-3 col-md-6">
-          <div class="ms-card card-gradient-success ms-widget ms-infographics-widget">
-            <div class="ms-card-body media">
-              <div class="media-body">
-                <h6>FEx COIN Balance</h6>
-                <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 850</p>
-                <p class="fs-12"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6">
-          <div class="ms-card card-gradient-secondary ms-widget ms-infographics-widget">
-            <div class="ms-card-body media">
-              <div class="media-body">
-                <h6>Exchange Rate</h6>
-                <p class="ms-card-change"> 1 = $ 0.12</p>
-                <p class="fs-12"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6">
-          <div class="ms-card card-gradient-warning ms-widget ms-infographics-widget">
-            <div class="ms-card-body media">
-              <div class="media-body">
-                <h6>Total Income</h6>
-                <p class="ms-card-change"> <i class="material-icons">arrow_upward</i>9560</p>
-                <p class="fs-12"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6">
-          <div class="ms-card card-gradient-info ms-widget ms-infographics-widget">
-            <div class="ms-card-body media">
-              <div class="media-body">
-                <h6>     </h6>
-                <p class="ms-card-change"> Add FEx Coins</p>
-                <p class="fs-12"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
         <div class="col-xl-6 col-md-12">
           <div class="ms-panel">
             <div class="ms-panel-header">
@@ -336,8 +340,8 @@
               </div>
             </div>
           </div>
-        </div>
 
+      </div>
         <div class="col-xl-6 col-md-12">
           <div class="ms-panel ms-panel-fh">
             <div class="ms-panel-header">
@@ -365,7 +369,8 @@
             </div>
           </div>
         </div>
-
+      </div>
+      <div class=row>
         <div class="col-xl-7 col-md-12">
           <div class="ms-panel ms-panel-fh">
             <div class="ms-panel-header header-mini">
@@ -398,7 +403,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-xl-5 col-md-12">
           <div class="ms-panel">
             <div class="ms-panel-header">
@@ -446,7 +450,8 @@
           </div>
 
         </div>
-
+      </div>
+      <div class=row>
         <div class="col-md-12">
           <div class="ms-panel">
             <div class="ms-panel-header">
@@ -618,11 +623,10 @@
             </div>
           </div>
         </div>
-
+      </div>
       </div>
     </div>
 
-  
   </main>
   <!-- SCRIPTS -->
   <!-- Global Required Scripts Start -->
@@ -646,4 +650,4 @@
 
 </body>
 
-</
+</html>

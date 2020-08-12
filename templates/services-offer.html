@@ -10,15 +10,15 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../static/css/style_sidebar.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
     <!-- Tailwind CSS -->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../static/css/custom_tailwind.css" rel="stylesheet">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../static/css/custom_style.css">
+    
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                 <img style="padding-left: 1px;" src="../static/images/main_logo_white.png" />
             </div>
 
-            <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+            <ul class="accordion ms-main-aside tw-fs-14" id="side-nav-accordion">
                 <!-- Dashboard -->
                 <li class="menu-item">
                   <a href="/dashboard">
@@ -102,46 +102,45 @@
                     </div>
                 </div>
             </nav>
-
             <div class="ms-content-wrapper">
-                <div class="row mb-4">
+                <div class="row tw-mb-4">
                     <div class="col-xl-3 col-md-6">
-                        <div class="info-card-content card-gradient-success">
-                            <span clas="text-base text-xs">FEx COIN Balance</span>
-                            <span class="flex items-center text-xl py-2 font-black">
-                                <img src="FEx-coin.png" class="thumbnail mr-2" />
+                        <div class="info-card-content card-gradient-green">
+                            <span clas="tw-text-base tw-text-xs">FEx COIN Balance</span>
+                            <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
+                                <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                 &nbsp;850
                             </span>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
-                        <div class="info-card-content card-gradient-secondary">
-                            <span clas="text-base text-xs">Exchange Rate</span>
-                            <span class="flex items-center text-xl py-2 font-black">
-                                <img src="FEx-coin.png" class="thumbnail mr-2" />
+                        <div class="info-card-content card-gradient-purple">
+                            <span clas="tw-text-base tw-text-xs">Exchange Rate</span>
+                            <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
+                                <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                 &nbsp;1 = $ 0.12
                             </span>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
-                        <div class="info-card-content card-gradient-warning">
-                            <span clas="text-base text-xs">Total Income</span>
-                            <span class="flex items-center text-xl py-2 font-black">
-                                <img src="FEx-coin.png" class="thumbnail mr-2" />
+                        <div class="info-card-content card-gradient-aqua">
+                            <span clas="tw-text-base tw-text-xs">Total Income</span>
+                            <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
+                                <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                 &nbsp;9,650
                             </span>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-md-6">
-                        <div class="flex items-center h-full">
-                            <div class="card-gradient-green h-full flex items-center p-3 rounded-l">
+                        <div class="tw-flex tw-items-center tw-h-full">
+                            <div class="card-gradient-limegreen tw-h-full tw-flex tw-items-center tw-p-3 tw-rounded-l">
                                 <svg class="svg-inline--fa fa-plus fa-w-8" style="font-size: 48px;color: white;" aria-hidden="true" data-prefix="fa" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
                                     <path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
                                 </svg>
                             </div>
-                            <div class="card-gradient-info pl-8 w-full h-full rounded-r flex items-center">
-                                <span class="text-2xl text-white font-black ">Add <br> FEx Coins</span>
+                            <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
+                                <span class="tw-text-2xl tw-text-white tw-font-black ">Add <br> FEx Coins</span>
                             </div>
                         </div>
                     </div>
@@ -149,113 +148,113 @@
 
                 <div class="row">
                     <div class="col-xl-3 col-md-6 h-80">
-                        <div class="bg-white w-full h-full rounded-md shadow-md">
+                        <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
-                                <img class="rounded-t-md" src="drone_example.jpg" alt="card_img">
+                                <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
                             </div>
                             <div class="p-3">
-                                <h1 class="text-purple-900 font-semibold text-base">
+                                <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
                                     Charging station
                                 </h1>
-                                <p class="text-xs mt-1">
+                                <p class="tw-text-xs tw-mt-1">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 </p>
-                                <div class="flex items-center justify-between mt-4 border-">
-                                    <div class="flex text-2xs items-center">
+                                <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
+                                    <div class="tw-flex tw-text-2xs tw-items-center">
                                         <p>Earn</p>
-                                        <div class="bg-gray-100 flex items-center rounded-md mx-1 px-2">
-                                            <p class="text-purple-900 font-medium flex items-center text-xs">
-                                                <img src="FEx-coin.png" class="mr-2 h-4 " />
+                                        <div class="tw-bg-gray-100 tw-flex tw-items-center tw-rounded-md tw-mx-1 tw-px-2">
+                                            <p class="tw-text-purple-900 tw-font-medium tw-flex tw-items-center tw-text-xs">
+                                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />
                                                 50
                                             </p>
                                         </div>
                                         <p>for this service</p>
                                     </div>
                                     <div class="">
-                                        <button class="bg-orange-500 px-2 py-1 rounded-md shadow-md text-white float-right">Offer</button>
+                                        <button class="tw-bg-orange-500 tw-px-2 tw-py-1 tw-rounded-md tw-shadow-md tw-text-white tw-float-right">Offer</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 h-80">
-                        <div class="bg-white w-full h-full rounded-md shadow-md">
+                        <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
-                                <img class="rounded-t-md" src="drone_example.jpg" alt="card_img">
+                                <img class="rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
                             </div>
-                            <div class="p-3">
-                                <h1 class="text-purple-900 font-semibold text-base">
+                            <div class="tw-p-3">
+                                <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
                                     Drone Maintenance
                                 </h1>
-                                <p class="text-xs mt-1">
+                                <p class="tw-text-xs tw-mt-1">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 </p>
-                                <div class="flex items-center justify-between mt-4 border-">
-                                    <div class="flex text-2xs items-center">
+                                <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
+                                    <div class="tw-flex tw-text-2xs tw-items-center">
                                         <p>Earn</p>
-                                        <div class="bg-gray-100 flex items-center rounded-md mx-1 px-2">
-                                            <p class="text-purple-900 font-medium flex items-center text-xs">
-                                                <img src="FEx-coin.png" class="mr-2 h-4 " />
+                                        <div class="tw-bg-gray-100 tw-flex tw-items-center tw-rounded-md tw-mx-1 tw-px-2">
+                                            <p class="tw-text-purple-900 tw-font-medium tw-flex tw-items-center tw-text-xs">
+                                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />
                                                 50
                                             </p>
                                         </div>
                                         <p>for this service</p>
                                     </div>
                                     <div class="">
-                                        <button class="bg-orange-500 px-2 py-1 rounded-md shadow-md text-white float-right">Offer</button>
+                                        <button class="tw-bg-orange-500 tw-px-2 tw-py-1 tw-rounded-md tw-shadow-md tw-text-white tw-float-right">Offer</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 h-80">
-                        <div class="bg-white w-full h-full rounded-md shadow-md">
+                        <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
-                                <img class="rounded-t-md" src="drone_example.jpg" alt="card_img">
+                                <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
                             </div>
                             <div class="p-3">
-                                <h1 class="text-purple-900 font-semibold text-base">
+                                <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
                                     Delivery Assurance
                                 </h1>
-                                <p class="text-xs mt-1">
+                                <p class="tw-text-xs tw-mt-1">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 </p>
-                                <div class="flex items-center justify-between mt-4 border-">
-                                    <div class="flex text-2xs items-center">
+                                <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
+                                    <div class="tw-flex tw-text-2xs tw-items-center">
                                         <p>Earn</p>
-                                        <div class="bg-gray-100 flex items-center rounded-md mx-1 px-2">
-                                            <p class="text-purple-900 font-medium flex items-center text-xs">
-                                                <img src="FEx-coin.png" class="mr-2 h-4 " />
+                                        <div class="tw-bg-gray-100 tw-flex items-center tw-rounded-md tw-mx-1 tw-px-2">
+                                            <p class="tw-text-purple-900 tw-font-medium tw-flex tw-items-center tw-text-xs">
+                                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />
                                                 50
                                             </p>
                                         </div>
                                         <p>for this service</p>
                                     </div>
                                     <div class="">
-                                        <button class="bg-orange-500 px-2 py-1 rounded-md shadow-md text-white float-right">Offer</button>
+                                        <button class="tw-bg-orange-500 tw-px-2 tw-py-1 tw-rounded-md tw-shadow-md tw-text-white tw-float-right">Offer</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 h-80">
-                        <div class="bg-white w-full h-full rounded-md shadow-md">
+                        <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
-                                <img class="rounded-t-md" src="drone_example.jpg" alt="card_img">
+                                <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
                             </div>
-                            <div class="p-3">
-                                <h1 class="text-purple-900 font-semibold text-base">
+                            <div class="tw-p-3">
+                                <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
                                     Other Services
                                 </h1>
-                                <p class="text-xs mt-1">
+                                <p class="tw-text-xs tw-mt-1">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 </p>
-                                <div class="flex items-center justify-between mt-4 border-">
-                                    <div class="flex text-2xs items-center">
+                                <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
+                                    <div class="tw-flex tw-text-2xs tw-items-center">
                                         <p>Click here and describe <br /> your services </p>
                                     </div>
                                     <div class="">
-                                        <button class="bg-blue-500 px-4 py-1 rounded-md shadow-md text-white float-right">Offer</button>
+                                        <button class="tw-bg-blue-500 tw-px-4 tw-py-1 tw-rounded-md tw-shadow-md tw-text-white tw-float-right">Offer</button>
                                     </div>
                                 </div>
                             </div>
@@ -264,9 +263,7 @@
 
 
                 </div>
-
-
-                <div class="col-md-12 text-center py-20">
+                <div class="col-md-12 tw-text-center tw-py-20">
                     <button class='btn-servicesoffer'>Services I Offer</button>
                 </div>
             </div>

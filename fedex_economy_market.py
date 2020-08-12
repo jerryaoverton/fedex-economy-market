@@ -6,7 +6,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 smart_contract = os.environ['SMART_CONTRACT']
-# smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+#smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
 # smart_contract = 'http://127.0.0.1:5000/'
 
 @app.route('/')

@@ -1,0 +1,193 @@
+/* For Cards from MYLO HTML 5*/
+
+.tw-fs-14 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fs-addcoins {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.card-gradient-purple {
+    background-color: #926afe;
+    background-image: linear-gradient(to right, #926afe, #bd9aff);
+}
+
+.card-gradient-green {
+    background-color: #12b252;
+    background-image: linear-gradient(to right, #12b252, #31e97a);
+}
+
+.card-gradient-aqua {
+    background-color: #009999;
+    background-image: linear-gradient(to right, #009999, #00FFFF);
+}
+
+.card-gradient-blue {
+    background-color: #3e60ff;
+    background-image: linear-gradient(to right, #3e60ff, #1E90FF);
+}
+
+.card-gradient-limegreen {
+    background-color: #00FF00;
+}
+
+/* Coin image*/
+img {
+    max-width: 100% ;
+    max-height: 100% ;
+}
+
+img.thumbnail {
+    width: 40px;
+    height: 40px;
+}
+
+img.delivery-icons{
+    max-width: 100% ;
+    max-height: auto ;
+    
+}
+
+.tw-info-row {
+    max-height: 120px;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.tw-info-card {
+    margin-bottom: 0px;
+}
+
+.tw-info-card-content {
+    border-radius: 5px;
+    padding-top: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+}
+
+.tw-h-80 {
+    height: 20rem;
+}
+
+.tw-text-2xs {
+    font-size: .50rem;
+}
+
+.btn-servicesoffer {
+    background-color: #1E90FF;
+    width: 300px;
+    height: 80px;
+    color: white;
+    border-radius: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.background-orange {
+    background-color: #F26522
+}
+
+.custominput {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+.tw-h-72 {
+    height: 18rem;
+}
+
+.tw-h-30 {
+    height: 7rem;
+}
+
+.tw-w-80 {
+    width: 32rem;
+}
+
+.tw-w-82 {
+    width: 34rem;
+}
+
+.tw-w-90 {
+    width:64rem;
+}
+
+.tw-w-72 {
+    width: 18rem !important;
+}
+
+.tw-w-73{
+
+    width: 24rem !important;
+}
+
+.tw-w-74 {
+    width: 28rem;
+}
+
+.tw-w-66{
+    width: 17rem;
+}
+
+.tw-h-82 {
+    height: 26rem;
+}
+.tw-ml-x1 {
+    margin-left: 0.700rem;
+}
+
+.tw-pr-80 {
+    padding-right: 25rem;
+}
+
+.border-modal{
+    border: #68d391 5px solid; 
+}
+
+.bg-whitesmoke{
+    background-color: whitesmoke;
+}
+
+.bg-darkpurple{
+    background-color: #472F92;
+}
+
+.bg-aqua{
+    background-color:#00FFFF ;
+}
+
+.bg-lightblue{
+    background-color:#599CFD;
+}
+
+.tw-text-color-darkpurple{
+    color:  #472F92;
+}
+
+.vertical-line {
+    border-left: 1px solid gray;
+    height: 100px;
+  }
+
+.vertical-line-2{
+    border-left: 1px solid gray;
+    height: 150px;
+}
+
+
+
+
+
