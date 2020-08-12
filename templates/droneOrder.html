@@ -30,6 +30,7 @@
     function updateDroneOrder(){
     
             var order = "{{order}}"
+            order = order.replace(/&#39;/g, '"')
             order = JSON.parse(order)
             // pay drone
             // const drone_id = "1"
@@ -56,7 +57,7 @@
             //            ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' "+ 
             //              ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '"+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"'  }";
             order['delivery_provider'] = "Drone";
-            order['status'] = "Active";
+            order['status'] = "InTransit";
 
             var xhttp = new XMLHttpRequest();
     
@@ -398,7 +399,7 @@
           <p class= "tw-text-purple-800 tw-font-semibold tw-text-xl">37 mins</p>
         </div>
         <div class="tw-flex tw-justify-center tw-mt-10">
-          <button id = "sendDelivery" class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-toggle="modal" data-target="#bookedModal" onclick="updateDroneOrder()">
+          <button id = "sendDelivery" class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-target="#bookedModal" onclick="updateDroneOrder()">
             <p class="tw-text-white tw-font-medium tw-text-lg">Book a Drone for delivery</p>
             <div class="tw-flex tw-justify-center tw-items-center tw-mt-2 tw-space-x-2">
               <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-w-6 tw-rounded-none delivery-icons"/>

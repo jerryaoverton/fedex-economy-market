@@ -33,12 +33,12 @@
     $(document).ready(function () {
 
       //get all orders and append to table
-      var businessorderrq = new XMLHttpRequest();
-      req = "{{sc}}list_orders_by_supplier?&supplier={{email}}"
-      businessorderrq.open("GET", req, true);
-      businessorderrq.send();
+      // var businessorderrq = new XMLHttpRequest();
+      // req = "{{sc}}list_orders_by_supplier?supplier={{email}}"
+      // businessorderrq.open("GET", req, true);
+      // businessorderrq.send();
 
-      console.log(businessorderrq.response)
+      // console.log(businessorderrq.response)
 
     
       var socket = io.connect('{{sc}}order');
@@ -51,6 +51,7 @@
       });
       socket.on('message', function (order) {
         console.log(order);
+        
         order = order.replace(/'/g, '"')
         parse_order = JSON.parse(order);
         console.log(parse_order)
@@ -64,13 +65,10 @@
         // find order id in row
         $("#" + parse_order.order_id).remove();
 
-        var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
-                             <td class='text-center tw-w-48'> \
-                            </td> \
-                            <td class='text-center tw-w-48'></td> \
-                            <td class='text-center tw-w-48>" + parse_order.customer + " </td> \
-                            <td class='text-center tw-space-x-10'> \
-                            <td class='text-center tw-space-x-10'> \
+        var status_td = ""
+        
+        if(parse_order.status == 'Active') {
+        status_td = "<td class='text-center tw-space-x-10'> \
                               <form action='/dronedelivery'method='POST'> \
                                 <input name='order' type='hidden' value='" + order + "' />\
                               <button class='bg-lightblue tw-w-16 tw-h-16 tw-rounded' type='submit' > \
@@ -79,8 +77,23 @@
                               <button class='bg-darkpurple tw-w-16 tw-h-16 tw-rounded' hidden> \
                                 <img src='../static/images/ground_delivery.png' class='tw-rounded-none tw-mr-0 tw-ml-3 delivery-icons'/> \
                               </button >\
-                            </td>\
-                          </tr>"
+                            </td>"
+        }
+
+        if(parse_order.status == 'InTransit') {
+        status_td = "<td class='text-center tw-space-x-10'>In delivery </td>"
+        }
+
+        if(parse_order.status == 'complete') {
+        status_td = "<td class='text-center tw-space-x-10'>Completed </td>"
+        }
+
+        var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
+                             <td class='text-center tw-w-48'> \
+                            </td> \
+                            <td class='text-center tw-w-48'></td> \
+                            <td class='text-center tw-w-48>" + parse_order.customer + " </td> \
+                            <td class='text-center tw-space-x-10'>" + status_td + " </tr>"
 
         $("#ordertbl").append(row);
                         });
@@ -390,20 +403,35 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td scope="row" class="tw-text-center">Order 064</td>
+          {% for order in orders%}
+          <tr id="{{order.order_id}}">
+            <td scope="row" class="tw-text-center">{{order.order_id}}</td>
             <td class="text-center tw-w-48"></td>
             <td class="text-center tw-w-48"></td>
             <td class="text-center tw-w-48"></td>
+            {% if order.status|string() == "Active" %}
             <td class="text-center tw-space-x-10">
-              <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded">
+              <form action='/dronedelivery'method='POST'>
+                <input name='order' type='hidden' value='{{order}}' />
+              <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded" type="submit">
                 <img src="../static/images/white-drone.png" class="tw-rounded-none tw-mr-0 tw-ml-2 delivery-icons"/>
               </button>
-              <button class="bg-darkpurple tw-w-16 tw-h-16 tw-rounded">
-                <img src="../static/images/ground_delivery.png" class="tw-rounded-none tw-mr-0 tw-ml-3 delivery-icons"/>
-              </button>
-            </td>         
-          </tr> -->
+              </form>
+            </td>  
+            {%endif%} 
+            {% if order.status|string() == "InTransit" %}
+            <td>
+              Estimated time for this delivery: 37 mins
+            </td>
+            {%endif%} 
+            {% if order.status|string() == "complete" %}
+            <td>
+              Order Succesfully delivered
+            </td>
+            {%endif%} 
+
+          </tr>
+          {%endfor%}
         
         </tbody>
       </table>

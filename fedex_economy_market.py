@@ -189,15 +189,14 @@ def myBusiness():
     url = smart_contract + svc + params
     profile = requests.get(url).content
 
-    # svc = '/list_orders_by_supplier'
-    # params = '?supplier=' + user_id
-    # url = smart_contract + svc + params
-    # profile = requests.get(url).content
+    svc = '/list_orders_by_supplier'
+    params = '?supplier=' + user_id
+    url = smart_contract + svc + params
+    orders = requests.get(url).content
+    print('orders', (orders.decode('utf-8')))
+    print('orders eval', eval(orders.decode('utf-8')))
 
-
-    # orders = 
-
-    return render_template('business_review_order.html', content=_content , sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
+    return render_template('business_review_order.html', content=_content , orders =eval(orders.decode('utf-8')), email=user_id, sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
 
 
 @app.route('/dronedelivery', methods=["POST"])
@@ -217,8 +216,8 @@ def dronedelivery():
     params = '?user_id=' + user_id
     url = smart_contract + svc + params
     user_profile = requests.get(url).content
-
-    return render_template('droneOrder.html', order=json.dumps(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+    print(str(order))
+    return render_template('droneOrder.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
 
     
 

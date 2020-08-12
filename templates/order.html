@@ -51,9 +51,9 @@ function placeOrder(){
 // 'status_date': '08/05/2020'
 // }
 
-        var order = "{'order_id' : '1' , 'supplier': '{{business_id}}', 'customer': '{{email}}','payment_method': 'tokens'"+
-                   ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' "+ 
-                     ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '"+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"'  }";
+        var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\""+
+                   ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" "+ 
+                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Active\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" }";
 
         var xhttp = new XMLHttpRequest();
 
