@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard!</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
-  <!-- Our Custom CSS -->
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
   <!-- Bootstrap core CSS -->
@@ -19,12 +19,13 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <!-- Our Custom CSS -->
   <link rel="stylesheet" href="../static/css/custom_style.css">
   <!-- Custom Tailwind CSS -->
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-
+  
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -63,7 +64,7 @@
     <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
         <li class="menu-item ">
-          <a href="/dashboard">
+          <a href="/dashboard?user_id={{email}}">
             <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
           </a>
@@ -85,12 +86,13 @@
         </li>
         <!-- Shop -->
         <li class="menu-item">
-            <a href="/shop">
+            <a href="/shop?user_id={{email}}">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
             </a>
         </li>
         <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -99,6 +101,7 @@
               
             </a>
         </li>
+        {%endif%}
     </ul>
 
   </aside>
@@ -252,34 +255,34 @@
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
-      <div class="row tw-mb-2">
+      <div class="row tw-mb-4">
         <div class="col-xl-3 col-md-6">
             <div class="tw-info-card-content card-gradient-green">
                 <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;{{user_balance}}
                 </span>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-purple">
-                <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;1 = $ 0.12
-                </span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-aqua">
-                <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;9,650
-                </span>
-            </div>
-        </div>
+          <div class="tw-info-card-content card-gradient-purple">
+              <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;1 = $ 0.12
+              </span>
+          </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+          <div class="tw-info-card-content card-gradient-aqua">
+              <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;9,650
+              </span>
+          </div>
+      </div>
         <div class="col-xl-3 col-md-6">
             <div class="tw-flex tw-items-center tw-h-full">
                 <div class="card-gradient-limegreen tw-h-full tw-flex tw-items-center tw-p-3 tw-rounded-l">
@@ -288,7 +291,7 @@
                     </svg>
                 </div>
                 <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
-                    <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                    <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
                 </div>
             </div>
         </div>
@@ -313,7 +316,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                   <hr class="tw-mt-5">
-                  <p class="tw-text-xs tw-text-gray-700 tw-pt-3">Enjoy a range delicious pizza <br/> at a discounted price</p>
+                  <p class="tw-text-2xxs tw-text-gray-700 tw-pt-3">Enjoy a range delicious pizza <br/> at a discounted price</p>
                 </div>
             </div>
             <div class="vertical-line-2 tw-ml-20 tw-mt-5"></div>

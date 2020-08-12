@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard!</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
-  <!-- Our Custom CSS -->
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
   <!-- Bootstrap core CSS -->
@@ -21,9 +21,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="../static/css/custom_style.css">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="../static/css/custom_style.css">
   <!-- Custom Tailwind CSS -->
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
+  
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -62,7 +64,7 @@
     <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
         <li class="menu-item ">
-          <a href="/dashboard">
+          <a href="/dashboard?user_id={{email}}">
             <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
           </a>
@@ -84,12 +86,13 @@
         </li>
         <!-- Shop -->
         <li class="menu-item">
-            <a href="/shop">
+            <a href="/shop?user_id={{email}}">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
             </a>
         </li>
         <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -98,6 +101,7 @@
               
             </a>
         </li>
+        {%endif%}
     </ul>
 
   </aside>
@@ -247,8 +251,7 @@
       </div>
 
     </nav>
-
-
+    
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper tw-flex tw-space-x-10">
       <div class="tw-h-56 tw-w-80">
@@ -273,20 +276,20 @@
                       <span class="tw-text-xs tw-text-center tw-text-purple-800">Withdraw</span>
                   </div>
                   <div class="">
-                      <button type="button" class="tw-bg-purple-700 tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
+                      <button type="button" class="bg-darkpurple tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-long-arrow-alt-right" style="color:white; font-size: 30px"></i>
                       </button>
                       <span class="tw-text-xs tw-text-center tw-text-purple-800">Send</span>
                   </div>
                   <div class="">
-                      <button type="button" class="tw-bg-blue-400 tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
+                      <button type="button" class="bg-lightblue tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-credit-card" style="color:white; font-size: 28px"></i>
                       </button>
                       <span class="tw-text-xs tw-text-center tw-text-purple-800">Cards</span>
                   </div>
                   <div class="">
-                      <button type="button" class="tw-bg-yellow-400 tw-h-10 tw-w-10 tw-rounded tw-transform tw-rotate-90 tw-ml-2 tw-flex tw-items-center tw-justify-center">
-                          <i class="fas fa-exchange-alt" style="color:white; font-size: 28px"></i>
+                      <button type="button" class="bg-yellow tw-h-10 tw-w-10 tw-rounded tw-transform tw-rotate-90 tw-ml-2 tw-flex tw-items-center tw-justify-center">
+                          <i class="fas fa-exchange-alt" style="color:#472F92; font-size: 28px"></i>
                       </button>
                       <span class="tw-text-xs tw-text-center tw-text-purple-800">Exchange</span>
                   </div>
@@ -318,7 +321,7 @@
                   </div>
                   <div class="row mt-5">
                       <div class="col-xl-6 col-md-6">
-                          <div class="tw-bg-yellow-400 tw-rounded-md tw-pt-2 tw-pr-4 tw-pl-4 tw-h-full tw-text-purple-800">
+                          <div class="bg-yellow tw-rounded-md tw-pt-2 tw-pr-4 tw-pl-4 tw-h-full tw-text-purple-800">
                               <span class="tw-text-base tw-text-xs tw-text-purple-700">FX Coin Value</span>
                               <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-purple-800">
                                   $&nbsp;&nbsp;&nbsp;&nbsp;9,650
@@ -339,43 +342,27 @@
           </div>
       </div>
   </div>
-  <div class="content-wrapper-2 mt-5">
-      <h class="tw-w-full tw-h-2 tw-text-purple-700 tw-text-bold twtext-2xl tw-ml-2 tw-font-semibold">My Cards</h>
+  <div class="content-wrapper-2 tw-mt-5 tw-px-10">
+      <h class="tw-w-full tw-h-2 tw-text-purple-700 tw-text-bold tw-text-2xl tw-font-semibold">My Cards</h>
       <div class="card-container tw-w-full tw-h-56 tw-flex tw-space-x-10">
           <div class="card-block mbw-2 tw-w-72 tw-mt-3">
               <div class="card-main">
-                  <div class="card-button card-dropdown">
-                      <button type="button" class="btn card-btn-link card-btn-icon" data-toggle="dropdown">
-                          <i class="fas fa-ellipsis-h"></i>
-                      </button>
-                      <div class="card-dropdown-menu card-dropdown-menu-right">
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="pencil-outline"></ion-icon>Edit
-                          </a>
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="close-outline"></ion-icon>Remove
-                          </a>
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                          </a>
-                      </div>
-                  </div>
                   <div class="balance">
-                      <span class="label">BALANCE</span>
-                      <h1 class="title">$ 1,256,90</h1>
+                      <span class="label tw-text-white">BALANCE</span>
+                      <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
                   </div>
                   <div class="in">
                       <div class="card-number">
-                          <span class="label">Card Number</span>
+                          <span class="label tw-text-white">Card Number</span>
                           •••• 9905
                       </div>
                       <div class="bottom">
                           <div class="card-expiry">
-                              <span class="label">Expiry</span>
+                              <span class="label tw-text-white">Expiry</span>
                               12 / 25
                           </div>
                           <div class="card-ccv">
-                              <span class="label">CCV</span>
+                              <span class="label tw-text-white">CCV</span>
                               553
                           </div>
                       </div>
@@ -384,38 +371,22 @@
           </div>
           <div class="card-block tw-bg-secondary mbw-2 tw-w-72 tw-mt-3">
               <div class="card-main">
-                  <div class="card-button card-dropdown">
-                      <button type="button" class="btn card-btn-link card-btn-icon" data-toggle="dropdown">
-                          <i class="fas fa-ellipsis-h"></i>
-                      </button>
-                      <div class="card-dropdown-menu card-dropdown-menu-right">
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="pencil-outline"></ion-icon>Edit
-                          </a>
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="close-outline"></ion-icon>Remove
-                          </a>
-                          <a class="card-dropdown-item" href="javacript:;">
-                              <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                          </a>
-                      </div>
-                  </div>
                   <div class="balance">
-                      <span class="label">BALANCE</span>
-                      <h1 class="title">$ 1,256,90</h1>
+                      <span class="label tw-text-white">BALANCE</span>
+                      <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
                   </div>
                   <div class="in">
                       <div class="card-number">
-                          <span class="label">Card Number</span>
+                          <span class="label tw-text-white">Card Number</span>
                           •••• 9905
                       </div>
                       <div class="bottom">
                           <div class="card-expiry">
-                              <span class="label">Expiry</span>
+                              <span class="label tw-text-white">Expiry</span>
                               12 / 25
                           </div>
                           <div class="card-ccv">
-                              <span class="label">CCV</span>
+                              <span class="label tw-text-white">CCV</span>
                               553
                           </div>
                       </div>
@@ -449,9 +420,9 @@
                       </select>
                   </div>
               </div>
-              <div class="modal-footer">
-                  <p class="tw-pr-80 tw-text-gray-600">Exchange Rate: 1 FEx Coin = $ 0.12</p>
-                  <button type="button" class="btn background-orange btn-lg tw-text-white" data-dismiss="modal">Add FEx Coins</button>
+              <div class="modal-footer tw-flex tw-justify-between">
+                  <p class="tw-text-gray-600">Exchange Rate: 1 FEx Coin = $ 0.12</p>
+                  <button type="button" class="background-orange tw-w-40 tw-h-10 tw-text-white tw-text-lg tw-rounded-lg" data-dismiss="modal">Add FEx Coins</button>
               </div>
           </div>
       </div>
