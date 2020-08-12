@@ -20,7 +20,7 @@ ctx = {'user_id':'',
        'max_weight':5}
 
 smart_contract = os.environ['SMART_CONTRACT']
-# smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+#smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
 # smart_contract = 'http://127.0.0.1:5000/'
 user_profile = {'' }
 

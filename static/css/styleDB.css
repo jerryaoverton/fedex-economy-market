@@ -785,9 +785,9 @@ pre{
   background: transparent;
   color: #374eae;
 }
-.ms-navbar .ms-nav-link{
+/* .ms-navbar .ms-nav-link{
   padding:
-}
+} */
 .ms-aside-toggler,
 .ms-nav-toggler{
   padding: .25rem .75rem;
@@ -4965,7 +4965,7 @@ a.ms-g-plus,
   position: relative;
   display: flex;
   align-items: flex-end;
-  background-image: url('https://via.placeholder.com/1920x1080');
+  background-image: url('../images/Generic\ banner.jpg');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -4982,7 +4982,7 @@ a.ms-g-plus,
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url('https://via.placeholder.com/1920x1080');
+  background-image: url('../images/Generic\ banner.jpg');
   z-index: -1;
 }
 .ms-profile-cover img{

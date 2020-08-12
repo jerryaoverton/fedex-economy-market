@@ -88,8 +88,8 @@
     <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
 
         <!-- Logo -->
-        <div class="logo-sn ms-d-block-lg">
-            <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+        <div class="logo-sn ms-d-block-lg tw-flex tw-justify-center">
+            <a href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
         </div>
 
         <!-- Navigation -->
@@ -103,7 +103,7 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet">
+                <a href="/wallet?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
@@ -428,16 +428,14 @@
 
         <!-- Body Content Wrapper -->
         <div class="ms-content-wrapper">
-
             <div class="ms-profile-overview">
                 <div class="ms-profile-cover" style="background-image: url('../static/images/Generic\ banner.jpg')">
-                    <img class="ms-profile-img" alt="people" style="background-image: url('../static/images/Generic\ profile.jpg')">
+                    <img class="ms-profile-img" alt="people" src="../static/images/Generic profile.jpg">
                     <div class="ms-profile-user-info">
-                        <h1 class="ms-profile-username">{{profile.first_name + ' ' + profile.last_name}}</h1>
+                        <h1 class="ms-profile-username tw-text-purple-800 tw-text-2xl tw-font-semibold">{{profile.first_name + ' ' + profile.last_name}}</h1>
                         <!-- <h2 class="ms-profile-role">Professional UX Designer</h2> -->
                     </div>
                     <div class="ms-profile-user-buttons">
-                        <a href="#" class="btn" style="background-color: #F26522;color: white;"> <i class="material-icons">person_add</i> Follow</a>
                         <a href="/updateProfile?user_id={{email}}" class="btn" style="background-color: #F26522;color: white;"> Edit Profile</a>
                     </div>
                 </div>
@@ -459,7 +457,7 @@
                                     <span>User Rating</span>
                                 </li>
                             </ul>
-                            <h2 class="section-title">Basic Information</h2>
+                            <h2 class="section-title tw-text-purple-800 tw-text-2xl tw-font-semibold tw-text-center">Basic Information</h2>
                             <table class="table ms-profile-information">
                                 <tbody>
                                     <tr>
@@ -535,11 +533,11 @@
                 <div class="col-xl-5 col-md-12">
                     <div class="ms-panel ms-panel-fh">
                         <div class="ms-panel-body">
-                            <h2 class="section-title">About Me</h2>
+                            <h2 class="section-title tw-text-purple-800 tw-text-2xl tw-font-semibold tw-text-center">About Me</h2>
                             <p>{{profile.description}}</p>
 
                             <div class="ms-profile-skills">
-                                <h2 class="section-title">TAG</h2>
+                                <h2 class="section-title tw-text-purple-800 tw-text-2xl tw-font-semibold">TAG</h2>
                                 <ul class="ms-skill-list">
                                     {% if profile.tags %} {% set list = profile.tags.split(',') %} {% for item in list %}
                                     <li class="ms-skill">{{item}}</li>
