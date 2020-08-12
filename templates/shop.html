@@ -91,6 +91,7 @@
             </a>
         </li>
         <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -99,6 +100,7 @@
               
             </a>
         </li>
+        {%endif%}
     </ul>
 
   </aside>
@@ -321,8 +323,6 @@
                               <button class="tw-w-10 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
                                 <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
                         
-                      
-
                             </div>
                         </div>
                     </div>
