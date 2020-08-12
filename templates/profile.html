@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
@@ -18,7 +18,10 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../../M-favicon.png">
-
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="../static/css/custom_style.css">
+<!-- Custom Tailwind CSS -->
+<link rel="stylesheet" href="../static/css/custom_tailwind.css">
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -89,40 +92,50 @@
       <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
-    <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+      <!-- Navigation -->
+      <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
-        <li class="menu-item">
-          <a href="/dashboard">
-            <span><img src="../static/images/Dashboard.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+        <li class="menu-item ">
+          <a href="/dashboard?user_id={{email}}">
+            <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
           </a>
         </li>
         <!-- Wallet -->
         <li class="menu-item">
           <a href="/wallet">
-            <span><img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
+            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+              <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
           </a>
         </li>
-
+    
         <!-- Services | Offer -->
         <li class="menu-item">
             <a href="/servicesoffer">
-              <span><img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
         </li>
         <!-- Shop -->
         <li class="menu-item">
-            <a href="/shop">
-              <span><img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
+            <a href="/shop?user_id={{email}}">
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
             </a>
         </li>
         <!-- My Business -->
+        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
-              <span><img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
+              </span>
+              
             </a>
         </li>
+        {%endif%}
     </ul>
+
 
   </aside>
 
@@ -389,7 +402,7 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
-              <a class="media fs-14 p-2" href="/profile"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+              <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
               <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
               <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
             </li>
@@ -442,8 +455,8 @@
               <div class="ms-profile-skills">
                 <h2 class="section-title">TAG</h2>
                 <ul class="ms-skill-list">
-                  {% if profile.tag is defined %}
-                    {% set list =  profile.tag.split(',') %}
+                  {% if profile.tags %}
+                      {% set list = profile.tags.split(',')  %}
                     {% for item in list %}
                       <li class="ms-skill">{{item}}</li>
                     {%endfor%}
@@ -484,6 +497,26 @@
                     <td>{{email}}</td>
                   </tr>
                   <tr>
+                    <tr>
+                      <th scope="row">Street</th>
+                      <td>{{profile.street}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">City</th>
+                      <td>{{profile.city}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">State/Province</th>
+                      <td>{{profile.stateorprovince}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Postal Code</th>
+                      <td>{{profile.postalcode}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Country Code</th>
+                      <td>{{profile.countrycode}}</td>
+                    </tr>
                     <th scope="row">Area Code</th>
                     <td>{{profile.area_code}}</td>
                   </tr>
@@ -499,7 +532,25 @@
                     <th scope="row">Language</th>
                     <td>English (US)</td>
                   </tr>
-              
+
+            {% if profile.RegistrationType|string() == 'ServiceProvider'%}
+                  <tr>
+                    <th scope="row">Service Type</th>
+                    <td>{{profile.ServiceType}}</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Service Cost</th>
+                    <td>{{profile.ServiceFee}}</td>
+                  </tr>
+{%endif%}
+
+{% if profile.RegistrationType|string() == 'Business'%}
+                  <tr>
+                    <th scope="row">Business Type</th>
+                    <td>{{profile.BusinessType}}</td>
+                  </tr>
+{%endif%}
                 </tbody>
               </table>
             </div>

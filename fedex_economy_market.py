@@ -48,13 +48,21 @@ def signUp():
 
 @app.route('/dashboard')
 def dashboard():
-    # fetch userdata
-    return render_template('dashboard.html', email='s@s.com')
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    profile = requests.get(url).content
 
-@app.route('/myBusiness')
-def myBusiness():
-    _content = "Here is some stuff you can buy"
-    return render_template('myBusiness.html', content=_content , sc=smart_contract)
+    # get user_balance
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
 
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
@@ -76,11 +84,20 @@ def register():
     RegistrationType = request.form['RegistrationType']
     area_code = request.form['area_code']
     phone = request.form['phone']
-    BusinessType = request.form.get('BusinessType', None)
-    AddressLine1 = request.form['AddressLine1']
-    AddressLine2 = request.form['AddressLine2']
-    profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,
-                        "area_code":area_code,"BusinessType":BusinessType,"BusinessAddress": AddressLine1 + " " + AddressLine2, "phone": phone}
+    street = request.form['street']
+    city = request.form['city']
+    stateorprovince = request.form['stateorprovince']
+    postalcode= request.form['postalcode']
+    countrycode = request.form['countrycode']
+    BusinessType = request.form.get('BusinessType', '')
+    ServiceType = request.form.get('ServiceType', '')
+    ServiceFee = request.form.get('ServiceFee','')
+
+    
+
+    profiledata = {"first_name":first_name,"last_name":last_name,"RegistrationType": RegistrationType,"area_code":area_code,"BusinessType":BusinessType,"street": street, "phone": phone , "city" :city , "stateorprovince" :stateorprovince , "postalcode" : postalcode , "countrycode" :countrycode,
+                        "ServiceType":ServiceType, "ServiceFee": ServiceFee, "properties":"type:Quadcopter,capacity:2kgs,flyduration:10mins"}
+    
     data = {"id":user_id,"token":0,"profile": profiledata}
     
 
@@ -95,7 +112,7 @@ def register():
     print(json.dumps(profiledata))
 
     svc = '/update_profile'
-    params = '?user_id=' + user_id + "&profile='"+ json.dumps(profiledata) + "'"
+    params = '?user_id=' + user_id + "&profile="+ str(profiledata) 
     url = smart_contract + svc + params
     _status = requests.get(url).content
     print(_status)
@@ -134,12 +151,63 @@ def updateProfile():
 
     return render_template('update_profile.html',email=user_id, profile=json.loads(profile.decode('utf-8')), sc=smart_contract)
 
+@app.route('/myBusiness')
+def myBusiness():
+    _content = "Here is my business"
+    return render_template('myBusiness.html', content=_content , sc=smart_contract)
 
 @app.route('/shop')
 def shop():
-    _content = "Here is some stuff you can buy"
-    return render_template('shop.html', content=_content , sc=smart_contract)
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    profile = requests.get(url).content
 
+    # get shops data
+    svc = '/list_users'
+    url = smart_contract + svc
+    all_users = requests.get(url).content
+   
+
+    all_users_json = eval(all_users.decode('utf-8'))
+    print('json print')
+    # print(all_users_json)
+    # print(json.loads(all_users_json))
+    shops = []
+
+    for user in all_users_json:
+        for key,value in user.items():
+            if key =='profile':
+                try:
+                    if value['RegistrationType'] == 'Business':
+                        shops.append(user)
+                except Exception:
+                    continue
+
+    # shops.append({"user_id": 'b@gmail.com', "profile":{"first_name":'ann b', "last_name":'pizza', "description":'i m a pizza shop'} })
+    print(str(shops))    
+
+    return render_template('shop.html', email=user_id, profile=json.loads(profile.decode('utf-8')), shops=shops, sc=smart_contract)
+
+@app.route('/order' ,  methods = ['POST'])
+def order():
+    print(request.form)
+    user_id = request.form['user_id']
+    business_id = request.form['business_id']
+    price = request.form['price']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+
+    return render_template('order.html',sc=smart_contract , email=user_id, business_id = business_id, price=price, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
 
 @app.route('/pay')
 def pay():

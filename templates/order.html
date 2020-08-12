@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Fedex Economy</title>
+  <title>FEx Eco!</title>
   <!-- Iconic Fonts -->
   <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,6 +24,57 @@
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script>
+function placeOrder(){
+
+ 
+        // pay business
+        var payrq = new XMLHttpRequest();
+        req = "{{sc}}pay?sender={{email}}&receiver={{business_id}}&amount={{price}}"
+        payrq.open("GET", req, true);
+        payrq.send();
+
+        //add/update order
+
+//         order_example = {'supplier': '123abc',
+// 'customer': '456xyz',
+// 'payment_method': 'tokens',
+// 'price': 100,
+// 'delivery_provider': 'Drone', // will it
+// 'order_details': 'description:charge the drone to 100%,shipment_weight:3',
+// 'delivery_address':'3600 Lancaster avenue, Philadelphia, 19104',
+// 'terms_and_conditions': 'must not harm drone',
+// 'status': 'complete',
+// 'status_date': '08/05/2020'
+// }
+
+        var order = "{'supplier': '{{business_id}}', 'customer': '{{email}}','payment_method': 'tokens'"+
+                   ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' "+ 
+                     ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '"+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"'  }";
+
+        var xhttp = new XMLHttpRequest();
+
+        
+        req = "{{sc}}update_order?order=" + order
+        xhttp.open("GET", req, true);
+        xhttp.send();
+      
+        alert('order placed');
+        window.location.replace("/dashboard?user_id={{email}}");
+     
+    }
+</script>
+    
+    
+
+
+
+
+
+
+
+
+
 
 </head>
 
@@ -91,7 +142,6 @@
             </a>
         </li>
         <!-- My Business -->
-        {% if profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -100,7 +150,6 @@
               
             </a>
         </li>
-        {%endif%}
     </ul>
 
   </aside>
@@ -224,7 +273,7 @@
             <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
           <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
             <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{business_profile.first_name + ' ' + business_profile.last_name}}</span></h6>
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
@@ -298,51 +347,93 @@
 
     <div>
       <div class="row">
-        {% for shop in shops%}
-        <form action="/order" method="POST">
-        <div class="col-xl-3 col-md-6 h-80">
-            <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
-                <div class="">
-                    <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
-                </div>
-                <div class="p-3">
-                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
-                        {{shop.profile.first_name}}  {{shop.profile.last_name}}
-                    </h1>
-                    <p class="tw-text-xs tw-mt-1 tw-text-gray-700">
-                       {{shop.profile.description}}
-                    </p>
-                    <input type="hidden" name="user_id" value="{{email}}" />
-                    <input type="hidden" name="business_id" value="{{shop.id}}" />
-                    <input type="hidden" name="price" value="50" />
+        <div class="col-xl-10 col-md-16">
+            <div class="ms-panel ms-panel-fh">
+              <div class="ms-panel-body" style="width: 1000px;">
+                <br/>
+                <h1 class="title" style="color: #472F92; padding-left: 40%; font-size: xx-large"><b>-----&nbsp;order details&nbsp;-----</b></h1>
+  <br/><br/>
+                <table class="table ms-profile-information" style="width: 1000px;margin-left: 50px; ">
+                  <tbody>
+           
+                    <tr>
+                        <th>Supplier Name</th>
+                        <td><input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}} " /></td>
+                    </tr>
+                  <tr>
+                      <th> Customer Name</th>
+                      <td><input class="form-control" name="first_name_Txt" type="text" id="first_name_Txt" value="{{email}}" /></td>
+                  </tr>
+            
+                <tr>
+                  <th>Street</th>
+                  <td><input class="form-control" name="street_Txt" type="text" id="street_Txt" value="{{user_profile.street}}" /></td>
+              </tr>
+  
+              <tr>
+                <th>City</th>
+                <td><input class="form-control" name="city_Txt" type="text" id="city_Txt" value="{{user_profile.city}}" /></td>
+            </tr>
+  
+            <tr>
+              <th>State/Province</th>
+              <td><input class="form-control" name="state_Txt" type="text" id="state_Txt" value="{{user_profile.stateorprovince}}" /></td>
+          </tr>
+  
+          <tr>
+            <th>Postal Code</th>
+            <td><input class="form-control" name="postal_code_Txt" type="text" id="postal_code_Txt" value="{{user_profile.postalcode}}" /></td>
+        </tr>
+  
+        <tr>
+          <th>Country code</th>
+          <td><input class="form-control" name="country_code_Txt" type="text" id="country_code_Txt" value="{{user_profile.countrycode}}" /></td>
+      </tr>
+                <tr>
+                  <th>Area code</th>
+                  <td><input class="form-control" name="area_code_Txt" type="text" id="area_code_Txt" value="{{user_profile.area_code}}" /></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td><input class="form-control" name="phone_Txt" type="text" id="phone_Txt" value="{{user_profile.phone}}"/></td>
+            </tr>
+                  <tr>
+                      <th>Description</th>
+                      <td><input class="form-control" name="description_Txt" type="text" id="description_Txt" value="{{user_profile.description}}"></td>
+                  </tr>
+        
+                  <tr>
+                      <th>choose pizza</th>
+                      <td>
+                           <select class="custom-select" name="status_Txt" id="status_Txt">
+                            <option value="active">chicago thin crust</option>
+                            <option value="inactive">greek style</option>
+                          </select>
+                      </td>
+                  </tr>
 
-                    <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
-                        <div class="tw-flex  tw-items-center">
-                            <p class="tw-text-2xs tw-text-gray-700 ">Enjoy a range delicious pizza</p>
-                            <div class="tw-bg-purple-700 tw-flex tw-items-center tw-rounded-md tw-ml-12 tw-px-2 tw-py-2">
-                              <button class="tw-w-10 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
-                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
-                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  <tr>
+                    <th>Total Price</th>
+                    <td><input class="form-control" name="price_Txt" type="text" id="price_Txt" value="{{price}}"></td>
+                </tr>
+
+                  <tr>
+                      <td/>
+                      <td>
+                        <div class="container-login100-form-btn">
+                          <button  class="login100-form-btn btn btn--radius-2 btn--red" onclick="placeOrder()" style="color:whitesmoke;background-color: #F26522" >Place order</button>
+                      </div>
+                      </td>
+                  </tr>
+                  </tbody>
+  
+              </table>
+  
+                
+              </div>
             </div>
-        </div>
-        <!-- <div class="card" style="width: 18rem;">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-          <input type="hidden" name="user_id" value="{{email}}" />
-          <input type="hidden" name="business_id" value="{{shop.id}}" />
-          <input type="hidden" name="price" value="50" />
-          <div class="card-body">
-            <h5 class="card-title">  {{shop.profile.first_name}}  {{shop.profile.last_name}}</h5>
-            <p class="card-text">  {{shop.profile.description}}</p>
-            <button class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs" type="submit" style="background-color: #472F92 ; width: 120px; height: 40px;" id="order">
-              <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " style="width: 40px; height: 100px; "/>50</button>
-                </div>
-        </div>   -->
-      </form>
-        {%endfor%}
+          </div>
+  
       </div>
     </div>
     </div>
