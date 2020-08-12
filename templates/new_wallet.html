@@ -440,9 +440,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $('#moneyEnter').on('keyup', function(e) {
-            if (e.keyCode === 13) {
                 $("#totalCoinsExchange").text(($("#moneyEnter").val() / 0.12).toFixed(2));
-            }
         });
         $('#exampleModalCenter').on('hidden.bs.modal', function() {
             $("#totalCoinsExchange").text("");

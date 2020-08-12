@@ -88,14 +88,14 @@
   <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
 
     <!-- Logo -->
-    <div class="logo-sn ms-d-block-lg">
-      <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+    <div class="logo-sn ms-d-block-lg tw-flex tw-justify-center">
+      <a href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
       <!-- Navigation -->
       <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
         <!-- Dashboard -->
-        <li class="menu-item ">
+        <li class="menu-item">
           <a href="/dashboard?user_id={{email}}">
             <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
@@ -103,19 +103,12 @@
         </li>
         <!-- Wallet -->
         <li class="menu-item">
-          <a href="/wallet">
+          <a href="/wallet?user_id={{email}}">
             <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
           </a>
         </li>
-    
-        <!-- Services | Offer -->
-        <li class="menu-item">
-            <a href="/servicesoffer">
-              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
-                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-            </a>
-        </li>
+
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop?user_id={{email}}">
@@ -298,7 +291,7 @@
       </div>
 
       <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
+        <a class="tw-pl-0 tw-ml-0 tw-text-center navbar-brand tw-mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
       </div>
 
       <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
@@ -348,7 +341,7 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="dropdown-menu-footer text-center">
-              <a href="../apps/email.html">Go to Inbox</a>
+              <a href="">Go to Inbox</a>
             </li>
           </ul>
         </li>
@@ -387,7 +380,7 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="dropdown-menu-footer text-center">
-              <a href="#">View all Notifications</a>
+              <a href="">View all Notifications</a>
             </li>
           </ul>
         </li>
@@ -403,15 +396,15 @@
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
               <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-              <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-              <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
+              <a class="media fs-14 p-2" href=""> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
+              <a class="media fs-14 p-2" href=""> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
             </li>
             <li class="dropdown-divider"></li>
             <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
+              <a class="media fs-14 p-2" href=""> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
             </li>
             <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+              <a class="media fs-14 p-2" href=""> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
             </li>
           </ul>
         </li>
@@ -430,14 +423,13 @@
     <div class="ms-content-wrapper">
 
       <div class="ms-profile-overview">
-        <div class="ms-profile-cover" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNvEh7gbr05DPHJJEBhZPImVW7j7x88nrUMw&usqp=CAU');">
-          <img class="ms-profile-img" src={{profile.image_url}} alt="people">
+        <div class="ms-profile-cover">
+          <img class="ms-profile-img" src="../static/images/Generic profile.jpg" alt="people">
           <div class="ms-profile-user-info">
-            <h1 class="ms-profile-username">{{profile.first_name + ' ' + profile.last_name}}</h1>
+            <h1 class="ms-profile-username tw-text-white tw-text-purple-800 tw-text-2xl">{{profile.first_name + ' ' + profile.last_name}}</h1>
             <!-- <h2 class="ms-profile-role">Professional UX Designer</h2> -->
           </div>
           <div class="ms-profile-user-buttons">
-            <a href="#" class="btn" style="background-color: #F26522;color: white;"> <i class="material-icons">person_add</i> Follow</a>
             <a href="/updateProfile?user_id={{email}}" class="btn" style="background-color: #F26522;color: white;"> Edit Profile</a>
           </div>
         </div>
@@ -445,30 +437,7 @@
           </div>
 
       <div class="row">
-
-        <div class="col-xl-7 col-md-12">
-          <div class="ms-panel ms-panel-fh">
-            <div class="ms-panel-body">
-              <h2 class="section-title">About Me</h2>
-              <p>{{profile.description}}</p>
-
-              <div class="ms-profile-skills">
-                <h2 class="section-title">TAG</h2>
-                <ul class="ms-skill-list">
-                  {% if profile.tags %}
-                      {% set list = profile.tags.split(',')  %}
-                    {% for item in list %}
-                      <li class="ms-skill">{{item}}</li>
-                    {%endfor%}
-                  {%endif%}
-                </ul>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-        <div class="col-xl-5 col-md-12">
+        <div class="col-xl-12">
           <div class="ms-panel ms-panel-fh">
             <div class="ms-panel-body">
               <ul class="ms-profile-stats">
@@ -557,327 +526,29 @@
           </div>
         </div>
 
-        <div class="col-md-12">
-          <div class="ms-panel">
-            <div class="ms-panel-body">
-              <h2 class="section-title">Work Experience</h2>
-              <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                  <div class="media ms-profile-experience">
-                    <div class="mr-2 align-self-center">
-                      <img src="https://via.placeholder.com/270x270" class="ms-img-round ms-img-small" alt="people">
-                    </div>
-                    <div class="media-body">
-                      <h4>User Research Hub</h4>
-                      <p>January 2013 to Present</p>
-                      <p>UX Designer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-6 col-md-12">
+        <div class="col-xl-12">
           <div class="ms-panel ms-panel-fh">
             <div class="ms-panel-body">
-              <h2 class="section-title">Skill level</h2>
-              <span class="progress-label">Web Design</span><span class="progress-status">83%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100"></div>
+              <h2 class="section-title">About Me</h2>
+              <p>{{profile.description}}</p>
+              <div class="ms-profile-skills">
+                <h2 class="section-title">TAG</h2>
+                <ul class="ms-skill-list">
+                  {% if profile.tags %}
+                      {% set list = profile.tags.split(',')  %}
+                    {% for item in list %}
+                      <li class="ms-skill">{{item}}</li>
+                    {%endfor%}
+                  {%endif%}
+                </ul>
               </div>
-              <span class="progress-label">Development</span><span class="progress-status">50%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <span class="progress-label">Interface Design</span><span class="progress-status">75%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <span class="progress-label">Illustration</span><span class="progress-status">92%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <span class="progress-label">Brand Design</span><span class="progress-status">97%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <span class="progress-label">Adobe</span><span class="progress-status">90%</span>
-              <div class="progress progress-tiny">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+
             </div>
+
           </div>
         </div>
-        <div class="col-xl-6 col-md-12">
-          <div class="ms-panel">
-            <div class="ms-panel-body">
-              <h2 class="section-title">My Timeline</h2>
-              <ul class="ms-activity-log">
-               <li>
-                 <div class="ms-btn-icon btn-pill icon btn-success">
-                   <i class="flaticon-tick-inside-circle"></i>
-                 </div>
-                 <h6>Computer Science Degree</h6>
-                 <span> <i class="material-icons">event</i>1 January, 2018</span>
-                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-               </li>
-               <li>
-                 <div class="ms-btn-icon btn-pill icon btn-info">
-                   <i class="flaticon-information"></i>
-                 </div>
-                 <h6>Landed first Job</h6>
-                 <span> <i class="material-icons">event</i>4 March, 2018</span>
-                 <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-               </li>
-               <li>
-                 <div class="ms-btn-icon btn-pill icon btn-success">
-                   <i class="flaticon-tick-inside-circle"></i>
-                 </div>
-                 <h6>Started my own Company</h6>
-                 <span> <i class="material-icons">event</i>1 March, 2020</span>
-                 <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-               </li>
-             </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="ms-panel">
-            <div class="ms-panel-body">
-              <h2 class="section-title">Your Latest Posts</h2>
-              <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="ms-card">
-                    <div class="ms-card-body">
-                      <div class="media fs-14">
-                        <div class="mr-2 align-self-center">
-                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body">
-                          <h6>John Doe </h6>
-                          <div class="dropdown float-right">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li class="ms-dropdown-list">
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Comment</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Share</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Favorite</span>
-                                  </div>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                        </div>
-
-                      </div>
-                      <h6>This is a card Title</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                    </div>
-                    <div class="ms-card-img">
-                      <img src="https://via.placeholder.com/530x240" alt="card_img">
-                    </div>
-                    <div class="ms-card-footer text-disabled d-flex">
-                      <div class="ms-card-options">
-                        <i class="material-icons">favorite</i> 982
-                      </div>
-                      <div class="ms-card-options">
-                        <i class="material-icons">comment</i> 785
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="ms-card">
-                    <div class="ms-card-body">
-                      <div class="media fs-14">
-                        <div class="mr-2 align-self-center">
-                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body">
-                          <h6>John Doe </h6>
-                          <div class="dropdown float-right">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li class="ms-dropdown-list">
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Comment</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Share</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Favorite</span>
-                                  </div>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                        </div>
-
-                      </div>
-                      <h6>This is a card Title</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                    </div>
-                    <div class="ms-card-img">
-                      <img src="https://via.placeholder.com/530x240" alt="card_img">
-                    </div>
-                    <div class="ms-card-footer text-disabled d-flex">
-                      <div class="ms-card-options">
-                        <i class="material-icons">favorite</i> 982
-                      </div>
-                      <div class="ms-card-options">
-                        <i class="material-icons">comment</i> 785
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                  <div class="ms-card">
-                    <div class="ms-card-body">
-                      <div class="media fs-14">
-                        <div class="mr-2 align-self-center">
-                          <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                        </div>
-                        <div class="media-body">
-                          <h6>John Doe </h6>
-                          <div class="dropdown float-right">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li class="ms-dropdown-list">
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Comment</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Share</span>
-                                  </div>
-                                </a>
-                                <a class="media p-2" href="#">
-                                  <div class="media-body">
-                                    <span>Favorite</span>
-                                  </div>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <p class="fs-12 my-1 text-disabled">30 seconds ago</p>
-                        </div>
-
-                      </div>
-                      <h6>This is a card Title</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                    </div>
-                    <div class="ms-card-img">
-                      <img src="https://via.placeholder.com/530x240" alt="card_img">
-                    </div>
-                    <div class="ms-card-footer text-disabled d-flex">
-                      <div class="ms-card-options">
-                        <i class="material-icons">favorite</i> 982
-                      </div>
-                      <div class="ms-card-options">
-                        <i class="material-icons">comment</i> 785
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-
     </div>
-
   </main>
 
 

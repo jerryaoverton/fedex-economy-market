@@ -70,18 +70,10 @@
         </li>
         <!-- Wallet -->
         <li class="menu-item">
-          <a href="/wallet">
+          <a href="/wallet?user_id={{email}}">
             <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
           </a>
-        </li>
-    
-        <!-- Services | Offer -->
-        <li class="menu-item">
-            <a href="/servicesoffer">
-              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
-                <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-            </a>
         </li>
         <!-- Shop -->
         <li class="menu-item">
@@ -295,7 +287,6 @@
             </div>
         </div>
       </div>
-
     <div>
       <div class="row">
         {% for shop in shops%}
@@ -303,7 +294,7 @@
         <div class="col-xl-3 col-md-6 h-80">
             <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                 <div class="">
-                    <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
+                    <img class="tw-rounded-t-md" src="../static/images/Generic profile.jpg" alt="card_img">
                 </div>
                 <div class="p-3">
                     <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">

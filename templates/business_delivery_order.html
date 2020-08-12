@@ -297,7 +297,7 @@
       </div>
     </div>
     <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4"> 
-        <img src="../static/images/Business.png" class="tw-h-5 tw-w-5" /> 
+        <img src="../static/images/Business.png" class="tw-h-8 tw-w-8" /> 
         <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
     </div>
     <div class="ms-content-wrapper-2 tw-flex">
@@ -307,11 +307,8 @@
             <p class="tw-text-purple-800 text-left tw-float-left tw-text-2xl tw-font-medium">Order no. 086</p>
             <div class="tw-flex tw-items-center">
               <img class= "tw-h-8 tw-w-8 tw-mr-2" src="../static/images/FEx-coin.png"/>
-              <p class="tw-text-purple-800 tw-text-2xl tw-font-medium">15</p>
+              <p class="tw-text-purple-800 tw-text-2xl tw-font-medium">50</p>
             </div>
-          </div>
-          <div class="tw-flex tw-justify-between tw-items-center">
-            <p class="tw-text-purple-800 tw-text-base tw-w-40 tw-float-left" >Chicago thin crust pizza + Garlic Bread + Cold Drink</p>
           </div>
         </div>
         <hr style="height:1px;margin-top: 1rem;color:black ">
@@ -342,11 +339,11 @@
         </div>
       </div>
       <div class="tw-w-72">
-        <img src="../static/images/map_example.jpeg" class="tw-h-82" alt=""/>
+        <img src="../static/images/Drone map.png" class="tw-h-82s tw-w-73" alt=""/>
       </div>
       <div class="bg-aqua tw-w-73 tw-px-10 tw-py-10">
         <div class="tw-flex tw-justify-center">
-            <img src="../static/images/Group 207.png" class="delivery-icons tw-w-16 tw-h-16" alt=""/>
+            <img src="../static/images/Drone-pur-logo.png" class="delivery-icons tw-w-24 tw-h-24" alt=""/>
         </div>
         <div class="tw-flex tw-justify-center tw-items-center tw-mt-5">
           <p class= "tw-text-base tw-text-purple-800 tw-w-40 tw-text-center"> Estimated time for this delivery:</p>
@@ -356,7 +353,7 @@
           <p class= "tw-text-purple-800 tw-font-semibold tw-text-xl">37 mins</p>
         </div>
         <div class="tw-flex tw-justify-center tw-mt-10">
-          <button class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-toggle="modal" data-target="#bookedModal">
+          <button id = "sendDelivery" class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-toggle="modal" data-target="#bookedModal">
             <p class="tw-text-white tw-font-medium tw-text-lg">Book a Drone for delivery</p>
             <div class="tw-flex tw-justify-center tw-items-center tw-mt-2 tw-space-x-2">
               <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-w-6 tw-rounded-none delivery-icons"/>
@@ -373,7 +370,7 @@
                     <div class= "tw-px-3 tw-py-3"> 
                       <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center">Drone delivery charges have been deducted and Drones are booked for your delivery</p>
                       <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center tw-mt-2">Estimated Drone arrival time:</p>
-                      <p class="tw-text-white tw-font-bold tw-text-xl tw-text-center">12 mins</p>
+                      <p class="tw-text-white tw-font-bold tw-text-xl tw-text-center">37 mins</p>
                       <p class="tw-text-white tw-text-center tw-mt-2">Thank you for you patience</p>
                     </div>
                 </div>
@@ -389,6 +386,13 @@
   <script src="../static/js/perfect-scrollbar.js"> </script>
   <script src="../static/js/jquery-ui.min.js"> </script>
   <!-- Global Required Scripts End -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#bookedModal').on('hidden.bs.modal', function() {
+          $( "#sendDelivery" ).remove();
+        })
+    });
+</script>
 
   <!-- Page Specific Scripts Start -->
   <script src="../static/js/Chart.bundle.min.js"> </script>
