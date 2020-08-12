@@ -80,12 +80,17 @@
                             </td>"
         }
 
-        if(parse_order.status == 'Active') {
-        status_td = "<td class='text-center tw-space-x-10'>In delivery </td>"
+        if(parse_order.status == 'active') {
+        status_td = "<td class='text-center tw-space-x-10'>Order has been added in the Drone queue </td>"
+        }
+
+        
+        if(parse_order.status == 'processing') {
+        status_td = "<td class='text-center tw-space-x-10'> Drone is processing the order </td>"
         }
 
         if(parse_order.status == 'complete') {
-        status_td = "<td class='text-center tw-space-x-10'>Completed </td>"
+        status_td = "<td class='text-center tw-space-x-10'>Order successfully delivered </td>"
         }
 
         var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
@@ -419,14 +424,21 @@
               </form>
             </td>  
             {%endif%} 
-            {% if order.status|string() == "Active" %}
+            {% if order.status|string() == "active" %}
             <td>
-              Estimated time for this delivery: 37 mins
+             Order has been added in the Drone queue
             </td>
             {%endif%} 
+
+            {% if order.status|string() == "processing" %}
+            <td>
+              Drone is processing the order
+            </td>
+            {%endif%}
+
             {% if order.status|string() == "complete" %}
             <td>
-              Order Succesfully delivered
+              Order succesfully delivered 
             </td>
             {%endif%} 
 
