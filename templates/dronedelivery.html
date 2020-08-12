@@ -120,12 +120,14 @@ function placeOrder(){
         </li>
     
         <!-- Services | Offer -->
+        {% if profile.RegistrationType|string() == 'ServiceProvider' %}
         <li class="menu-item">
             <a href="/servicesoffer">
               <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
         </li>
+        {% endif%}
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop?user_id={{email}}">

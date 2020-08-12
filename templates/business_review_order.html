@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
-  <!-- Our Custom CSS -->
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
   <!-- Bootstrap core CSS -->
@@ -19,12 +19,88 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <!-- Our Custom CSS -->
   <link rel="stylesheet" href="../static/css/custom_style.css">
   <!-- Custom Tailwind CSS -->
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/mgalante/jquery.redirect/master/jquery.redirect.js"></script>
+  <script>
 
+    $(document).ready(function () {
+
+      //get all orders and append to table
+      var businessorderrq = new XMLHttpRequest();
+      req = "{{sc}}list_orders_by_supplier?&supplier={{email}}"
+      businessorderrq.open("GET", req, true);
+      businessorderrq.send();
+
+      console.log(businessorderrq.response)
+
+    
+      var socket = io.connect('{{sc}}order');
+      // socket.nsp = '/order';
+
+      //  const ordersocket = socket.connect(url);
+
+      socket.on('connect', function () {
+        console.log('User has connected!!');
+      });
+      socket.on('message', function (order) {
+        console.log(order);
+        order = order.replace(/'/g, '"')
+        parse_order = JSON.parse(order);
+        console.log(parse_order)
+        // var user_profile_rq = new XMLHttpRequest();
+        // req = "{{sc}}user_profile?user_id=" + parse_order.customer
+
+        // user_profile_rq.open("GET", req, true);
+        // user_profile_rq.send();
+
+
+        // find order id in row
+        $("#" + parse_order.order_id).remove();
+
+        var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
+                             <td class='text-center tw-w-48'> \
+                            </td> \
+                            <td class='text-center tw-w-48'></td> \
+                            <td class='text-center tw-w-48>" + parse_order.customer + " </td> \
+                            <td class='text-center tw-space-x-10'> \
+                            <td class='text-center tw-space-x-10'> \
+                              <form action='/dronedelivery'method='POST'> \
+                                <input name='order' type='hidden' value='" + order + "' />\
+                              <button class='bg-lightblue tw-w-16 tw-h-16 tw-rounded' type='submit' > \
+                                <img src='../static/images/white-drone.png' class='tw-rounded-none tw-mr-0 tw-ml-2 delivery-icons'/> \
+                              </button> </form> \
+                              <button class='bg-darkpurple tw-w-16 tw-h-16 tw-rounded' hidden> \
+                                <img src='../static/images/ground_delivery.png' class='tw-rounded-none tw-mr-0 tw-ml-3 delivery-icons'/> \
+                              </button >\
+                            </td>\
+                          </tr>"
+
+        $("#ordertbl").append(row);
+                        });
+        // socket.on('broadcast', function (order) {
+        //     console.log(order);
+        //     $("#ordertbl").append('<tr>' + order + '</tr>');
+        // });
+        $('#sendbutton').on('click', function () {
+          ordersocket.send($('#myMessage').val());
+          $('#myMessage').val('');
+        });
+
+       
+
+      });
+
+      function dronedelivery(order){
+            windows.redirect('/dronedelivery', order);
+        }
+  </script>
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -77,12 +153,14 @@
         </li>
     
         <!-- Services | Offer -->
+        {% if profile.RegistrationType|string() == 'ServiceProvider' %}
         <li class="menu-item">
             <a href="/servicesoffer">
               <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
         </li>
+        {%endif%}
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop?user_id={{email}}">
@@ -254,34 +332,34 @@
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
-      <div class="row tw-mb-10">
+      <div class="row tw-mb-4">
         <div class="col-xl-3 col-md-6">
             <div class="tw-info-card-content card-gradient-green">
                 <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;{{user_balance}}
                 </span>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-purple">
-                <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;1 = $ 0.12
-                </span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-aqua">
-                <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;9,650
-                </span>
-            </div>
-        </div>
+          <div class="tw-info-card-content card-gradient-purple">
+              <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;1 = $ 0.12
+              </span>
+          </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+          <div class="tw-info-card-content card-gradient-aqua">
+              <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;9,650
+              </span>
+          </div>
+      </div>
         <div class="col-xl-3 col-md-6">
             <div class="tw-flex tw-items-center tw-h-full">
                 <div class="card-gradient-limegreen tw-h-full tw-flex tw-items-center tw-p-3 tw-rounded-l">
@@ -290,62 +368,46 @@
                     </svg>
                 </div>
                 <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
-                    <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                    <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
                 </div>
             </div>
         </div>
       </div>
-
-    <div>
-      <div class="row">
-        {% for shop in shops%}
-        <form action="/order" method="POST">
-        <div class="col-xl-3 col-md-6 h-80">
-            <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
-                <div class="">
-                    <img class="tw-rounded-t-md" src="../static/images/pizza_example.jpeg" alt="card_img">
-                </div>
-                <div class="p-3">
-                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
-                        {{shop.profile.first_name}}  {{shop.profile.last_name}}
-                    </h1>
-                    <p class="tw-text-xs tw-mt-1 tw-text-gray-700">
-                       {{shop.profile.description}}
-                    </p>
-                    <input type="hidden" name="user_id" value="{{email}}" />
-                    <input type="hidden" name="business_id" value="{{shop.id}}" />
-                    <input type="hidden" name="price" value="50" />
-
-                    <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
-                        <div class="tw-flex  tw-items-center">
-                            <p class="tw-text-2xs tw-text-gray-700 ">Save 10%</p>
-                            <div class="tw-bg-purple-700 tw-flex tw-items-center tw-rounded-md tw-ml-12 tw-px-2 tw-py-2">
-                              <button class="tw-w-16 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
-                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
-                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="card" style="width: 18rem;">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-          <input type="hidden" name="user_id" value="{{email}}" />
-          <input type="hidden" name="business_id" value="{{shop.id}}" />
-          <input type="hidden" name="price" value="50" />
-          <div class="card-body">
-            <h5 class="card-title">  {{shop.profile.first_name}}  {{shop.profile.last_name}}</h5>
-            <p class="card-text">  {{shop.profile.description}}</p>
-            <button class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs" type="submit" style="background-color: #472F92 ; width: 120px; height: 40px;" id="order">
-              <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " style="width: 40px; height: 100px; "/>50</button>
-                </div>
-        </div>   -->
-      </form>
-        {%endfor%}
-      </div>
     </div>
+    <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4"> 
+        <img src="../static/images/Business.png" class="tw-h-5 tw-w-5" /> 
+        <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
     </div>
+    <div class="ms-content-wrapper-2 bg-whitesmoke tw-justify-center">
+      <table class="table table-hover tw-text-purple-800" id ="ordertbl">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center tw-text-lg">Order #</th>
+            <th scope="col" class="text-center tw-text-lg">Order Details</th>
+            <th scope="col" class="text-center tw-text-lg">Name & Ph.</th>
+            <th scope="col" class="text-center tw-text-lg">Delivery Address</th>
+            <th scope="col" class="text-center tw-text-lg">Delivery Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td scope="row" class="tw-text-center">Order 064</td>
+            <td class="text-center tw-w-48"></td>
+            <td class="text-center tw-w-48"></td>
+            <td class="text-center tw-w-48"></td>
+            <td class="text-center tw-space-x-10">
+              <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded">
+                <img src="../static/images/white-drone.png" class="tw-rounded-none tw-mr-0 tw-ml-2 delivery-icons"/>
+              </button>
+              <button class="bg-darkpurple tw-w-16 tw-h-16 tw-rounded">
+                <img src="../static/images/ground_delivery.png" class="tw-rounded-none tw-mr-0 tw-ml-3 delivery-icons"/>
+              </button>
+            </td>         
+          </tr> -->
+        
+        </tbody>
+      </table>
+    </div> 
   </main>
   <!-- SCRIPTS -->
   <!-- Global Required Scripts Start -->

@@ -5,9 +5,24 @@ import json
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-smart_contract = os.environ['SMART_CONTRACT']
+ctx = {'user_id':'',
+       'drone_started': False,
+       'next_action': None,
+       'current_job': '',
+       'max_total_jobs': 50,
+       'max_consecutive_jobs': 3,
+       'total_jobs': 0,
+       'total_wait_cycles': 0,
+       'max_wait_cycles': 50,
+       'jobs_since_maintenance': 0,
+       'current_battery_usage':0,
+       'current_fexcoins':0,
+       'max_weight':5}
+
+# smart_contract = os.environ['SMART_CONTRACT']
 # smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
-# smart_contract = 'http://127.0.0.1:5000/'
+smart_contract = 'http://127.0.0.1:5000/'
+user_profile = {'' }
 
 @app.route('/')
 def home():
@@ -28,7 +43,7 @@ def services():
 @app.route('/servicesoffer')
 def servicesoffer():
     return render_template('services-offer.html')
-    servicesoffer
+   
 
 @app.route('/contact')
 def contact():
@@ -62,6 +77,7 @@ def signUp():
 @app.route('/dashboard')
 def dashboard():
     user_id = request.args['user_id']
+    ctx['user_id'] = user_id
     svc = '/user_profile'
     params = '?user_id=' + user_id
     url = smart_contract + svc + params
@@ -167,7 +183,45 @@ def updateProfile():
 @app.route('/myBusiness')
 def myBusiness():
     _content = "Here is my business"
-    return render_template('myBusiness.html', content=_content , sc=smart_contract)
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    profile = requests.get(url).content
+
+    # svc = '/list_orders_by_supplier'
+    # params = '?supplier=' + user_id
+    # url = smart_contract + svc + params
+    # profile = requests.get(url).content
+
+
+    # orders = 
+
+    return render_template('business_review_order.html', content=_content , sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
+
+
+@app.route('/dronedelivery', methods=["POST"])
+def dronedelivery():
+    print(request.form)
+    order = eval(request.form['order'])
+    print(order)
+    user_id = order['customer']
+    business_id = order['supplier']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+
+    return render_template('droneOrder.html', order=json.dumps(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+
+    
+
 
 @app.route('/shop')
 def shop():

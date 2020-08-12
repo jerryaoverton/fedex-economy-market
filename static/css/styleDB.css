@@ -4965,7 +4965,7 @@ a.ms-g-plus,
   position: relative;
   display: flex;
   align-items: flex-end;
-  background-image: url('https://www.vmfa.museum/exhibitions/wp-content/uploads/sites/7/2013/10/abstract-q-c-1920-400-4.jpg');
+  background-image: url('https://via.placeholder.com/1920x1080');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -4982,7 +4982,7 @@ a.ms-g-plus,
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url('https://www.vmfa.museum/exhibitions/wp-content/uploads/sites/7/2013/10/abstract-q-c-1920-400-4.jpg');
+  background-image: url('https://via.placeholder.com/1920x1080');
   z-index: -1;
 }
 .ms-profile-cover img{

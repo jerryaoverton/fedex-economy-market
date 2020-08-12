@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
-  <!-- Our Custom CSS -->
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
   <!-- Bootstrap core CSS -->
@@ -19,11 +19,57 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <!-- Our Custom CSS -->
   <link rel="stylesheet" href="../static/css/custom_style.css">
   <!-- Custom Tailwind CSS -->
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  
+  <script>
+    function updateDroneOrder(){
+    
+            var order = "{{order}}"
+            order = JSON.parse(order)
+            // pay drone
+            // const drone_id = "1"
+            // var payrq = new XMLHttpRequest();
+            // req = "{{sc}}pay?sender={{email}}&receiver="+ drone_id +"&amount={{price}}"
+            // payrq.open("GET", req, true);
+            // payrq.send();
+    
+            //add/update order
+    
+    //         order_example = {'supplier': '123abc',
+    // 'customer': '456xyz',
+    // 'payment_method': 'tokens',
+    // 'price': 100,
+    // 'delivery_provider': 'Drone', // will it
+    // 'order_details': 'description:charge the drone to 100%,shipment_weight:3',
+    // 'delivery_address':'3600 Lancaster avenue, Philadelphia, 19104',
+    // 'terms_and_conditions': 'must not harm drone',
+    // 'status': 'complete',
+    // 'status_date': '08/05/2020'
+    // }
+    
+            // var order = "{'order_id' : '1' , 'supplier': '{{business_id}}', 'customer': '{{email}}','payment_method': 'tokens'"+
+            //            ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' "+ 
+            //              ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '"+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"'  }";
+            order['delivery_provider'] = "Drone";
+            order['status'] = "Active";
+
+            var xhttp = new XMLHttpRequest();
+    
+            
+            req = "{{sc}}update_order?order=" + JSON.stringify(order)
+            xhttp.open("GET", req, true);
+            xhttp.send();
+          
+            alert('order placed');
+            window.location.replace("/myBusiness?user_id={{email}}");
+         
+        }
+    </script>
 
 </head>
 
@@ -77,12 +123,12 @@
         </li>
     
         <!-- Services | Offer -->
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a href="/servicesoffer">
               <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
             </a>
-        </li>
+        </li> -->
         <!-- Shop -->
         <li class="menu-item">
             <a href="/shop?user_id={{email}}">
@@ -91,7 +137,7 @@
             </a>
         </li>
         <!-- My Business -->
-        {% if profile.RegistrationType|string() == 'Business' %}
+        {% if user_profile.RegistrationType|string() == 'Business' %}
         <li class="menu-item">
             <a href="/myBusiness">
               <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -224,7 +270,7 @@
             <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
           <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
             <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{user_profile.first_name + ' ' + user_profile.last_name}}</span></h6>
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
@@ -250,38 +296,37 @@
       </div>
 
     </nav>
-
-
+    
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
-      <div class="row tw-mb-10">
+      <div class="row tw-mb-4">
         <div class="col-xl-3 col-md-6">
             <div class="tw-info-card-content card-gradient-green">
                 <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;{{user_balance}}
                 </span>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-purple">
-                <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;1 = $ 0.12
-                </span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="tw-info-card-content card-gradient-aqua">
-                <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
-                <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;9,650
-                </span>
-            </div>
-        </div>
+          <div class="tw-info-card-content card-gradient-purple">
+              <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;1 = $ 0.12
+              </span>
+          </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+          <div class="tw-info-card-content card-gradient-aqua">
+              <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
+              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;9,650
+              </span>
+          </div>
+      </div>
         <div class="col-xl-3 col-md-6">
             <div class="tw-flex tw-items-center tw-h-full">
                 <div class="card-gradient-limegreen tw-h-full tw-flex tw-items-center tw-p-3 tw-rounded-l">
@@ -290,61 +335,92 @@
                     </svg>
                 </div>
                 <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
-                    <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                    <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
                 </div>
             </div>
         </div>
       </div>
-
-    <div>
-      <div class="row">
-        {% for shop in shops%}
-        <form action="/order" method="POST">
-        <div class="col-xl-3 col-md-6 h-80">
-            <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
-                <div class="">
-                    <img class="tw-rounded-t-md" src="../static/images/pizza_example.jpeg" alt="card_img">
+    </div>
+    <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4"> 
+        <img src="../static/images/Business.png" class="tw-h-8 tw-w-8" /> 
+        <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
+    </div>
+    <div class="ms-content-wrapper-2 tw-flex">
+      <div class="bg-aqua tw-w-74 tw-px-10 tw-py-5">
+        <div class="tw-space-y-2">
+          <div class ="tw-flex tw-justify-between tw-items-center">
+            <p class="tw-text-purple-800 text-left tw-float-left tw-text-2xl tw-font-medium">Order no. 086</p>
+            <div class="tw-flex tw-items-center">
+              <img class= "tw-h-8 tw-w-8 tw-mr-2" src="../static/images/FEx-coin.png"/>
+              <p class="tw-text-purple-800 tw-text-2xl tw-font-medium">50</p>
+            </div>
+          </div>
+        </div>
+        <hr style="height:1px;margin-top: 1rem;color:black ">
+        <div class="tw-flex tw-pt-2 tw-justify-between">
+          <div class="">
+              <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Deliver to</h>
+                <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
+                  <p class="tw-text-gray-600">Elloit Reid</p>
                 </div>
-                <div class="p-3">
-                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
-                        {{shop.profile.first_name}}  {{shop.profile.last_name}}
-                    </h1>
-                    <p class="tw-text-xs tw-mt-1 tw-text-gray-700">
-                       {{shop.profile.description}}
-                    </p>
-                    <input type="hidden" name="user_id" value="{{email}}" />
-                    <input type="hidden" name="business_id" value="{{shop.id}}" />
-                    <input type="hidden" name="price" value="50" />
+                <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
+                  <p class="tw-text-gray-600">+1 951-253-6594</p>
+                </div>
+          </div>
+          <div class="">
+            <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Address</h>
+              <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
+                <p class="tw-text-gray-600">210, Hell's Kitchen</p>
+              </div>
+              <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
+                <p class="tw-text-gray-600">New York, 10019, USA</p>
+              </div>
+          </div>
+        </div>
+        <hr style="height:1px;margin-top: 2rem;color:black">
+        <div class="tw-flex tw-justify-center">
+          <button class="tw-mt-5 bg-darkpurple tw-w-32 tw-h-10 tw-rounded-lg tw-text-white tw-text-lg" type="submit">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
+        </div>
+      </div>
+      <div class="tw-w-72">
+        <img src="../static/images/Drone map.png" class="tw-h-82s tw-w-73" alt=""/>
+      </div>
+      <div class="bg-aqua tw-w-73 tw-px-10 tw-py-10">
+        <div class="tw-flex tw-justify-center">
+            <img src="../static/images/Drone-pur-logo.png" class="delivery-icons tw-w-24 tw-h-24" alt=""/>
+        </div>
+        <div class="tw-flex tw-justify-center tw-items-center tw-mt-5">
+          <p class= "tw-text-base tw-text-purple-800 tw-w-40 tw-text-center"> Estimated time for this delivery:</p>
 
-                    <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
-                        <div class="tw-flex  tw-items-center">
-                            <p class="tw-text-2xs tw-text-gray-700 ">Save 10%</p>
-                            <div class="tw-bg-purple-700 tw-flex tw-items-center tw-rounded-md tw-ml-12 tw-px-2 tw-py-2">
-                              <button class="tw-w-16 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
-                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
-                        
-                            </div>
-                        </div>
+        </div>
+        <div class="tw-flex tw-justify-center tw-items-center tw-mt-1">
+          <p class= "tw-text-purple-800 tw-font-semibold tw-text-xl">37 mins</p>
+        </div>
+        <div class="tw-flex tw-justify-center tw-mt-10">
+          <button id = "sendDelivery" class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-toggle="modal" data-target="#bookedModal" onclick="updateDroneOrder()">
+            <p class="tw-text-white tw-font-medium tw-text-lg">Book a Drone for delivery</p>
+            <div class="tw-flex tw-justify-center tw-items-center tw-mt-2 tw-space-x-2">
+              <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-w-6 tw-rounded-none delivery-icons"/>
+              <p class="tw-text-white tw-font-medium tw-text-lg">8</p>
+              </div>
+           </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade " id="bookedModal" tabindex="-1" role="dialog" aria-labelledby="bookedModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tw-rounded-lg">
+                <div class="modal-body background-orange">
+                    <div class= "tw-px-3 tw-py-3"> 
+                      <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center">Drone delivery charges have been deducted and Drones are booked for your delivery</p>
+                      <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center tw-mt-2">Estimated Drone arrival time:</p>
+                      <p class="tw-text-white tw-font-bold tw-text-xl tw-text-center">37 mins</p>
+                      <p class="tw-text-white tw-text-center tw-mt-2">Thank you for you patience</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="card" style="width: 18rem;">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-          <input type="hidden" name="user_id" value="{{email}}" />
-          <input type="hidden" name="business_id" value="{{shop.id}}" />
-          <input type="hidden" name="price" value="50" />
-          <div class="card-body">
-            <h5 class="card-title">  {{shop.profile.first_name}}  {{shop.profile.last_name}}</h5>
-            <p class="card-text">  {{shop.profile.description}}</p>
-            <button class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs" type="submit" style="background-color: #472F92 ; width: 120px; height: 40px;" id="order">
-              <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " style="width: 40px; height: 100px; "/>50</button>
-                </div>
-        </div>   -->
-      </form>
-        {%endfor%}
-      </div>
-    </div>
     </div>
   </main>
   <!-- SCRIPTS -->
@@ -355,6 +431,13 @@
   <script src="../static/js/perfect-scrollbar.js"> </script>
   <script src="../static/js/jquery-ui.min.js"> </script>
   <!-- Global Required Scripts End -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#bookedModal').on('hidden.bs.modal', function() {
+          $( "#sendDelivery" ).remove();
+        })
+    });
+</script>
 
   <!-- Page Specific Scripts Start -->
   <script src="../static/js/Chart.bundle.min.js"> </script>
