@@ -1,2 +1,4 @@
 # fedex-economy-market
-Marketplace website for the Fedex economy 
+The FedEx marketplace is a Python/Flask website that communicates with the smart contract. The client-side code runs Javascript and HTML5. The server-side code executes in Python on the Heroku server. Events like order and profile updates are communicated from the smart contract to the marketplace in real time using web sockets.
+
+The [marketplace website](https://fedex-economy-market.herokuapp.com/) is how allows entreprenuers to create a startup in the FedEx economy. Startups receive initial funding from FedEx in the form of FeX tokens. A startup can use those tokens to purchase services (like drone deliveries) needed for the business. They can also earn FeX by providing services to shoppers. The marketplace allows shoppers to purchase any service registered in the FedEx economy. Shoppers can browse service providers, read profiles, and make orders. Anyone registered in the marketplace can check their FeX balance and exchange dollars for FeX.
