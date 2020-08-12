@@ -3,476 +3,505 @@
 
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Fedex Economy</title>
-  <!-- Iconic Fonts -->
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
-  <!-- Bootstrap core CSS -->
-  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-  <!-- jQuery UI -->
-  <link href="../static/css/jquery-ui.min.css" rel="stylesheet">
-  <!-- mylo styles -->
-  <link href="../static/css/styleDB.css" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-  <!-- Our Custom CSS -->
-  <link rel="stylesheet" href="../static/css/custom_style.css">
-  <!-- Custom Tailwind CSS -->
-  <link rel="stylesheet" href="../static/css/custom_tailwind.css">
-  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fedex Economy</title>
+    <!-- Iconic Fonts -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery UI -->
+    <link href="../static/css/jquery-ui.min.css" rel="stylesheet">
+    <!-- mylo styles -->
+    <link href="../static/css/styleDB.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../static/css/custom_style.css">
+    <!-- Custom Tailwind CSS -->
+    <link rel="stylesheet" href="../static/css/custom_tailwind.css">
+
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
 
-  <!-- Preloader -->
-  <div id="preloader-wrap">
-    <div class="spinner spinner-8">
-      <div class="ms-circle1 ms-child"></div>
-      <div class="ms-circle2 ms-child"></div>
-      <div class="ms-circle3 ms-child"></div>
-      <div class="ms-circle4 ms-child"></div>
-      <div class="ms-circle5 ms-child"></div>
-      <div class="ms-circle6 ms-child"></div>
-      <div class="ms-circle7 ms-child"></div>
-      <div class="ms-circle8 ms-child"></div>
-      <div class="ms-circle9 ms-child"></div>
-      <div class="ms-circle10 ms-child"></div>
-      <div class="ms-circle11 ms-child"></div>
-      <div class="ms-circle12 ms-child"></div>
-    </div>
-  </div>
-
-  <!-- Overlays -->
-  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
-  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
-
-  <!-- Sidebar Navigation Left -->
-  <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
-
-    <!-- Logo -->
-    <div class="logo-sn ms-d-block-lg tw-ml-10 tw-mt-3">
-      <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+    <!-- Preloader -->
+    <div id="preloader-wrap">
+        <div class="spinner spinner-8">
+            <div class="ms-circle1 ms-child"></div>
+            <div class="ms-circle2 ms-child"></div>
+            <div class="ms-circle3 ms-child"></div>
+            <div class="ms-circle4 ms-child"></div>
+            <div class="ms-circle5 ms-child"></div>
+            <div class="ms-circle6 ms-child"></div>
+            <div class="ms-circle7 ms-child"></div>
+            <div class="ms-circle8 ms-child"></div>
+            <div class="ms-circle9 ms-child"></div>
+            <div class="ms-circle10 ms-child"></div>
+            <div class="ms-circle11 ms-child"></div>
+            <div class="ms-circle12 ms-child"></div>
+        </div>
     </div>
 
-    <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
-        <!-- Dashboard -->
-        <li class="menu-item ">
-          <a href="/dashboard?user_id={{email}}">
-            <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
-              <img src="../static/images/Dashboard.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
-          </a>
-        </li>
-        <!-- Wallet -->
-        <li class="menu-item">
-          <a href="/wallet?user_id={{email}}">
-            <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+    <!-- Overlays -->
+    <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+    <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+
+    <!-- Sidebar Navigation Left -->
+    <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+
+        <!-- Logo -->
+        <div class="logo-sn ms-d-block-lg tw-ml-10 tw-mt-3">
+            <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
+        </div>
+
+        <!-- Navigation -->
+        <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+            <!-- Dashboard -->
+            <li class="menu-item ">
+                <a href="/dashboard?user_id={{email}}">
+                    <spa class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                        <img src="../static/images/Dashboard.png" />&nbsp;&nbsp;&nbsp;&nbsp;Dashboard</span>
+                </a>
+            </li>
+            <!-- Wallet -->
+            <li class="menu-item">
+                <a href="/wallet">
+                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
-          </a>
-        </li>
-    
-        <!-- Services | Offer -->
-        {% if profile.RegistrationType|string() == 'ServiceProvider' %}
-        <li class="menu-item">
-            <a href="/servicesoffer">
-              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
+                </a>
+            </li>
+
+            <!-- Services | Offer -->
+            <!-- <li class="menu-item">
+                <a href="/servicesoffer">
+                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-            </a>
-        </li>
-        {% endif%}
-        <!-- Shop -->
-        <li class="menu-item">
-            <a href="/shop?user_id={{email}}">
-              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                </a>
+            </li> -->
+            <!-- Shop -->
+            <li class="menu-item">
+                <a href="/shop?user_id={{email}}">
+                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
-            </a>
-        </li>
-        <!-- My Business -->
-        {% if profile.RegistrationType|string() == 'Business' %}
-        <li class="menu-item">
-            <a href="/myBusiness">
-              <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+                </a>
+            </li>
+            <!-- My Business -->
+            {% if profile.RegistrationType|string() == 'Business' %}
+            <li class="menu-item">
+                <a href="/myBusiness">
+                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
               </span>
-              
-            </a>
-        </li>
-        {%endif%}
-    </ul>
 
-  </aside>
+                </a>
+            </li>
+            {%endif%}
+        </ul>
 
-  <!-- Sidebar Right -->
-  <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
+    </aside>
 
-  </aside>
+    <!-- Sidebar Right -->
+    <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
 
-  <!-- Main Content -->
-  <main class="body-content">
+    </aside>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar ms-navbar">
+    <!-- Main Content -->
+    <main class="body-content">
 
-      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-      </div>
+        <!-- Navigation Bar -->
+        <nav class="navbar ms-navbar">
 
-      <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
-      </div>
-
-      <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-        <li class="ms-nav-item ms-search-form pb-0 py-0">
-          <form class="ms-form" method="post">
-            <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-              <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
-              <i class="flaticon-search text-disabled"></i>
+            <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+                <span class="ms-toggler-bar bg-primary"></span>
+                <span class="ms-toggler-bar bg-primary"></span>
+                <span class="ms-toggler-bar bg-primary"></span>
             </div>
-          </form>
-        </li>
-        <li class="ms-nav-item dropdown">
-          <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
-          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-scrollable ms-dropdown-list">
-              <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                  <span>Hey man, looking forward to your new project.</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                </div>
-              </a>
-              <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
-                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                  <span>Dear John, I was told you bought mylo! Send me your feedback</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
-                </div>
-              </a>
-              <a class="media p-2" href="#">
-                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                </div>
-                <div class="media-body">
-                  <span>How many people are we inviting to the dashboard?</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
-                </div>
-              </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer text-center">
-              <a href="../apps/email.html">Go to Inbox</a>
-            </li>
-          </ul>
-        </li>
-        <li class="ms-nav-item dropdown">
-          <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-scrollable ms-dropdown-list">
-              <a class="media p-2" href="#">
-                <div class="media-body">
-                  <span>12 ways to improve your crypto dashboard</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                </div>
-              </a>
-              <a class="media p-2" href="#">
-                <div class="media-body">
-                  <span>You have newly registered users</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
-                </div>
-              </a>
-              <a class="media p-2" href="#">
-                <div class="media-body">
-                  <span>Your account was logged in from an unauthorized IP</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
-                </div>
-              </a>
-              <a class="media p-2" href="#">
-                <div class="media-body">
-                  <span>An application form has been submitted</span>
-                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
-                </div>
-              </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer text-center">
-              <a href="#">View all Notifications</a>
-            </li>
-          </ul>
-        </li>
-        <li class="ms-nav-item">
-          <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
-        </li>
-        <li class="ms-nav-item ms-nav-user dropdown">
-          <a href="#"  id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-            <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
-          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="ms-dropdown-list">
-              <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-              <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-              <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-            </li>
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
 
-      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-      </div>
+            <div class="logo-sn logo-sm ms-d-block-sm">
+                <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
+            </div>
 
-    </nav>
-    
-    <!-- Body Content Wrapper -->
-    <div class="ms-content-wrapper tw-flex tw-space-x-10">
-      <div class="tw-h-56 tw-w-80">
-          <div class="tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
-              <div class="tw-pr-4 tw-pl-4 tw-pt-3 card-gradient-green tw-rounded-t tw-text-white tw-h-32 tw-flex tw-space-x-64">
-                  <div>
-                      <span class="tw-text-lg tw-text-white">FEx COIN Balance</span>
-                      <span class="tw-flex tw-items-center tw-text-5xl tw-py-2 tw-font-black tw-text-white">
+            <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+                <li class="ms-nav-item ms-search-form pb-0 py-0">
+                    <form class="ms-form" method="post">
+                        <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+                            <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
+                            <i class="flaticon-search text-disabled"></i>
+                        </div>
+                    </form>
+                </li>
+                <li class="ms-nav-item dropdown">
+                    <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
+                        <li class="dropdown-menu-header">
+                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="ms-scrollable ms-dropdown-list">
+                            <a class="media p-2" href="#">
+                                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                                </div>
+                                <div class="media-body">
+                                    <span>Hey man, looking forward to your new project.</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                                </div>
+                            </a>
+                            <a class="media p-2" href="#">
+                                <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
+                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                                </div>
+                                <div class="media-body">
+                                    <span>Dear John, I was told you bought mylo! Send me your feedback</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
+                                </div>
+                            </a>
+                            <a class="media p-2" href="#">
+                                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                                </div>
+                                <div class="media-body">
+                                    <span>How many people are we inviting to the dashboard?</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-menu-footer text-center">
+                            <a href="../apps/email.html">Go to Inbox</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ms-nav-item dropdown">
+                    <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+                        <li class="dropdown-menu-header">
+                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="ms-scrollable ms-dropdown-list">
+                            <a class="media p-2" href="#">
+                                <div class="media-body">
+                                    <span>12 ways to improve your crypto dashboard</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                                </div>
+                            </a>
+                            <a class="media p-2" href="#">
+                                <div class="media-body">
+                                    <span>You have newly registered users</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
+                                </div>
+                            </a>
+                            <a class="media p-2" href="#">
+                                <div class="media-body">
+                                    <span>Your account was logged in from an unauthorized IP</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
+                                </div>
+                            </a>
+                            <a class="media p-2" href="#">
+                                <div class="media-body">
+                                    <span>An application form has been submitted</span>
+                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-menu-footer text-center">
+                            <a href="#">View all Notifications</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ms-nav-item">
+                    <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+                </li>
+                <li class="ms-nav-item ms-nav-user dropdown">
+                    <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
+                    <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+                        <li class="dropdown-menu-header">
+                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="ms-dropdown-list">
+                            <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+                            <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
+                            <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-menu-footer">
+                            <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
+                        </li>
+                        <li class="dropdown-menu-footer">
+                            <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+                <span class="ms-toggler-bar bg-primary"></span>
+                <span class="ms-toggler-bar bg-primary"></span>
+                <span class="ms-toggler-bar bg-primary"></span>
+            </div>
+
+        </nav>
+
+        <!-- Body Content Wrapper -->
+        <div class="ms-content-wrapper tw-flex tw-space-x-10">
+            <div class="tw-h-56 tw-w-80">
+                <div class="tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
+                    <div class="tw-pr-4 tw-pl-4 tw-pt-3 card-gradient-green tw-rounded-t tw-text-white tw-h-32 tw-flex tw-space-x-64">
+                        <div>
+                            <span class="tw-text-lg tw-text-white">FEx COIN Balance</span>
+                            <span class="tw-flex tw-items-center tw-text-5xl tw-py-2 tw-font-black tw-text-white">
                           <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2 tw-items-center" />
-                          &nbsp;{{user_balance}}
+                          &nbsp;<label id="user_balance">{{user_balance}}</label>
                       </span>
-                  </div>
-                  <button class="tw-bg-white tw-h-20 tw-w-12 tw-rounded-md tw-mt-2 flex tw-items-center tw-justify-center" data-toggle="modal" data-target="#exampleModalCenter" addFXCoins>
+                        </div>
+                        <button class="tw-bg-white tw-h-20 tw-w-12 tw-rounded-md tw-mt-2 flex tw-items-center tw-justify-center" data-toggle="modal" data-target="#exampleModalCenter" addFXCoins>
                       <i class="fas fa-plus" style="color:#472F92; font-size: 40px"></i>
                   </button>
-              </div>
-              <div class="tw-flex tw-space-x-10 tw-bg-white tw-h-24 tw-pt-4 tw-pl-24">
-                  <div class="">
-                      <button type="button" class="background-orange tw-h-10 tw-w-10 tw-rounded tw-ml-2 tw-flex tw-items-center tw-justify-center">
+                    </div>
+                    <div class="tw-flex tw-space-x-10 tw-bg-white tw-h-24 tw-pt-4 tw-pl-24">
+                        <div class="">
+                            <!-- <button type="button" class="background-orange tw-h-10 tw-w-10 tw-rounded tw-ml-2 tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-long-arrow-alt-down" style="color:white; font-size: 30px"></i>
                       </button>
-                      <span class="tw-text-xs tw-text-center tw-text-purple-800">Withdraw</span>
-                  </div>
-                  <div class="">
-                      <button type="button" class="bg-darkpurple tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
+                            <span class="tw-text-xs tw-text-center tw-text-purple-800">Withdraw</span> -->
+                        </div>
+                        <div class="">
+                            <button type="button" class="bg-darkpurple tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-long-arrow-alt-right" style="color:white; font-size: 30px"></i>
                       </button>
-                      <span class="tw-text-xs tw-text-center tw-text-purple-800">Send</span>
-                  </div>
-                  <div class="">
-                      <button type="button" class="bg-lightblue tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
+                            <span class="tw-text-xs tw-text-center tw-text-purple-800">Send</span>
+                        </div>
+                        <div class="">
+                            <!-- <button type="button" class="bg-lightblue tw-h-10 tw-w-10 tw-rounded tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-credit-card" style="color:white; font-size: 28px"></i>
                       </button>
-                      <span class="tw-text-xs tw-text-center tw-text-purple-800">Cards</span>
-                  </div>
-                  <div class="">
-                      <button type="button" class="bg-yellow tw-h-10 tw-w-10 tw-rounded tw-transform tw-rotate-90 tw-ml-2 tw-flex tw-items-center tw-justify-center">
+                            <span class="tw-text-xs tw-text-center tw-text-purple-800">Cards</span> -->
+                        </div>
+                        <div class="">
+                            <button type="button" class="bg-yellow tw-h-10 tw-w-10 tw-rounded tw-transform tw-rotate-90 tw-ml-2 tw-flex tw-items-center tw-justify-center">
                           <i class="fas fa-exchange-alt" style="color:#472F92; font-size: 28px"></i>
                       </button>
-                      <span class="tw-text-xs tw-text-center tw-text-purple-800">Exchange</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div>
-          <div class="tw-h-56 tw-w-80">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-xl-6 col-md-6">
-                          <div class="tw-info-card-content card-gradient-aqua">
-                              <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
-                              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                            <span class="tw-text-xs tw-text-center tw-text-purple-800">Exchange</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="tw-h-56 tw-w-80">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6">
+                                <div class="tw-info-card-content card-gradient-aqua">
+                                    <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
+                                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                                   <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                   &nbsp;9,650
                               </span>
-                          </div>
-                      </div>
-                      <div class="col-xl-6 col-md-6">
-                          <div class="tw-info-card-content card-gradient-blue">
-                              <span class="tw-text-base tw-text-xs tw-text-white">Expenses</span>
-                              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6">
+                                <div class="tw-info-card-content card-gradient-blue">
+                                    <span class="tw-text-base tw-text-xs tw-text-white">Expenses</span>
+                                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                                   <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                   &nbsp;8,710
                               </span>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row mt-5">
-                      <div class="col-xl-6 col-md-6">
-                          <div class="bg-yellow tw-rounded-md tw-pt-2 tw-pr-4 tw-pl-4 tw-h-full tw-text-purple-800">
-                              <span class="tw-text-base tw-text-xs tw-text-purple-700">FX Coin Value</span>
-                              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-purple-800">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-xl-6 col-md-6">
+                                <div class="bg-yellow tw-rounded-md tw-pt-2 tw-pr-4 tw-pl-4 tw-h-full tw-text-purple-800">
+                                    <span class="tw-text-base tw-text-xs tw-text-purple-700">FX Coin Value</span>
+                                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-purple-800">
                                   $&nbsp;&nbsp;&nbsp;&nbsp;9,650
                               </span>
-                          </div>
-                      </div>
-                      <div class="col-xl-6 col-md-6">
-                          <div class="tw-info-card-content card-gradient-purple">
-                              <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
-                              <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6">
+                                <div class="tw-info-card-content card-gradient-purple">
+                                    <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
+                                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                                   <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                                   &nbsp;1 = $ 0.12
                               </span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="content-wrapper-2 tw-mt-5 tw-px-10">
-      <h class="tw-w-full tw-h-2 tw-text-purple-700 tw-text-bold tw-text-2xl tw-font-semibold">My Cards</h>
-      <div class="card-container tw-w-full tw-h-56 tw-flex tw-space-x-10">
-          <div class="card-block mbw-2 tw-w-72 tw-mt-3">
-              <div class="card-main">
-                  <div class="balance">
-                      <span class="label tw-text-white">BALANCE</span>
-                      <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
-                  </div>
-                  <div class="in">
-                      <div class="card-number">
-                          <span class="label tw-text-white">Card Number</span>
-                          •••• 9905
-                      </div>
-                      <div class="bottom">
-                          <div class="card-expiry">
-                              <span class="label tw-text-white">Expiry</span>
-                              12 / 25
-                          </div>
-                          <div class="card-ccv">
-                              <span class="label tw-text-white">CCV</span>
-                              553
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="card-block tw-bg-secondary mbw-2 tw-w-72 tw-mt-3">
-              <div class="card-main">
-                  <div class="balance">
-                      <span class="label tw-text-white">BALANCE</span>
-                      <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
-                  </div>
-                  <div class="in">
-                      <div class="card-number">
-                          <span class="label tw-text-white">Card Number</span>
-                          •••• 9905
-                      </div>
-                      <div class="bottom">
-                          <div class="card-expiry">
-                              <span class="label tw-text-white">Expiry</span>
-                              12 / 25
-                          </div>
-                          <div class="card-ccv">
-                              <span class="label tw-text-white">CCV</span>
-                              553
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <div class="modal-content border-modal">
-              <div class="modal-header">
-                  <h5 class="modal-title tw-text-purple-700 tw-text-2xl tw-pl-2 tw-font-semibold" id="exampleModalCenterTitle">Add FX Coins</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper-2 tw-mt-5 tw-px-10">
+            <h class="tw-w-full tw-h-2 tw-text-purple-700 tw-text-bold tw-text-2xl tw-font-semibold">My Cards</h>
+            <div class="card-container tw-w-full tw-h-56 tw-flex tw-space-x-10">
+                <div class="card-block mbw-2 tw-w-72 tw-mt-3">
+                    <div class="card-main">
+                        <div class="balance">
+                            <span class="label tw-text-white">BALANCE</span>
+                            <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
+                        </div>
+                        <div class="in">
+                            <div class="card-number">
+                                <span class="label tw-text-white">Card Number</span> •••• 9905
+                            </div>
+                            <div class="bottom">
+                                <div class="card-expiry">
+                                    <span class="label tw-text-white">Expiry</span> 12 / 25
+                                </div>
+                                <div class="card-ccv">
+                                    <span class="label tw-text-white">CCV</span> 553
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-block tw-bg-secondary mbw-2 tw-w-72 tw-mt-3">
+                    <div class="card-main">
+                        <div class="balance">
+                            <span class="label tw-text-white">BALANCE</span>
+                            <h1 class="title tw-text-white tw-text-base">$ 1,256,90</h1>
+                        </div>
+                        <div class="in">
+                            <div class="card-number">
+                                <span class="label tw-text-white">Card Number</span> •••• 9905
+                            </div>
+                            <div class="bottom">
+                                <div class="card-expiry">
+                                    <span class="label tw-text-white">Expiry</span> 12 / 25
+                                </div>
+                                <div class="card-ccv">
+                                    <span class="label tw-text-white">CCV</span> 553
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content border-modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title tw-text-purple-700 tw-text-2xl tw-pl-2 tw-font-semibold" id="exampleModalCenterTitle">Add FX Coins</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
-              </div>
-              <div class="modal-body">
-                  <div class="tw-flex tw-pl-2">
-                      <span class="tw-text-purple-700 tw-text-2xl tw-font-semibold">$&nbsp;</span>
-                      <input type=text id="moneyEnter" class="custominput tw-bg-transparent tw-rounded-none tw-rounded-b-sm tw-text-purple-700 tw-text-2xl tw-font-semibold" size="10">
-                      <span class="tw-text-purple-700 tw-text-2xl tw-font-semibold tw-pl-2">=</span>
-                      <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-ml-3 tw-mt-1" />
-                      <span class="tw-text-purple-700 tw-ml-2 tw-text-2xl tw-font-semibold tw-ml-3" id="totalCoinsExchange"></span>
-                      <span class="tw-text-purple-700 tw-ml-4 tw-text-2xl">FEx Coins</span>
-                  </div>
-                  <div class="tw-pl-2 tw-mt-4 tw-mb-4 tw-flex">
-                      <span class="tw-text-purple-700 tw-text-xl">Bank A/c</span>
-                      <select name="payingCards" id="payingCards" class="tw-ml-3 tw-text-purple-700 tw-bg-grey">
+                    </div>
+                    <div class="modal-body">
+                        <div class="tw-flex tw-pl-2">
+                            <span class="tw-text-purple-700 tw-text-2xl tw-font-semibold">$&nbsp;</span>
+                            <input type=text id="moneyEnter" class="custominput tw-bg-transparent tw-rounded-none tw-rounded-b-sm tw-text-purple-700 tw-text-2xl tw-font-semibold" size="10">
+                            <span class="tw-text-purple-700 tw-text-2xl tw-font-semibold tw-pl-2">=</span>
+                            <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-ml-3 tw-mt-1" />
+                            <span class="tw-text-purple-700 tw-ml-2 tw-text-2xl tw-font-semibold tw-ml-3" id="totalCoinsExchange"></span>
+                            <span class="tw-text-purple-700 tw-ml-4 tw-text-2xl">FEx Coins</span>
+                        </div>
+                        <div class="tw-pl-2 tw-mt-4 tw-mb-4 tw-flex">
+                            <span class="tw-text-purple-700 tw-text-xl">Bank A/c</span>
+                            <select name="payingCards" id="payingCards" class="tw-ml-3 tw-text-purple-700 tw-bg-grey">
                           <option value="" class="bg-grey">001********43&nbsp;&nbsp;&nbsp;AMEX Bank</option>
                       </select>
-                  </div>
-              </div>
-              <div class="modal-footer tw-flex tw-justify-between">
-                  <p class="tw-text-gray-600">Exchange Rate: 1 FEx Coin = $ 0.12</p>
-                  <button type="button" class="background-orange tw-w-40 tw-h-10 tw-text-white tw-text-lg tw-rounded-lg" data-dismiss="modal">Add FEx Coins</button>
-              </div>
-          </div>
-      </div>
-  </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer tw-flex tw-justify-between">
+                        <p class="tw-text-gray-600">Exchange Rate: 1 FEx Coin = $ 0.12</p>
+                        <button type="button" class="background-orange tw-w-40 tw-h-10 tw-text-white tw-text-lg tw-rounded-lg" data-dismiss="modal" onclick="update_wallet()">Add FEx Coins</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  </main>
-  <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
-  <script src="../static/js/jquery-3.3.1.min.js"></script>
-  <script src="../static/js/popper.min.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/perfect-scrollbar.js"> </script>
-  <script src="../static/js/jquery-ui.min.js"> </script>
-  <!-- Global Required Scripts End -->
-  <script type="text/javascript">
-    $(document).ready(function() {
-        $('#moneyEnter').on('keyup', function(e) {
-            if (e.keyCode === 13) {
+    </main>
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/perfect-scrollbar.js">
+    </script>
+    <script src="../static/js/jquery-ui.min.js">
+    </script>
+    <!-- Global Required Scripts End -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#moneyEnter').on('keyup', function(e) {
                 $("#totalCoinsExchange").text(($("#moneyEnter").val() / 0.12).toFixed(2));
-            }
+            });
+            $('#exampleModalCenter').on('hidden.bs.modal', function() {
+                $("#totalCoinsExchange").text("");
+                $("#moneyEnter").val("");
+            })
         });
-        $('#exampleModalCenter').on('hidden.bs.modal', function() {
-            $("#totalCoinsExchange").text("");
-            $("#moneyEnter").val("");
-        })
-    });
+    </script>
+    <!-- Page Specific Scripts Start -->
+    <script src="../static/js/Chart.bundle.min.js">
+    </script>
+    <script src="../static/js/project-management.js">
+    </script>
+    <!-- Page Specific Scripts Finish -->
 
-</script>
-  <!-- Page Specific Scripts Start -->
-  <script src="../static/js/Chart.bundle.min.js"> </script>
-  <script src="../static/js/project-management.js"> </script>
-  <!-- Page Specific Scripts Finish -->
+    <!-- mylo core JavaScript -->
+    <script src="../static/js/framework.js"></script>
 
-  <!-- mylo core JavaScript -->
-  <script src="../static/js/framework.js"></script>
-
-  <!-- Settings -->
-  <script src="../static/js/settings.js"></script>
+    <!-- Settings -->
+    <script src="../static/js/settings.js"></script>
 
 </body>
 
-</html><html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"><meta name="Robots" content="NOINDEX " /></head><body></body>
-                <script type="text/javascript">
-                 var gearPage = document.getElementById('GearPage');
-                 if(null != gearPage)
-                 {
-                     gearPage.parentNode.removeChild(gearPage);
-                     document.title = "Error";
-                 }
-                 </script>
-                 </html>
+</html>
+<html>
+
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+    <meta name="Robots" content="NOINDEX " />
+</head>
+
+<body></body>
+<script type="text/javascript">
+    var gearPage = document.getElementById('GearPage');
+    if (null != gearPage) {
+        gearPage.parentNode.removeChild(gearPage);
+        document.title = "Error";
+    }
+</script>
+
+<script type="text/javascript">
+    function update_wallet() {
+        var coins = document.getElementById("moneyEnter").value;
+
+
+
+        var xhttp = new XMLHttpRequest();
+        var sender = "fedex"
+
+        req = "{{sc}}pay?sender=" + sender + "&receiver={{email}}&amount=" + coins
+        xhttp.open("GET", req, true);
+
+        xhttp.send();
+        var xhttp_balance = new XMLHttpRequest();
+        req = "{{sc}}user_balance?user_id={{email}}"
+
+        xhttp_balance.open("GET", req, true);
+
+        xhttp_balance.onload = function() {
+            document.getElementById("user_balance").innerHTML = xhttp_balance.responseText;
+        };
+        xhttp_balance.send();
+
+        window.close();
+
+    }
+</script>
+
+</html>

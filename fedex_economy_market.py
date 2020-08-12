@@ -64,7 +64,7 @@ def wallet():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('wallet.html',email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
+    return render_template('wallet.html',email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/signIn')
 def signIn():
@@ -91,7 +91,7 @@ def dashboard():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
@@ -101,7 +101,15 @@ def logIn():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
+
+    # get user_balance
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')),user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/register',  methods = ['POST'])
 def register():
@@ -136,6 +144,7 @@ def register():
     url = smart_contract + svc + params
     _msg = requests.get(url).content
 
+    user_send_payment('fedex',user_id,'100')
     # update profile
     print("profile")
     print(json.dumps(profiledata))
@@ -147,7 +156,7 @@ def register():
     print(_status)
     # req = requests.post(smart_contract + svc, json=data)
 
-    return render_template('dashboard.html',email=user_id, profile=profiledata)
+    return render_template('dashboard.html',email=user_id, profile=profiledata,sc=smart_contract)
     # return render_template('dashboard.html', email='s@s.com',first_name ='s' , last_name ='a')
 
 @app.route('/profile')
@@ -306,7 +315,13 @@ def balance():
     _msg = "The balance of " + user_id + " is " + str(_balance)
     return render_template('balance.html', msg=_msg)
 
-
+def user_send_payment(sender,receiver,amount):
+    print('sending payment')
+    svc = '/pay'
+    params = '?sender='+sender+'&receiver='+receiver+'&amount='+amount
+    url = smart_contract + svc + params
+    _msg = requests.get(url).content
+    
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1000)
+    app.run(debug=True, port=5002)
