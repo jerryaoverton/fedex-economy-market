@@ -5,9 +5,9 @@ import json
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-smart_contract = os.environ['SMART_CONTRACT']
+# smart_contract = os.environ['SMART_CONTRACT']
 # smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
-# smart_contract = 'http://127.0.0.1:5000/'
+smart_contract = 'http://127.0.0.1:5000/'
 
 @app.route('/')
 def home():
@@ -89,9 +89,9 @@ def register():
     stateorprovince = request.form['stateorprovince']
     postalcode= request.form['postalcode']
     countrycode = request.form['countrycode']
-    BusinessType = request.form.get('BusinessType', None)
-    ServiceType = request.form.get('ServiceType', None)
-    ServiceFee = request.form.get('ServiceFee',None)
+    BusinessType = request.form.get('BusinessType', '')
+    ServiceType = request.form.get('ServiceType', '')
+    ServiceFee = request.form.get('ServiceFee','')
 
     
 

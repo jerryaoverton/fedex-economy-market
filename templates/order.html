@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard!</title>
+  <title>FEx Eco!</title>
   <!-- Iconic Fonts -->
   <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,8 +30,9 @@ function placeOrder(){
  
         // pay business
         var payrq = new XMLHttpRequest();
-        req = "{{sc}}pay?sender={{email}}&receiver={{business_id}}&amt={{price}}"
+        req = "{{sc}}pay?sender={{email}}&receiver={{business_id}}&amount={{price}}"
         payrq.open("GET", req, true);
+        payrq.send();
 
         //add/update order
 
