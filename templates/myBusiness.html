@@ -30,7 +30,7 @@
 
 $(document).ready(function () {
             url = "{{sc}}"
-            var socket = io.connect(url+'/order');
+            var socket = io.connect('{{sc}}order');
            // socket.nsp = '/order';
 
           //  const ordersocket = socket.connect(url);
@@ -40,12 +40,15 @@ $(document).ready(function () {
             });
             socket.on('message', function (order) {
                 console.log(order);
-                $("#ordertbl").append('<tr>' + order + '</tr>');
+                order = order.replace(/'/g, '"')
+                parse_order = JSON.parse(order);
+                console.log(parse_order)
+                $("#ordertbl").append('<tr><td>' + parse_order.supplier + '</td></tr>');
             });
-            socket.on('broadcast', function (order) {
-                console.log(order);
-                $("#ordertbl").append('<tr>' + order + '</tr>');
-            });
+            // socket.on('broadcast', function (order) {
+            //     console.log(order);
+            //     $("#ordertbl").append('<tr>' + order + '</tr>');
+            // });
             $('#sendbutton').on('click', function () {
                 ordersocket.send($('#myMessage').val());
                 $('#myMessage').val('');
