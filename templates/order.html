@@ -53,7 +53,7 @@ function placeOrder(){
 
         var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\""+
                    ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" "+ 
-                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Active\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" }";
+                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Placed\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" }";
 
         var xhttp = new XMLHttpRequest();
 

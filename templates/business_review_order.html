@@ -67,7 +67,7 @@
 
         var status_td = ""
         
-        if(parse_order.status == 'Active') {
+        if(parse_order.status == 'Placed') {
         status_td = "<td class='text-center tw-space-x-10'> \
                               <form action='/dronedelivery'method='POST'> \
                                 <input name='order' type='hidden' value='" + order + "' />\
@@ -80,7 +80,7 @@
                             </td>"
         }
 
-        if(parse_order.status == 'InTransit') {
+        if(parse_order.status == 'Active') {
         status_td = "<td class='text-center tw-space-x-10'>In delivery </td>"
         }
 
@@ -409,7 +409,7 @@
             <td class="text-center tw-w-48"></td>
             <td class="text-center tw-w-48"></td>
             <td class="text-center tw-w-48"></td>
-            {% if order.status|string() == "Active" %}
+            {% if order.status|string() == "Placed" %}
             <td class="text-center tw-space-x-10">
               <form action='/dronedelivery'method='POST'>
                 <input name='order' type='hidden' value='{{order}}' />
@@ -419,7 +419,7 @@
               </form>
             </td>  
             {%endif%} 
-            {% if order.status|string() == "InTransit" %}
+            {% if order.status|string() == "Active" %}
             <td>
               Estimated time for this delivery: 37 mins
             </td>
