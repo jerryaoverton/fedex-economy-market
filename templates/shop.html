@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mylo Dashboard!</title>
+  <title>Fedex Economy</title>
   <!-- Iconic Fonts -->
   <!-- Our Custom CSS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -298,7 +298,7 @@
       <div class="row">
         {% for shop in shops%}
         <form action="/order" method="POST">
-        <!-- <div class="col-xl-3 col-md-6 h-80">
+        <div class="col-xl-3 col-md-6 h-80">
             <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                 <div class="">
                     <img class="tw-rounded-t-md" src="../static/images/drone_example.jpg" alt="card_img">
@@ -311,28 +311,26 @@
                        {{shop.profile.description}}
                     </p>
                     <input type="hidden" name="user_id" value="{{email}}" />
-                    <input type="hidden" name="business_id" value="{{shop.user_id}}" />
+                    <input type="hidden" name="business_id" value="{{shop.id}}" />
                     <input type="hidden" name="price" value="50" />
 
                     <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
                         <div class="tw-flex  tw-items-center">
-                            <p class="tw-text-2xs tw-text-gray-700 ">Enjoy a range delicious pizza <br/> at a discounted price</p>
+                            <p class="tw-text-2xs tw-text-gray-700 ">Enjoy a range delicious pizza</p>
                             <div class="tw-bg-purple-700 tw-flex tw-items-center tw-rounded-md tw-ml-12 tw-px-2 tw-py-2">
-                              <button class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs" type="submit" style="background-color: #472F92" id="order">
-                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />50</button>
+                              <button class="tw-w-10 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
+                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
                         
-                                <p class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs">
-                                    <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />
-                                    50
-                                </p>
+                      
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
-        <div class="card" style="width: 18rem;">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+        </div>
+        <!-- <div class="card" style="width: 18rem;">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
           <input type="hidden" name="user_id" value="{{email}}" />
           <input type="hidden" name="business_id" value="{{shop.id}}" />
           <input type="hidden" name="price" value="50" />
@@ -342,7 +340,7 @@
             <button class="tw-text-white tw-font-medium tw-flex tw-items-center tw-text-xs" type="submit" style="background-color: #472F92 ; width: 120px; height: 40px;" id="order">
               <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " style="width: 40px; height: 100px; "/>50</button>
                 </div>
-        </div>  
+        </div>   -->
       </form>
         {%endfor%}
       </div>

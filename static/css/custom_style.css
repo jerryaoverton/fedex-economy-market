@@ -37,12 +37,18 @@
 
 /* Coin image*/
 img {
-    max-width: 100%;
+    max-width: 100% ;
+    max-height: 100 ;
 }
 
 img.thumbnail {
     width: 40px;
     height: 40px;
+}
+
+img.delivery-icons{
+    max-width: 100% ;
+    max-height: 100 ;
 }
 
 .tw-info-row {
@@ -70,7 +76,7 @@ img.thumbnail {
 }
 
 .tw-text-2xs {
-    font-size: .50rem;
+    font-size: .90rem;
 }
 
 .btn-servicesoffer {
@@ -122,6 +128,13 @@ img.thumbnail {
     width: 18rem;
 }
 
+.tw-w-74{
+    width: 28rem;
+}
+
+.tw-h-82 {
+    height: 26rem;
+}
 .tw-ml-x1 {
     margin-left: 0.700rem;
 }
@@ -140,6 +153,14 @@ img.thumbnail {
 
 .bg-darkpurple{
     background-color: #472F92;
+}
+
+.bg-aqua{
+    background-color:#00FFFF ;
+}
+
+.bg-lightblue{
+    background-color:#599CFD;
 }
 
 .tw-text-color-darkpurple{

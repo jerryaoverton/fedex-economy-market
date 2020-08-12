@@ -6185,7 +6185,7 @@ video {
 }
 
 .tw-h-4 {
-  height: 1rem !important;
+  height: 2rem !important;
 }
 
 .tw-h-5 {
@@ -6257,7 +6257,7 @@ video {
 }
 
 .tw-text-xs {
-  font-size: 0.75rem !important;
+  font-size: 1.00rem !important;
 }
 
 .tw-text-sm {
@@ -7939,8 +7939,8 @@ video {
 }
 
 .tw-px-2 {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 
 .tw-py-3 {
@@ -15288,7 +15288,7 @@ video {
 }
 
 .tw-w-10 {
-  width: 2.5rem !important;
+  width: 4rem !important;
 }
 
 .tw-w-12 {
