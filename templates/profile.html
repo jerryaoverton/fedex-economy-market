@@ -430,8 +430,8 @@
     <div class="ms-content-wrapper">
 
       <div class="ms-profile-overview">
-        <div class="ms-profile-cover" style="background-image: url('');">
-          <img class="ms-profile-img" src={{profile.image_url}} alt="people">
+        <div class="ms-profile-cover" style="background-image: url('../static/images/Generic\ banner.jpg')">
+          <img class="ms-profile-img"  alt="people" style="background-image: url('../static/images/Generic\ profile.jpg')">
           <div class="ms-profile-user-info">
             <h1 class="ms-profile-username">{{profile.first_name + ' ' + profile.last_name}}</h1>
             <!-- <h2 class="ms-profile-role">Professional UX Designer</h2> -->
@@ -447,28 +447,6 @@
       <div class="row">
 
         <div class="col-xl-7 col-md-12">
-          <div class="ms-panel ms-panel-fh">
-            <div class="ms-panel-body">
-              <h2 class="section-title">About Me</h2>
-              <p>{{profile.description}}</p>
-
-              <div class="ms-profile-skills">
-                <h2 class="section-title">TAG</h2>
-                <ul class="ms-skill-list">
-                  {% if profile.tags %}
-                      {% set list = profile.tags.split(',')  %}
-                    {% for item in list %}
-                      <li class="ms-skill">{{item}}</li>
-                    {%endfor%}
-                  {%endif%}
-                </ul>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-        <div class="col-xl-5 col-md-12">
           <div class="ms-panel ms-panel-fh">
             <div class="ms-panel-body">
               <ul class="ms-profile-stats">
@@ -556,7 +534,30 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-5 col-md-12">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-body">
+              <h2 class="section-title">About Me</h2>
+              <p>{{profile.description}}</p>
 
+              <div class="ms-profile-skills">
+                <h2 class="section-title">TAG</h2>
+                <ul class="ms-skill-list">
+                  {% if profile.tags %}
+                      {% set list = profile.tags.split(',')  %}
+                    {% for item in list %}
+                      <li class="ms-skill">{{item}}</li>
+                    {%endfor%}
+                  {%endif%}
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+       
+<!-- 
         <div class="col-md-12">
           <div class="ms-panel">
             <div class="ms-panel-body">
@@ -871,7 +872,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
