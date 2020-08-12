@@ -124,6 +124,7 @@ img.delivery-icons{
     width:64rem;
 }
 
+
 .tw-w-72 {
     width: 18rem;
 }
@@ -178,6 +179,34 @@ img.delivery-icons{
 }
 
 
+/* Added by SA */
 
+.tw-w-100{
+    width:90rem;
+}
+
+.tw-h-50{
+    height: 20rem;
+}
+
+.tw-w-20s{
+    width: 20rem !important;
+  }
+
+.tw-w-82s {
+    width: 44rem;
+}
+
+.tw-h-25s {
+    height:25rem !important;
+  }
+
+.tw-w-44s {
+    width: 25em !important;
+  }
+
+.tw-w-40s {
+    width: 25rem !important;
+  }
 
 
