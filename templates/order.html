@@ -19,9 +19,12 @@
   <link href="../static/css/styleDB.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
+
   <link rel="stylesheet" href="../static/css/custom_style.css">
   <!-- Custom Tailwind CSS -->
   <link rel="stylesheet" href="../static/css/custom_tailwind.css">
+
+
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script>
@@ -65,17 +68,6 @@ function placeOrder(){
     }
 </script>
     
-    
-
-
-
-
-
-
-
-
-
-
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -346,7 +338,153 @@ function placeOrder(){
       </div>
 
     <div>
-      <div class="row">
+
+        <div>
+            <div class="tw-h-10 tw-w-full background-orange">        
+            </div>
+          </div>
+          
+          <div class= "ms-content-wrapper-2 tw-h-screen bg-whitesmoke">
+             
+              <div class="tw-flex">
+                <div class="tw-bg-white tw-h-50 tw-w-100 tw-mt-10 tw-ml-10 tw-flex">
+                    <br/><br/>
+                  <div class = "tw-flex">
+                    <div class="tw-h-25s tw-w-44s tw-pt-6 tw-pl-3">
+                        <br/>
+                      <img src="../static/images/pizza_example.jpeg" class="" />
+                    </div> 
+                      <div class="tw-mt-5 tw-ml-4 tw-w-40s">
+                          <br/>
+                        <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
+                            
+                          {{business_profile.first_name}} {{business_profile.last_name}}
+                        </h1>
+                   <br/>
+
+                        <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <hr class="tw-mt-5">
+                        <p class="tw-text-xs tw-text-gray-700 tw-pt-3">Enjoy a range delicious pizza <br/> at a discounted price</p>
+                      </div>
+                  </div>
+                  <div class="vertical-line-2 tw-ml-20 tw-mt-5"></div>
+                  <div class ="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
+                      <br/>
+                    <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Choose your pizza</h>
+                    <form class="tw-mt-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios1" value="Chicago thin curst">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios1">
+                          Chicago thin curst
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios2" value="Greek style pizza">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios2">
+                          Greek style pizza
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios3" value="Sicilian pizza">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios3">
+                          Sicilian pizza
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input" type="radio" name="pizzaRadio" d="exampleRadios4" value="New York-style pizza">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios4">
+                          New York-style pizza
+                        </label>
+                      </div>
+                    </form>             
+                  </div>
+                  <div class ="tw-w-56 tw-h-40 tw-mt-4 tw-ml-16">
+                      <br/>
+                    <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Sides</h>
+                    <form class="tw-mt-2">
+                      <div class="form-check">
+                        <input class="form-check-input " type="checkbox" id="defaultCheck1" value="Garlic Bread">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
+                          Garlic Bread
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck2" value="Cold Drink">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
+                          Cold Drink
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck3" value="Chicken Nuggets">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
+                          Chicken Nuggets
+                        </label>
+                      </div>
+                      <div class ="form-check tw-pt-1">
+                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck4" value="Cheese Dip">
+                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
+                          Cheese Dip
+                        </label>
+                      </div>
+                    </form>             
+                  </div>
+                </div>
+              </div>
+<br/>
+              <div class="tw-ml-10 tw-flex">            
+                <div class="tw-w-20s tw-h-40 tw-mt-16">
+                  <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Buisness Address</h>
+                  <div class="tw-flex tw-space-x-6 tw-items-center">
+                    <div class="tw-w-64 tw-mt-2">
+                      <address class="tw-text-purple-800" >{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
+                      <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
+                      <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}"/></td>
+                    </div>
+                  </div>
+                </div>
+                <div class="vertical-line-2 tw-ml-10 tw-mt-10"></div>
+                <div class="tw-w-20s tw-h-40 tw-ml-10 tw-mt-16">
+                  <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
+                  <div class="tw-flex tw-space-x-6 tw-items-center">
+                    <div class="tw-w-64 tw-mt-2">
+                        
+                      <address class="tw-text-purple-800" >{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                      <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
+                      <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}"/></td>
+                   </div>
+                  </div>
+                </div>
+                <div class ="tw-w-82s bg-darkpurple tw-ml-4 tw-px-12 tw-py-8 tw-space-y-5">
+                    <h class="tw-text-white tw-text-xl">Order Summary</h>
+                    <div class="tw-space-y-2">
+                      <div class ="tw-flex tw-justify-between tw-items-center">
+                        <p class="tw-text-white text-left tw-float-left tw-w-40">Chicago thin crust pizza + Garlic Bread + Cold Drink</p>
+                        <p class="tw-text-white tw-text-lg">50</p>
+                      </div>
+                    </div>
+                    <hr style="height:1px;color:white;background-color:white">
+                    <div class ="tw-flex tw-justify-between tw-items-center">
+                      <p class="tw-text-white text-left tw-float-left tw-text-lg">Order Total</p>
+                      <div class="tw-flex tw-items-center">
+                        <img class= "tw-h-6 tw-w-6 tw-mr-2" src="../static/images/FEx-coin.png"/>
+                        <p class="tw-text-white tw-text-lg">{{price}}</p>
+                      </div>
+                    </div>
+                  <div class="tw-flex tw-justify-center">
+                    <button class="tw-mt-5 background-orange tw-w-48 tw-h-12 tw-rounded tw-text-white tw-text-lg" type="submit" onclick="placeOrder()">Place order</button>
+  
+                  </div>
+                </div>
+          </div>
+ 
+          </div>
+
+    
+
+
+      <!-- <div class="row">
         <div class="col-xl-10 col-md-16">
             <div class="ms-panel ms-panel-fh">
               <div class="ms-panel-body" style="width: 1000px;">
@@ -434,7 +572,7 @@ function placeOrder(){
             </div>
           </div>
   
-      </div>
+      </div> -->
     </div>
     </div>
   </main>

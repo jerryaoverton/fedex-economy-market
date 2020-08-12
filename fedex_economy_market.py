@@ -36,7 +36,20 @@ def contact():
 
 @app.route('/wallet')
 def wallet():
-    return render_template('wallet.html')
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    profile = requests.get(url).content
+
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('wallet.html',email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
 
 @app.route('/signIn')
 def signIn():
