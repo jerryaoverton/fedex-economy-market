@@ -105,7 +105,7 @@
                 }
                 console.log(parse_order.nameandphone)
 
-                var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
+                var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center tw-w-48'>" + parse_order.order_id + " </td> \
                             <td class='text-center tw-w-48'>" + parse_order.nameandphone + " </td> \
                             <td class='text-center tw-w-48'>" + parse_order.deliveryAddress + " </td> \
                             <td class='text-center tw-space-x-10'>" + status_td + " </tr>"
@@ -423,7 +423,7 @@
                 <tbody>
                     {% for order in orders%}
                     <tr id="{{order.order_id}}">
-                        <td scope="row" class="tw-text-center">{{order.order_id}}</td>
+                        <td scope="row" class="tw-text-center tw-w-48">{{order.order_id}}</td>
                         <td class="text-center tw-w-40">{{order.nameandphone}}</td>
                         <td class="text-center tw-w-48">{{order.deliveryAddress}}</td>
                         {% if order.status|string() == "Placed" %}
