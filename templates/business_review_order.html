@@ -176,7 +176,7 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet">
+                <a href="/wallet?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
@@ -222,252 +222,144 @@
     <main class="body-content">
 
         <!-- Navigation Bar -->
+       
+
         <nav class="navbar ms-navbar">
 
-            <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-                <span class="ms-toggler-bar bg-primary"></span>
-                <span class="ms-toggler-bar bg-primary"></span>
-                <span class="ms-toggler-bar bg-primary"></span>
-            </div>
+          <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
+              <span class="ms-toggler-bar bg-primary"></span>
+              <span class="ms-toggler-bar bg-primary"></span>
+              <span class="ms-toggler-bar bg-primary"></span>
+          </div>
 
-            <div class="logo-sn logo-sm ms-d-block-sm">
-                <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
-            </div>
-            </form>
-            </li>
-            <li class="ms-nav-item dropdown">
-                <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
-                    <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="ms-scrollable ms-dropdown-list">
-                        <a class="media p-2" href="#">
-                            <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                                <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                            </div>
-                            <div class="media-body">
-                                <span>Hey man, looking forward to your new project.</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                            </div>
-                        </a>
-                        <a class="media p-2" href="#">
-                            <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
-                                <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                            </div>
-                            <div class="media-body">
-                                <span>Dear John, I was told you bought mylo! Send me your feedback</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
-                            </div>
-                        </a>
-                        <a class="media p-2" href="#">
-                            <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                                <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                            </div>
-                            <div class="media-body">
-                                <span>How many people are we inviting to the dashboard?</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="dropdown-menu-footer text-center">
-                        <a href="../apps/email.html">Go to Inbox</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="ms-nav-item dropdown">
-                <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-                    <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="ms-scrollable ms-dropdown-list">
-                        <a class="media p-2" href="#">
-                            <div class="media-body">
-                                <span>12 ways to improve your crypto dashboard</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                            </div>
-                        </a>
-                        <a class="media p-2" href="#">
-                            <div class="media-body">
-                                <span>You have newly registered users</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
-                            </div>
-                        </a>
-                        <a class="media p-2" href="#">
-                            <div class="media-body">
-                                <span>Your account was logged in from an unauthorized IP</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
-                            </div>
-                        </a>
-                        <a class="media p-2" href="#">
-                            <div class="media-body">
-                                <span>An application form has been submitted</span>
-                                <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="dropdown-menu-footer text-center">
-                        <a href="#">View all Notifications</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="ms-nav-item">
-                <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
-            </li>
-            <li class="ms-nav-item ms-nav-user dropdown">
-                <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
-                <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-                    <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="ms-dropdown-list">
-                        <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-                        <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-                        <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-                    </li>
-                    <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="/index"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-                    </li>
-                </ul>
-            </li>
-            </ul>
+          <div class="logo-sn logo-sm ms-d-block-sm">
+              <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../dashboard/index.html"><img src="https://via.placeholder.com/84x41" alt="logo"> </a>
+          </div>
 
-            <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
-                <li class="ms-nav-item ms-search-form pb-0 py-0">
-                    <form class="ms-form" method="post">
-                        <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-                            <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
-                            <i class="flaticon-search text-disabled"></i>
-                        </div>
-                    </form>
-                </li>
-                <li class="ms-nav-item dropdown">
-                    <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
-                        <li class="dropdown-menu-header">
-                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="ms-scrollable ms-dropdown-list">
-                            <a class="media p-2" href="#">
-                                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                                </div>
-                                <div class="media-body">
-                                    <span>Hey man, looking forward to your new project.</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                                </div>
-                            </a>
-                            <a class="media p-2" href="#">
-                                <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
-                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                                </div>
-                                <div class="media-body">
-                                    <span>Dear John, I was told you bought mylo! Send me your feedback</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
-                                </div>
-                            </a>
-                            <a class="media p-2" href="#">
-                                <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
-                                    <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
-                                </div>
-                                <div class="media-body">
-                                    <span>How many people are we inviting to the dashboard?</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-menu-footer text-center">
-                            <a href="../apps/email.html">Go to Inbox</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="ms-nav-item dropdown">
-                    <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-                        <li class="dropdown-menu-header">
-                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="ms-scrollable ms-dropdown-list">
-                            <a class="media p-2" href="#">
-                                <div class="media-body">
-                                    <span>12 ways to improve your crypto dashboard</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
-                                </div>
-                            </a>
-                            <a class="media p-2" href="#">
-                                <div class="media-body">
-                                    <span>You have newly registered users</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
-                                </div>
-                            </a>
-                            <a class="media p-2" href="#">
-                                <div class="media-body">
-                                    <span>Your account was logged in from an unauthorized IP</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
-                                </div>
-                            </a>
-                            <a class="media p-2" href="#">
-                                <div class="media-body">
-                                    <span>An application form has been submitted</span>
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-menu-footer text-center">
-                            <a href="#">View all Notifications</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="ms-nav-item">
-                    <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
-                </li>
-                <li class="ms-nav-item ms-nav-user dropdown">
-                    <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
-                    <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-                        <li class="dropdown-menu-header">
-                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="ms-dropdown-list">
-                            <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
-                            <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
-                            <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-menu-footer">
-                            <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
-                        </li>
-                        <li class="dropdown-menu-footer">
-                            <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+          <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+              <li class="ms-nav-item ms-search-form pb-0 py-0">
+                  <form class="ms-form" method="post">
+                      <div class="ms-form-group my-0 mb-0 has-icon fs-14">
+                          <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value="">
+                          <i class="flaticon-search text-disabled"></i>
+                      </div>
+                  </form>
+              </li>
+              <li class="ms-nav-item dropdown">
+                  <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
+                      <li class="dropdown-menu-header">
+                          <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="ms-scrollable ms-dropdown-list">
+                          <a class="media p-2" href="#">
+                              <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                              </div>
+                              <div class="media-body">
+                                  <span>Hey man, looking forward to your new project.</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                              </div>
+                          </a>
+                          <a class="media p-2" href="#">
+                              <div class="ms-chat-status ms-status-online ms-chat-img mr-2 align-self-center">
+                                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                              </div>
+                              <div class="media-body">
+                                  <span>Dear John, I was told you bought mylo! Send me your feedback</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 28 minutes ago</p>
+                              </div>
+                          </a>
+                          <a class="media p-2" href="#">
+                              <div class="ms-chat-status ms-status-offline ms-chat-img mr-2 align-self-center">
+                                  <img src="https://via.placeholder.com/270x270" class="ms-img-round" alt="people">
+                              </div>
+                              <div class="media-body">
+                                  <span>How many people are we inviting to the dashboard?</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 6 hours ago</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="dropdown-menu-footer text-center">
+                          <a href="../apps/email.html">Go to Inbox</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="ms-nav-item dropdown">
+                  <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+                      <li class="dropdown-menu-header">
+                          <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="ms-scrollable ms-dropdown-list">
+                          <a class="media p-2" href="#">
+                              <div class="media-body">
+                                  <span>12 ways to improve your crypto dashboard</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 30 seconds ago</p>
+                              </div>
+                          </a>
+                          <a class="media p-2" href="#">
+                              <div class="media-body">
+                                  <span>You have newly registered users</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 45 minutes ago</p>
+                              </div>
+                          </a>
+                          <a class="media p-2" href="#">
+                              <div class="media-body">
+                                  <span>Your account was logged in from an unauthorized IP</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 2 hours ago</p>
+                              </div>
+                          </a>
+                          <a class="media p-2" href="#">
+                              <div class="media-body">
+                                  <span>An application form has been submitted</span>
+                                  <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> 1 day ago</p>
+                              </div>
+                          </a>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="dropdown-menu-footer text-center">
+                          <a href="#">View all Notifications</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="ms-nav-item">
+                  <a href="#" class="text-disabled ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"><i class="flaticon-menu"></i></a>
+              </li>
+              <li class="ms-nav-item ms-nav-user dropdown">
+                  <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
+                  <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+                      <li class="dropdown-menu-header">
+                          <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{profile.first_name + ' ' + profile.last_name}}</span></h6>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="ms-dropdown-list">
+                          <a class="media fs-14 p-2" href="/profile?user_id={{email}}"> <span><i class="flaticon-user mr-2"></i> Profile</span> </a>
+                          <a class="media fs-14 p-2" href="../apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span> </a>
+                          <a class="media fs-14 p-2" href="../prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span> </a>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="dropdown-menu-footer">
+                          <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
+                      </li>
+                      <li class="dropdown-menu-footer">
+                          <a class="media fs-14 p-2" href="/index"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
 
-            <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-                <span class="ms-toggler-bar bg-primary"></span>
-                <span class="ms-toggler-bar bg-primary"></span>
-                <span class="ms-toggler-bar bg-primary"></span>
-            </div>
+          <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+              <span class="ms-toggler-bar bg-primary"></span>
+              <span class="ms-toggler-bar bg-primary"></span>
+              <span class="ms-toggler-bar bg-primary"></span>
+          </div>
 
-        </nav>
-
+      </nav>
 
         <!-- Body Content Wrapper -->
         <div class="ms-content-wrapper">
@@ -515,15 +407,15 @@
         </div>
         <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4">
             <img src="../static/images/Business.png" class="tw-h-5 tw-w-5" />
-            <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
+            <h class="tw-text-white tw-text-2xl tw-underline">{{profile.first_name}} {{profile.last_name}}</h>
         </div>
         <div class="ms-content-wrapper-2 bg-whitesmoke tw-justify-center">
             <table class="table table-hover tw-text-purple-800" id="ordertbl">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center tw-text-lg">Order #</th>
-                        <th scope="col" class="text-center tw-text-lg">Order Details</th>
-                        <th scope="col" class="text-center tw-text-lg">Name & Ph.</th>
+                        <!-- <th scope="col" class="text-center tw-text-lg">Order Details</th> -->
+                        <th scope="col" class="text-center tw-text-lg">Name & Phone</th>
                         <th scope="col" class="text-center tw-text-lg">Delivery Address</th>
                         <th scope="col" class="text-center tw-text-lg">Delivery Type</th>
                     </tr>
@@ -532,7 +424,7 @@
                     {% for order in orders%}
                     <tr id="{{order.order_id}}">
                         <td scope="row" class="tw-text-center">{{order.order_id}}</td>
-                        <td class="text-center tw-w-48"></td>
+                        <!-- <td class="text-center tw-w-48"></td> -->
                         <td class="text-center tw-w-48">{{order.nameandphone}}</td>
                         <td class="text-center tw-w-48">{{order.deliveryAddress}}</td>
                         {% if order.status|string() == "Placed" %}

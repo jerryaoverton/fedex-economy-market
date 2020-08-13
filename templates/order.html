@@ -135,6 +135,7 @@
                 <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
                 </a>
             </li>
+            {% if user_profile.RegistrationType|string() == 'Business' or user_profile.RegistrationType|string() == 'ServiceProvider' %}
             <!-- My Business -->
             <li class="menu-item">
                 <a href="/myBusiness?user_id={{email}}">
@@ -144,6 +145,7 @@
 
                 </a>
             </li>
+            {%endif%}
         </ul>
 
     </aside>
@@ -303,7 +305,7 @@
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
                         <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;{{user_balance}}
                 </span>
                     </div>
                 </div>
@@ -359,7 +361,7 @@
                                         {{business_profile.first_name}} {{business_profile.last_name}}
                                     </h1>
                                     <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
-                                        {{business_profile.description}}
+                                        <!-- {{business_profile.description}} -->
                                     </p>
                                     <hr class="tw-mt-5">
                                     <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
