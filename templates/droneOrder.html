@@ -362,27 +362,27 @@
                     <div class="">
                         <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Deliver to</h>
                         <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
-                            <p class="tw-text-gray-600">Elloit Reid</p>
+                  <p class="tw-text-gray-600">{{user_profile.first_name + ' ' + user_profile.last_name}}</p>
                         </div>
                         <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
-                            <p class="tw-text-gray-600">+1 951-253-6594</p>
+                  <p class="tw-text-gray-600">{{user_profile.phone}}</p>
                         </div>
                     </div>
                     <div class="">
                         <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Address</h>
                         <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
-                            <p class="tw-text-gray-600">210, Hell's Kitchen</p>
+                <p class="tw-text-gray-600">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
                         </div>
                         <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
-                            <p class="tw-text-gray-600">New York, 10019, USA</p>
+                <p class="tw-text-gray-600">{{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
                         </div>
                     </div>
                 </div>
                 <hr style="height:1px;margin-top: 2rem;color:black">
-                <div class="tw-flex tw-justify-center">
-                    <button class="tw-mt-5 bg-darkpurple tw-w-32 tw-h-10 tw-rounded-lg tw-text-white tw-text-lg" type="submit">
+        <!-- <div class="tw-flex tw-justify-center">
+          <button class="tw-mt-5 bg-darkpurple tw-w-32 tw-h-10 tw-rounded-lg tw-text-white tw-text-lg" type="submit">
             <i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
-                </div>
+        </div> -->
             </div>
             <div class="tw-w-72">
                 <img src="../static/images/Drone map.png" class="tw-h-82s tw-w-73" alt="" />

@@ -92,12 +92,13 @@
         if(parse_order.status == 'complete') {
         status_td = "<td class='text-center tw-space-x-10'>Order successfully delivered </td>"
         }
+        console.log(parse_order.nameandphone)
 
         var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
                              <td class='text-center tw-w-48'> \
                             </td> \
-                            <td class='text-center tw-w-48'></td> \
-                            <td class='text-center tw-w-48>" + parse_order.customer + " </td> \
+                            <td class='text-center tw-w-48'>" + parse_order.nameandphone + " </td> \
+                            <td class='text-center tw-w-48'>" + parse_order.deliveryAddress + " </td> \
                             <td class='text-center tw-space-x-10'>" + status_td + " </tr>"
 
         $("#ordertbl").append(row);
@@ -412,8 +413,8 @@
           <tr id="{{order.order_id}}">
             <td scope="row" class="tw-text-center">{{order.order_id}}</td>
             <td class="text-center tw-w-48"></td>
-            <td class="text-center tw-w-48"></td>
-            <td class="text-center tw-w-48"></td>
+            <td class="text-center tw-w-48">{{order.nameandphone}}</td>
+            <td class="text-center tw-w-48">{{order.deliveryAddress}}</td>
             {% if order.status|string() == "Placed" %}
             <td class="text-center tw-space-x-10">
               <form action='/dronedelivery'method='POST'>

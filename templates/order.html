@@ -50,15 +50,18 @@
             // 'status': 'complete',
             // 'status_date': '08/05/2020'
             // }
+        var nameandphone = "{{user_profile.first_name}} {{user_profile.last_name}} {{user_profile.phone}}"
 
-            var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\"" +
-                ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" " +
-                ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Placed\",\"status_date\": \"" + new Date().toJSON().slice(0, 10).replace(/-/g, '/') + "\" }";
+        var deliveryAddress = "{{user_profile.street}} {{user_profile.city}} {{user_profile.postalcode}} {{user_profile.stateorprovince}} {{user_profile.countrycode}}"
 
-            var xhttp = new XMLHttpRequest();
+       
+        
+        var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\""+
+                   ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" "+ 
+                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Placed\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" , \"nameandphone\": \"" + nameandphone + "\" , \"deliveryAddress\":\" " + deliveryAddress +"\" }";
 
-
-            req = "{{sc}}update_order?order=" + order
+        var xhttp = new XMLHttpRequest();
+        req = "{{sc}}update_order?order=" + order
             xhttp.open("GET", req, true);
             xhttp.send();
 
@@ -67,7 +70,6 @@
 
         }
     </script>
-
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
