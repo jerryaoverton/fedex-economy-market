@@ -70,7 +70,7 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet">
+                <a href="/wallet?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
@@ -261,7 +261,7 @@
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
                         <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;<label id="user_balance">{{user_balance}}</label>
                 </span>
                     </div>
                 </div>
@@ -301,20 +301,20 @@
         </div>
         </div>
 
-        <div>
+        <div class="content-container-2 tw-mx-10 tw-my-5">
             <div class="row">
                 {% for shop in shops%}
-                <form action="/order" method="POST">
-                    <div class="col-xl-3 col-md-6 h-80">
+                <div class="col-xl-3 col-md-6 h-80 tw-my-5">
+                    <form action="/order" method="POST"></form>
                         <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
-                                <img class="tw-rounded-t-md" src="../static/images/pizza_example.jpeg" alt="card_img">
+                                <img class="tw-rounded-t-md" src="../static/images/Generic business profile.jpg" alt="card_img">
                             </div>
                             <div class="p-3">
                                 <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
                                     {{shop.profile.first_name}} {{shop.profile.last_name}}
                                 </h1>
-                                <p class="tw-text-xs tw-mt-1 tw-text-gray-700">
+                                <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
                                     {{shop.profile.description}}
                                 </p>
                                 <input type="hidden" name="user_id" value="{{email}}" />
@@ -322,18 +322,14 @@
                                 <input type="hidden" name="price" value="50" />
 
                                 <div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-border-">
-                                    <div class="tw-flex  tw-items-center">
-                                        <p class="tw-text-2xs tw-text-gray-700 ">Save 10%</p>
-                                        <div class="tw-bg-purple-700 tw-flex tw-items-center tw-rounded-md tw-ml-12 tw-px-2 tw-py-2">
-                                            <button class="tw-w-16 tw-h-6 tw-rounded tw-float-right tw-text-white tw-font-medium tw-text-xs tw-flex tw-items-center tw-px-1" type="submit" id="order">
-                                <img src="../static/images/FEx-coin.png" class="tw-mr-2 tw-h-4 " />&nbsp;&nbsp;<b>50</b>&nbsp;&nbsp;</button>
-
-                                        </div>
-                                    </div>
+                                    <p class="tw-text-2xxs tw-text-gray-700 tw-w-24">10% Discount</p>
+                                    <button class="bg-darkpurple tw-w-16 tw-h-8 tw-rounded tw-text-white tw-font-medium tw-text-2xs tw-flex tw-items-center tw-justify-center space-x-1" type="button">
+                                      <img src="../static/images/FEx-coin.png" class="tw-h-4s tw-w-4 tw-rounded-none delivery-icons tw-mr-1 tw-float-left"/>
+                                    50 </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                     <!-- <div class="card" style="width: 18rem;">
           <svg class="bd-placeholder-img card-img-top" width="100%" height="180" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
           <input type="hidden" name="user_id" value="{{email}}" />
@@ -347,6 +343,7 @@
                 </div>
         </div>   -->
                 </form>
+            </div>
                 {%endfor%}
             </div>
         </div>
