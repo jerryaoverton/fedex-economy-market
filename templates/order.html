@@ -135,6 +135,7 @@
                 <img src="../static/images/Shop.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Shop</span>
                 </a>
             </li>
+            {% if user_profile.RegistrationType|string() == 'Business' or user_profile.RegistrationType|string() == 'ServiceProvider' %}
             <!-- My Business -->
             <li class="menu-item">
                 <a href="/myBusiness?user_id={{email}}">
@@ -144,6 +145,7 @@
 
                 </a>
             </li>
+            {%endif%}
         </ul>
 
     </aside>
