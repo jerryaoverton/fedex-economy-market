@@ -140,9 +140,9 @@
                 </a>
             </li>
             <!-- My Business -->
-            {% if profile.RegistrationType|string() == 'Business' %}
+            {% if profile.RegistrationType|string() == 'Business' or profile.RegistrationType|string() == 'ServiceProvider' %}
             <li class="menu-item">
-                <a href="/myBusiness">
+                <a href="/myBusiness?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
             </span>
