@@ -20,11 +20,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
 
-
+    <link rel="stylesheet" href="../static/css/custom_style.css">
     <!-- Custom Tailwind CSS -->
     <link rel="stylesheet" href="../static/css/custom_tailwind.css">
 
-    <link rel="stylesheet" href="../static/css/custom_style.css">
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script>
@@ -50,18 +50,15 @@
             // 'status': 'complete',
             // 'status_date': '08/05/2020'
             // }
-        var nameandphone = "{{user_profile.first_name}} {{user_profile.last_name}} {{user_profile.phone}}"
 
-        var deliveryAddress = "{{user_profile.street}} {{user_profile.city}} {{user_profile.postalcode}} {{user_profile.stateorprovince}} {{user_profile.countrycode}}"
+            var order = "{'order_id' : '1' , 'supplier': '{{business_id}}', 'customer': '{{email}}','payment_method': 'tokens'" +
+                ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' " +
+                ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '" + new Date().toJSON().slice(0, 10).replace(/-/g, '/') + "'  }";
 
-       
-        
-        var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\""+
-                   ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" "+ 
-                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Placed\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" , \"nameandphone\": \"" + nameandphone + "\" , \"deliveryAddress\":\" " + deliveryAddress +"\" }";
+            var xhttp = new XMLHttpRequest();
 
-        var xhttp = new XMLHttpRequest();
-        req = "{{sc}}update_order?order=" + order
+
+            req = "{{sc}}update_order?order=" + order
             xhttp.open("GET", req, true);
             xhttp.send();
 
@@ -70,6 +67,7 @@
 
         }
     </script>
+
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -115,19 +113,21 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet?user_id={{email}}">
+                <a href="/wallet">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
             </li>
 
             <!-- Services | Offer -->
-            <!-- <li class="menu-item">
-                <a href="/servicesoffer">
-                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+            <!-- {% if profile.RegistrationType|string() == 'ServiceProvider' %}
+        <li class="menu-item">
+            <a href="/servicesoffer">
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-                </a>
-            </li> -->
+            </a>
+        </li>
+        {% endif%} -->
             <!-- Shop -->
             <li class="menu-item">
                 <a href="/shop?user_id={{email}}">
@@ -137,7 +137,7 @@
             </li>
             <!-- My Business -->
             <li class="menu-item">
-                <a href="/myBusiness?user_id={{email}}">
+                <a href="/myBusiness">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
               </span>
@@ -280,7 +280,7 @@
                             <a class="media fs-14 p-2" href="../prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span> </a>
                         </li>
                         <li class="dropdown-menu-footer">
-                            <a class="media fs-14 p-2" href="/index"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
+                            <a class="media fs-14 p-2" href="../prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span> </a>
                         </li>
                     </ul>
                 </li>
@@ -354,7 +354,7 @@
                             <div class="tw-flex">
                                 <div class="tw-h-25s tw-w-44s tw-pt-6 tw-pl-3">
                                     <br/>
-                                    <img src="../static/images/Generic business profile.jpg" class="" />
+                                    <img src="../static/images/pizza_example.jpeg" class="" />
                                 </div>
                                 <div class="tw-mt-5 tw-ml-4 tw-w-40s">
                                     <br/>
@@ -365,39 +365,14 @@
                                     <br/>
 
                                     <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
-                                        {{business_profile.description}}
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     </p>
                                     <hr class="tw-mt-5">
-                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
+                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">Enjoy a range delicious pizza <br/> at a discounted price</p>
                                 </div>
                             </div>
-                            <div class="vertical-line-2s tw-ml-20 tw-mt-5"></div>
-
+                            <div class="vertical-line-2 tw-ml-20 tw-mt-5"></div>
                             <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Business Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-                                        <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
-                                        <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                        <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-    
-                                        <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
-                                        <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
-                                        <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
                                 <br/>
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Choose your pizza</h>
                                 <form class="tw-mt-2">
@@ -456,20 +431,39 @@
                         </label>
                                     </div>
                                 </form>
-                            </div> -->
-
-                        
+                            </div>
                         </div>
                     </div>
-                    <br/> <br/>
+                    <br/>
                     <div class="tw-ml-10 tw-flex">
-                       
-                        <div class="tw-w-82s bg-darkpurple tw-ml-4s tw-px-12 tw-py-8 tw-space-y-5">
+                        <div class="tw-w-20s tw-h-40 tw-mt-16">
+                            <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Buisness Address</h>
+                            <div class="tw-flex tw-space-x-6 tw-items-center">
+                                <div class="tw-w-64 tw-mt-2">
+                                    <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
+                                    <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
+                                    <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vertical-line-2 tw-ml-10 tw-mt-10"></div>
+                        <div class="tw-w-20s tw-h-40 tw-ml-10 tw-mt-16">
+                            <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
+                            <div class="tw-flex tw-space-x-6 tw-items-center">
+                                <div class="tw-w-64 tw-mt-2">
+
+                                    <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                                    <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
+                                    <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tw-w-82s bg-darkpurple tw-ml-4 tw-px-12 tw-py-8 tw-space-y-5">
                             <h class="tw-text-white tw-text-xl">Order Summary</h>
                             <div class="tw-space-y-2">
                                 <div class="tw-flex tw-justify-between tw-items-center">
-                                    <p class="tw-text-white text-left tw-w-40s">Please take a moment to review your summary</p>
-                                    <p class="tw-text-white tw-text-lg">{{price}}</p>
+                                    <p class="tw-text-white text-left tw-float-left tw-w-40">Chicago thin crust pizza + Garlic Bread + Cold Drink</p>
+                                    <p class="tw-text-white tw-text-lg">50</p>
                                 </div>
                             </div>
                             <hr style="height:1px;color:white;background-color:white">

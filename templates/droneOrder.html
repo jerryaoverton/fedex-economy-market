@@ -6,9 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>FEx Eco!</title>
+    <title>Fedex Economy</title>
     <!-- Iconic Fonts -->
-    <!-- Our Custom CSS -->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../static/vendor/iconic-fonts/flat-icons/flaticon.css">
     <!-- Bootstrap core CSS -->
@@ -19,23 +19,25 @@
     <link href="../static/css/styleDB.css" rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
-
-
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../static/css/custom_style.css">
     <!-- Custom Tailwind CSS -->
     <link rel="stylesheet" href="../static/css/custom_tailwind.css">
 
-    <link rel="stylesheet" href="../static/css/custom_style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script>
-        function placeOrder() {
+        function updateDroneOrder() {
 
-
-            // pay business
-            var payrq = new XMLHttpRequest();
-            req = "{{sc}}pay?sender={{email}}&receiver={{business_id}}&amount={{price}}"
-            payrq.open("GET", req, true);
-            payrq.send();
+            var order = "{{order}}"
+            order = order.replace(/&#39;/g, '"')
+            order = JSON.parse(order)
+                // pay drone
+                // const drone_id = "1"
+                // var payrq = new XMLHttpRequest();
+                // req = "{{sc}}pay?sender={{email}}&receiver="+ drone_id +"&amount={{price}}"
+                // payrq.open("GET", req, true);
+                // payrq.send();
 
             //add/update order
 
@@ -50,26 +52,26 @@
             // 'status': 'complete',
             // 'status_date': '08/05/2020'
             // }
-        var nameandphone = "{{user_profile.first_name}} {{user_profile.last_name}} {{user_profile.phone}}"
 
-        var deliveryAddress = "{{user_profile.street}} {{user_profile.city}} {{user_profile.postalcode}} {{user_profile.stateorprovince}} {{user_profile.countrycode}}"
+            // var order = "{'order_id' : '1' , 'supplier': '{{business_id}}', 'customer': '{{email}}','payment_method': 'tokens'"+
+            //            ",'price': '{{price}}','delivery_provider': '', 'order_details': 'description:charge the drone to 100%,shipment_weight:3' "+ 
+            //              ", 'terms_and_conditions': 'must not harm drone', 'status': 'complete','status_date': '"+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"'  }";
+            order['delivery_provider'] = "Drone";
+            order['status'] = "active";
 
-       
-        
-        var order = "{\"order_id\" :" + Date.now() + " , \"supplier\": \"{{business_id}}\", \"customer\": \"{{email}}\",\"payment_method\": \"tokens\""+
-                   ",\"price\": \"{{price}}\",\"delivery_provider\": \"\", \"order_details\": \"description:charge the drone to 100%,shipment_weight:3\" "+ 
-                     ", \"terms_and_conditions\": \"must not harm drone\", \"status\": \"Placed\",\"status_date\": \""+ new Date().toJSON().slice(0,10).replace(/-/g,'/') +"\" , \"nameandphone\": \"" + nameandphone + "\" , \"deliveryAddress\":\" " + deliveryAddress +"\" }";
+            var xhttp = new XMLHttpRequest();
 
-        var xhttp = new XMLHttpRequest();
-        req = "{{sc}}update_order?order=" + order
+
+            req = "{{sc}}update_order?order=" + JSON.stringify(order)
             xhttp.open("GET", req, true);
             xhttp.send();
 
             alert('order placed');
-            window.location.replace("/dashboard?user_id={{email}}");
+            window.location.replace("/myBusiness?user_id={{email}}");
 
         }
     </script>
+
 </head>
 
 <body class="ms-body ms-aside-left-open ms-dark-theme ms-has-quickbar">
@@ -115,7 +117,7 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet?user_id={{email}}">
+                <a href="/wallet">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
@@ -123,11 +125,11 @@
 
             <!-- Services | Offer -->
             <!-- <li class="menu-item">
-                <a href="/servicesoffer">
-                    <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
+            <a href="/servicesoffer">
+              <span class= "tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
-                </a>
-            </li> -->
+            </a>
+        </li> -->
             <!-- Shop -->
             <li class="menu-item">
                 <a href="/shop?user_id={{email}}">
@@ -136,6 +138,7 @@
                 </a>
             </li>
             <!-- My Business -->
+            {% if business_profile.RegistrationType|string() == 'Business' %}
             <li class="menu-item">
                 <a href="/myBusiness?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
@@ -144,6 +147,7 @@
 
                 </a>
             </li>
+            {%endif%}
         </ul>
 
     </aside>
@@ -267,7 +271,7 @@
                         <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
                     <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
                         <li class="dropdown-menu-header">
-                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{business_profile.first_name + ' ' + business_profile.last_name}}</span></h6>
+                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{user_profile.first_name + ' ' + user_profile.last_name}}</span></h6>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="ms-dropdown-list">
@@ -294,16 +298,15 @@
 
         </nav>
 
-
         <!-- Body Content Wrapper -->
         <div class="ms-content-wrapper">
-            <div class="row tw-mb-10">
+            <div class="row tw-mb-4">
                 <div class="col-xl-3 col-md-6">
                     <div class="tw-info-card-content card-gradient-green">
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
+                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;850
+                    &nbsp;{{user_balance}}
                 </span>
                     </div>
                 </div>
@@ -311,18 +314,18 @@
                     <div class="tw-info-card-content card-gradient-purple">
                         <span class="tw-text-base tw-text-xs tw-text-white">Exchange Rate</span>
                         <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;1 = $ 0.12
-                </span>
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;1 = $ 0.12
+              </span>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="tw-info-card-content card-gradient-aqua">
                         <span class="tw-text-base tw-text-xs tw-text-white">Total Income</span>
                         <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
-                    <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
-                    &nbsp;9,650
-                </span>
+                  <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
+                  &nbsp;9,650
+              </span>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
@@ -333,254 +336,91 @@
                     </svg>
                         </div>
                         <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
-                            <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                            <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div>
-
-                <div>
-                    <div class="tw-h-10 tw-w-full background-orange">
-                    </div>
-                </div>
-
-                <div class="ms-content-wrapper-2 tw-h-screen bg-whitesmoke">
-
-                    <div class="tw-flex">
-                        <div class="tw-bg-white tw-h-50 tw-w-100 tw-mt-10 tw-ml-10 tw-flex">
-                            <br/><br/>
-                            <div class="tw-flex">
-                                <div class="tw-h-25s tw-w-44s tw-pt-6 tw-pl-3">
-                                    <br/>
-                                    <img src="../static/images/Generic business profile.jpg" class="" />
-                                </div>
-                                <div class="tw-mt-5 tw-ml-4 tw-w-40s">
-                                    <br/>
-                                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
-
-                                        {{business_profile.first_name}} {{business_profile.last_name}}
-                                    </h1>
-                                    <br/>
-
-                                    <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
-                                        {{business_profile.description}}
-                                    </p>
-                                    <hr class="tw-mt-5">
-                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
-                                </div>
-                            </div>
-                            <div class="vertical-line-2s tw-ml-20 tw-mt-5"></div>
-
-                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Business Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-                                        <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
-                                        <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                        <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-    
-                                        <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
-                                        <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
-                                        <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Choose your pizza</h>
-                                <form class="tw-mt-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios1" value="Chicago thin curst">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios1">
-                          Chicago thin curst
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios2" value="Greek style pizza">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios2">
-                          Greek style pizza
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input" type="radio" name="pizzaRadio" id="exampleRadios3" value="Sicilian pizza">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios3">
-                          Sicilian pizza
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input" type="radio" name="pizzaRadio" d="exampleRadios4" value="New York-style pizza">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="exampleRadios4">
-                          New York-style pizza
-                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tw-w-56 tw-h-40 tw-mt-4 tw-ml-16">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Sides</h>
-                                <form class="tw-mt-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input " type="checkbox" id="defaultCheck1" value="Garlic Bread">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
-                          Garlic Bread
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck2" value="Cold Drink">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
-                          Cold Drink
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck3" value="Chicken Nuggets">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
-                          Chicken Nuggets
-                        </label>
-                                    </div>
-                                    <div class="form-check tw-pt-1">
-                                        <input class="form-check-input bg-darkpurple" type="checkbox" id="defaultCheck4" value="Cheese Dip">
-                                        <label class="form-check-label tw-text-color-darkpurple tw-font-medium" for="defaultCheck4">
-                          Cheese Dip
-                        </label>
-                                    </div>
-                                </form>
-                            </div> -->
-
-                        
+        </div>
+        <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4">
+            <img src="../static/images/Business.png" class="tw-h-8 tw-w-8" />
+            <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
+        </div>
+        <div class="ms-content-wrapper-2 tw-flex">
+            <div class="bg-aqua tw-w-74 tw-px-10 tw-py-5">
+                <div class="tw-space-y-2">
+                    <div class="tw-flex tw-justify-between tw-items-center">
+                        <p class="tw-text-purple-800 text-left tw-float-left tw-text-2xl tw-font-medium">Order no. 086</p>
+                        <div class="tw-flex tw-items-center">
+                            <img class="tw-h-8 tw-w-8 tw-mr-2" src="../static/images/FEx-coin.png" />
+                            <p class="tw-text-purple-800 tw-text-2xl tw-font-medium">50</p>
                         </div>
                     </div>
-                    <br/> <br/>
-                    <div class="tw-ml-10 tw-flex">
-                       
-                        <div class="tw-w-82s bg-darkpurple tw-ml-4s tw-px-12 tw-py-8 tw-space-y-5">
-                            <h class="tw-text-white tw-text-xl">Order Summary</h>
-                            <div class="tw-space-y-2">
-                                <div class="tw-flex tw-justify-between tw-items-center">
-                                    <p class="tw-text-white text-left tw-w-40s">Please take a moment to review your summary</p>
-                                    <p class="tw-text-white tw-text-lg">{{price}}</p>
-                                </div>
-                            </div>
-                            <hr style="height:1px;color:white;background-color:white">
-                            <div class="tw-flex tw-justify-between tw-items-center">
-                                <p class="tw-text-white text-left tw-float-left tw-text-lg">Order Total</p>
-                                <div class="tw-flex tw-items-center">
-                                    <img class="tw-h-6 tw-w-6 tw-mr-2" src="../static/images/FEx-coin.png" />
-                                    <p class="tw-text-white tw-text-lg">{{price}}</p>
-                                </div>
-                            </div>
-                            <div class="tw-flex tw-justify-center">
-                                <button class="tw-mt-5 background-orange tw-w-48 tw-h-12 tw-rounded tw-text-white tw-text-lg" type="submit" onclick="placeOrder()">Place order</button>
-
-                            </div>
+                </div>
+                <hr style="height:1px;margin-top: 1rem;color:black ">
+                <div class="tw-flex tw-pt-2 tw-justify-between">
+                    <div class="">
+                        <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Deliver to</h>
+                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
+                  <p class="tw-text-gray-600">{{user_profile.first_name + ' ' + user_profile.last_name}}</p>
+                        </div>
+                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
+                  <p class="tw-text-gray-600">{{user_profile.phone}}</p>
                         </div>
                     </div>
+                    <div class="">
+                        <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Address</h>
+                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
+                <p class="tw-text-gray-600">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
+                        </div>
+                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
+                <p class="tw-text-gray-600">{{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr style="height:1px;margin-top: 2rem;color:black">
+        <!-- <div class="tw-flex tw-justify-center">
+          <button class="tw-mt-5 bg-darkpurple tw-w-32 tw-h-10 tw-rounded-lg tw-text-white tw-text-lg" type="submit">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
+        </div> -->
+            </div>
+            <div class="tw-w-72">
+                <img src="../static/images/Drone map.png" class="tw-h-82s tw-w-73" alt="" />
+            </div>
+            <div class="bg-aqua tw-w-73 tw-px-10 tw-py-10">
+                <div class="tw-flex tw-justify-center">
+                    <img src="../static/images/Drone-pur-logo.png" class="delivery-icons tw-w-24 tw-h-24" alt="" />
+                </div>
+                <div class="tw-flex tw-justify-center tw-items-center tw-mt-5">
+                    <p class="tw-text-base tw-text-purple-800 tw-w-40 tw-text-center"> Estimated time for this delivery:</p>
 
                 </div>
-
-
-
-
-                <!-- <div class="row">
-        <div class="col-xl-10 col-md-16">
-            <div class="ms-panel ms-panel-fh">
-              <div class="ms-panel-body" style="width: 1000px;">
-                <br/>
-                <h1 class="title" style="color: #472F92; padding-left: 40%; font-size: xx-large"><b>-----&nbsp;order details&nbsp;-----</b></h1>
-  <br/><br/>
-                <table class="table ms-profile-information" style="width: 1000px;margin-left: 50px; ">
-                  <tbody>
-           
-                    <tr>
-                        <th>Supplier Name</th>
-                        <td><input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}} " /></td>
-                    </tr>
-                  <tr>
-                      <th> Customer Name</th>
-                      <td><input class="form-control" name="first_name_Txt" type="text" id="first_name_Txt" value="{{email}}" /></td>
-                  </tr>
-            
-                <tr>
-                  <th>Street</th>
-                  <td><input class="form-control" name="street_Txt" type="text" id="street_Txt" value="{{user_profile.street}}" /></td>
-              </tr>
-  
-              <tr>
-                <th>City</th>
-                <td><input class="form-control" name="city_Txt" type="text" id="city_Txt" value="{{user_profile.city}}" /></td>
-            </tr>
-  
-            <tr>
-              <th>State/Province</th>
-              <td><input class="form-control" name="state_Txt" type="text" id="state_Txt" value="{{user_profile.stateorprovince}}" /></td>
-          </tr>
-  
-          <tr>
-            <th>Postal Code</th>
-            <td><input class="form-control" name="postal_code_Txt" type="text" id="postal_code_Txt" value="{{user_profile.postalcode}}" /></td>
-        </tr>
-  
-        <tr>
-          <th>Country code</th>
-          <td><input class="form-control" name="country_code_Txt" type="text" id="country_code_Txt" value="{{user_profile.countrycode}}" /></td>
-      </tr>
-                <tr>
-                  <th>Area code</th>
-                  <td><input class="form-control" name="area_code_Txt" type="text" id="area_code_Txt" value="{{user_profile.area_code}}" /></td>
-              </tr>
-              <tr>
-                <th>Phone</th>
-                <td><input class="form-control" name="phone_Txt" type="text" id="phone_Txt" value="{{user_profile.phone}}"/></td>
-            </tr>
-                  <tr>
-                      <th>Description</th>
-                      <td><input class="form-control" name="description_Txt" type="text" id="description_Txt" value="{{user_profile.description}}"></td>
-                  </tr>
-        
-                  <tr>
-                      <th>choose pizza</th>
-                      <td>
-                           <select class="custom-select" name="status_Txt" id="status_Txt">
-                            <option value="active">chicago thin crust</option>
-                            <option value="inactive">greek style</option>
-                          </select>
-                      </td>
-                  </tr>
-
-                  <tr>
-                    <th>Total Price</th>
-                    <td><input class="form-control" name="price_Txt" type="text" id="price_Txt" value="{{price}}"></td>
-                </tr>
-
-                  <tr>
-                      <td/>
-                      <td>
-                        <div class="container-login100-form-btn">
-                          <button  class="login100-form-btn btn btn--radius-2 btn--red" onclick="placeOrder()" style="color:whitesmoke;background-color: #F26522" >Place order</button>
-                      </div>
-                      </td>
-                  </tr>
-                  </tbody>
-  
-              </table>
-  
-                
+                <div class="tw-flex tw-justify-center tw-items-center tw-mt-1">
+                    <p class="tw-text-purple-800 tw-font-semibold tw-text-xl">37 mins</p>
+                </div>
+                <div class="tw-flex tw-justify-center tw-mt-10">
+                    <button id="sendDelivery" class="bg-darkpurple tw-w-40 tw-h-32 tw-rounded-lg" type="button" data-target="#bookedModal" onclick="updateDroneOrder()">
+            <p class="tw-text-white tw-font-medium tw-text-lg">Book a Drone for delivery</p>
+            <div class="tw-flex tw-justify-center tw-items-center tw-mt-2 tw-space-x-2">
+              <img src="../static/images/FEx-coin.png" class="tw-h-6 tw-w-6 tw-rounded-none delivery-icons"/>
+              <p class="tw-text-white tw-font-medium tw-text-lg">8</p>
               </div>
+           </button>
+                </div>
             </div>
-          </div>
-  
-      </div> -->
+        </div>
+        <div class="modal fade " id="bookedModal" tabindex="-1" role="dialog" aria-labelledby="bookedModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content tw-rounded-lg">
+                    <div class="modal-body background-orange">
+                        <div class="tw-px-3 tw-py-3">
+                            <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center">Drone delivery charges have been deducted and Drones are booked for your delivery</p>
+                            <p class="tw-text-white tw-font-normal tw-text-lg tw-text-center tw-mt-2">Estimated Drone arrival time:</p>
+                            <p class="tw-text-white tw-font-bold tw-text-xl tw-text-center">37 mins</p>
+                            <p class="tw-text-white tw-text-center tw-mt-2">Thank you for you patience</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -594,6 +434,13 @@
     <script src="../static/js/jquery-ui.min.js">
     </script>
     <!-- Global Required Scripts End -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bookedModal').on('hidden.bs.modal', function() {
+                $("#sendDelivery").remove();
+            })
+        });
+    </script>
 
     <!-- Page Specific Scripts Start -->
     <script src="../static/js/Chart.bundle.min.js">

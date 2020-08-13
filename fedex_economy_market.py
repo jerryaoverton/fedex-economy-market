@@ -2,12 +2,32 @@ import requests
 import os 
 import json
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
+<<<<<<< HEAD
 #smart_contract = os.environ['SMART_CONTRACT']
 smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+=======
+ctx = {'user_id':'',
+       'drone_started': False,
+       'next_action': None,
+       'current_job': '',
+       'max_total_jobs': 50,
+       'max_consecutive_jobs': 3,
+       'total_jobs': 0,
+       'total_wait_cycles': 0,
+       'max_wait_cycles': 50,
+       'jobs_since_maintenance': 0,
+       'current_battery_usage':0,
+       'current_fexcoins':0,
+       'max_weight':5}
+
+smart_contract = os.environ['SMART_CONTRACT']
+#smart_contract = 'https://fedex-economy-smartcontract.herokuapp.com/'
+>>>>>>> master
 # smart_contract = 'http://127.0.0.1:5000/'
+user_profile = {'' }
 
 @app.route('/')
 def home():
@@ -28,7 +48,7 @@ def services():
 @app.route('/servicesoffer')
 def servicesoffer():
     return render_template('services-offer.html')
-    servicesoffer
+   
 
 @app.route('/contact')
 def contact():
@@ -49,7 +69,7 @@ def wallet():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('wallet.html',email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
+    return render_template('wallet.html',email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/signIn')
 def signIn():
@@ -62,6 +82,7 @@ def signUp():
 @app.route('/dashboard')
 def dashboard():
     user_id = request.args['user_id']
+    ctx['user_id'] = user_id
     svc = '/user_profile'
     params = '?user_id=' + user_id
     url = smart_contract + svc + params
@@ -75,7 +96,7 @@ def dashboard():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'))
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
@@ -85,7 +106,15 @@ def logIn():
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     profile = requests.get(url).content
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')))
+
+    # get user_balance
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')),user_balance=user_balance.decode('utf-8'),sc=smart_contract)
 
 @app.route('/register',  methods = ['POST'])
 def register():
@@ -120,6 +149,7 @@ def register():
     url = smart_contract + svc + params
     _msg = requests.get(url).content
 
+    user_send_payment('fedex',user_id,'100')
     # update profile
     print("profile")
     print(json.dumps(profiledata))
@@ -131,7 +161,7 @@ def register():
     print(_status)
     # req = requests.post(smart_contract + svc, json=data)
 
-    return render_template('dashboard.html',email=user_id, profile=profiledata)
+    return render_template('dashboard.html',email=user_id, profile=profiledata,sc=smart_contract)
     # return render_template('dashboard.html', email='s@s.com',first_name ='s' , last_name ='a')
 
 @app.route('/profile')
@@ -167,7 +197,87 @@ def updateProfile():
 @app.route('/myBusiness')
 def myBusiness():
     _content = "Here is my business"
-    return render_template('myBusiness.html', content=_content , sc=smart_contract)
+    user_id = request.args['user_id']
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    profile = requests.get(url).content
+
+    svc = '/list_orders_by_supplier'
+    params = '?supplier=' + user_id
+    url = smart_contract + svc + params
+    orders = requests.get(url).content
+    print('orders', (orders.decode('utf-8')))
+    print('orders eval', eval(orders.decode('utf-8')))
+
+    return render_template('business_review_order.html', content=_content , orders =eval(orders.decode('utf-8')), email=user_id, sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
+
+
+@app.route('/dronedelivery', methods=["POST"])
+def dronedelivery():
+    print(request.form)
+    order = eval(request.form['order'])
+    print(order)
+    user_id = order['customer']
+    business_id = order['supplier']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+    print(str(order))
+    return render_template('droneOrder.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+
+@app.route('/generaldelivery', methods=["POST"])
+def generaldelivery():
+    print(request.form)
+    order = eval(request.form['order'])
+    print(order)
+    user_id = order['customer']
+    business_id = order['supplier']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+    print(str(order))
+
+    svc='/update_order'
+
+    order_id=order['order_id']
+    order_for_service = {
+                            'order_id':str(order_id),
+                            'supplier': business_id,
+                            'customer': user_id,
+                            'payment_method': 'tokens',
+                            'price': order['price'],
+                            'delivery_provider': '',
+                            'order_details': '',
+                            'delivery_address':'',
+                            'nameandphone':'',
+                            'terms_and_conditions': 'must not harm drone',
+                            'status': 'complete',
+                            'status_date': '08/06/2020'
+                            }
+    params = '?order=' + str(order_for_service)
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+
+    return redirect(url_for("myBusiness",user_id=business_id))
+    # myBusiness()
+    # return render_template('business_review_order.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+
+
 
 @app.route('/shop')
 def shop():
@@ -253,7 +363,13 @@ def balance():
     _msg = "The balance of " + user_id + " is " + str(_balance)
     return render_template('balance.html', msg=_msg)
 
-
+def user_send_payment(sender,receiver,amount):
+    print('sending payment')
+    svc = '/pay'
+    params = '?sender='+sender+'&receiver='+receiver+'&amount='+amount
+    url = smart_contract + svc + params
+    _msg = requests.get(url).content
+    
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1000)
+    app.run(debug=True, port=5002)
