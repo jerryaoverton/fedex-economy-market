@@ -288,6 +288,13 @@ def shop():
     all_users = requests.get(url).content
    
 
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+
     all_users_json = eval(all_users.decode('utf-8'))
     print('json print')
     # print(all_users_json)
@@ -306,7 +313,7 @@ def shop():
     # shops.append({"user_id": 'b@gmail.com', "profile":{"first_name":'ann b', "last_name":'pizza', "description":'i m a pizza shop'} })
     print(str(shops))    
 
-    return render_template('shop.html', email=user_id, profile=json.loads(profile.decode('utf-8')), shops=shops, sc=smart_contract)
+    return render_template('shop.html', user_balance=user_balance.decode('utf-8') ,email=user_id, profile=json.loads(profile.decode('utf-8')), shops=shops, sc=smart_contract)
 
 @app.route('/order' ,  methods = ['POST'])
 def order():
@@ -367,4 +374,4 @@ def user_send_payment(sender,receiver,amount):
     
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=1000)
