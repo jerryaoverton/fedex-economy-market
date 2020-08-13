@@ -234,7 +234,7 @@ def dronedelivery():
     print(str(order))
 
     svc = '/user_balance'
-    params = '?user_id=' + user_id
+    params = '?user_id=' + business_id
     url = smart_contract + svc + params
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
