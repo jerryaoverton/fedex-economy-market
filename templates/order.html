@@ -375,9 +375,9 @@
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl ">Business Address</h>
                                 <div class="tw-flex tw-items-center">
                                     <div class="">
-                                        <address class="tw-text-color-darkpurple tw-w-56">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
+                                        <address class="tw-text-color-darkpurple tw-w-48">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
                                         <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}"/>
+                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -386,7 +386,7 @@
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
                                 <div class="tw-flex tw-items-center">
                                     <div class="tw-text-center">
-                                        <address class="tw-text-color-darkpurple tw-w-56">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                                        <address class="tw-text-color-darkpurple tw-w-48">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
                                         <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" disabled/>
                                         <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" />
                                     </div>
