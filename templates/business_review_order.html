@@ -106,8 +106,6 @@
                 console.log(parse_order.nameandphone)
 
                 var row = "<tr id=" + parse_order.order_id + " ><td scope='row' class='text-center'>" + parse_order.order_id + " </td> \
-                             <td class='text-center tw-w-48'> \
-                            </td> \
                             <td class='text-center tw-w-48'>" + parse_order.nameandphone + " </td> \
                             <td class='text-center tw-w-48'>" + parse_order.deliveryAddress + " </td> \
                             <td class='text-center tw-space-x-10'>" + status_td + " </tr>"
@@ -411,40 +409,38 @@
             <img src="../static/images/Business.png" class="tw-h-5 tw-w-5" />
             <h class="tw-text-white tw-text-2xl tw-underline">{{profile.first_name}} {{profile.last_name}}</h>
         </div>
-        <br/><br/>
         <div class="ms-content-wrapper-2 tw-justify-center">
-            <table class="table table-hover tw-text-purple-800" id="ordertbl" style= "width:80% ;text-align: center;margin-left: 10%; ">
-                <thead>
+            <table class="table table-hover tw-text-purple-800" id="ordertbl" style= "text-align: center;">
+                <thead class="bg-darkpurple">
                     <tr>
-                        <th scope="col" class="text-center tw-text-lg">Order #</th>
+                        <th scope="col" class="text-center tw-text-lg tw-text-white">Order #</th>
                         <!-- <th scope="col" class="text-center tw-text-lg">Order Details</th> -->
-                        <th scope="col" class="text-center tw-text-lg">Name & Phone</th>
-                        <th scope="col" class="text-center tw-text-lg">Delivery Address</th>
-                        <th scope="col" class="text-center tw-text-lg">Delivery Type</th>
+                        <th scope="col" class="text-center tw-text-lg tw-text-white">Name & Phone</th>
+                        <th scope="col" class="text-center tw-text-lg tw-text-white">Delivery Address</th>
+                        <th scope="col" class="text-center tw-text-lg tw-text-white">Delivery Type</th>
                     </tr>
-                </thead>
+                </thead >
                 <tbody>
                     {% for order in orders%}
                     <tr id="{{order.order_id}}">
                         <td scope="row" class="tw-text-center">{{order.order_id}}</td>
-                        <!-- <td class="text-center tw-w-48"></td> -->
-                        <td class="text-center tw-w-48">{{order.nameandphone}}</td>
+                        <td class="text-center tw-w-40">{{order.nameandphone}}</td>
                         <td class="text-center tw-w-48">{{order.deliveryAddress}}</td>
                         {% if order.status|string() == "Placed" %}
-                        <td class="text-center tw-space-x-10">
+                        <td class="text-center tw-space-x-10 tw-flex tw-justify-center">
                             <form action='/dronedelivery' method='POST'>
                                 <input name='order' type='hidden' value='{{order}}' />
-                                <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded" type="submit">
-                <img src="../static/images/white-drone.png" class="tw-rounded-none tw-mr-0 tw-ml-2 delivery-icons"/>
+                                <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded tw-flex tw-items-center tw-justify-center" type="submit">
+                <img src="../static/images/white-drone.png" class="tw-rounded-none tw-mr-0 delivery-icons tw-w-12 tw-h-12"/>
               </button>
                             </form>
                         </td>
                         {%endif%} {% if order.status|string() == "ServicesforDrone" %}
-                        <td class="text-center tw-space-x-10">
+                        <td class="text-center tw-space-x-10 tw-flex tw-justify-center">
                             <form action='/generaldelivery' method='POST'>
                                 <input name='order' type='hidden' value='{{order}}' />
-                                <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded" type="submit">
-                <img src="../static/images/ground_delivery.png" class="tw-rounded-none tw-mr-0 tw-ml-2 delivery-icons"/>
+                                <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded tw-flex tw-items-center tw-justify-center" type="submit">
+                <img src="../static/images/ground_delivery.png" class="tw-rounded-none tw-mr-0 delivery-icons"/>
               </button>
                             </form>
                         </td>
