@@ -43,9 +43,11 @@
             xhttp_balance.send();
 
             tempCount=0;
+            // alert("{{sc}}/list_orders_by_customer?customer={{email}}")
             try {
                 fetch("{{sc}}/list_orders_by_customer?customer={{email}}", {
                     method: 'GET',
+                    mode:'no-cors',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
