@@ -1,6 +1,7 @@
 import requests
 import os 
 import json
+import ast
 
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
@@ -91,7 +92,18 @@ def dashboard():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract)
+    # get user_orders
+    svc = '/list_orders_by_customer'
+    params = '?customer=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    order = requests.get(url).content
+    
+    all_users_json = eval(order)
+
+    print(order)
+    
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')), user_balance=user_balance.decode('utf-8'),sc=smart_contract,orders=all_users_json)
 
 @app.route('/logIn',  methods = ['POST'])
 def logIn():
@@ -109,7 +121,16 @@ def logIn():
     # Todo : redirect to register if no profile is there
     user_balance = requests.get(url).content
 
-    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')),user_balance=user_balance.decode('utf-8'),sc=smart_contract)
+     # get user_orders
+    svc = '/list_orders_by_customer'
+    params = '?customer=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    order = requests.get(url).content
+    
+    all_users_json = eval(order)
+
+    return render_template('dashboard.html', email=user_id, profile=json.loads(profile.decode('utf-8')),user_balance=user_balance.decode('utf-8'),sc=smart_contract,orders=all_users_json)
 
 @app.route('/register',  methods = ['POST'])
 def register():
@@ -156,7 +177,22 @@ def register():
     print(_status)
     # req = requests.post(smart_contract + svc, json=data)
 
-    return render_template('dashboard.html',email=user_id, profile=profiledata,sc=smart_contract)
+    # get user_balance
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+     # get user_orders
+    svc = '/list_orders_by_customer'
+    params = '?customer=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    order = requests.get(url).content
+    
+    all_users_json = eval(order)
+    return render_template('dashboard.html',email=user_id, profile=profiledata,user_balance=user_balance.decode('utf-8'),sc=smart_contract,orders=all_users_json)
     # return render_template('dashboard.html', email='s@s.com',first_name ='s' , last_name ='a')
 
 @app.route('/profile')
@@ -205,6 +241,9 @@ def myBusiness():
     print('orders', (orders.decode('utf-8')))
     print('orders eval', eval(orders.decode('utf-8')))
 
+<<<<<<< HEAD
+    return render_template('business_review_order.html', content=_content , orders =json.dumps(orders.decode('utf-8')), email=user_id, sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
+=======
     svc = '/user_balance'
     params = '?user_id=' + user_id
     url = smart_contract + svc + params
@@ -212,6 +251,7 @@ def myBusiness():
     user_balance = requests.get(url).content
 
     return render_template('business_review_order.html', user_balance=user_balance.decode('utf-8') ,content=_content , orders =eval(orders.decode('utf-8')), email=user_id, sc=smart_contract,profile=json.loads(profile.decode('utf-8')))
+>>>>>>> 38669442e1353b725b4e5d0fbedffe157689db10
 
 
 @app.route('/dronedelivery', methods=["POST"])

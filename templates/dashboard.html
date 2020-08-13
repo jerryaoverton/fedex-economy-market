@@ -28,37 +28,22 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/JavaScript">
+        function decode(string) {
+    var div = document.createElement("div");
+    div.innerHTML = string;
+    return typeof div.textContent !== 'undefined' ? div.textContent : div.innerText;
+}
         $(document).ready(function() {
 
-            var table = document.getElementById('order_history');
-            user_type="{{profile.RegistrationType}}"
-            var xhttp_balance = new XMLHttpRequest();
-            req = "{{sc}}user_balance?user_id={{email}}"
+             var table = document.getElementById('order_history');
+            order="{{orders}}"
+            decode_order=decode(order)
+                tempCount=0;
 
-            xhttp_balance.open("GET", req, true);
-
-            xhttp_balance.onload = function() {
-                document.getElementById("user_balance").innerHTML = xhttp_balance.responseText;
-            };
-            xhttp_balance.send();
-
-            tempCount=0;
-            // alert("{{sc}}/list_orders_by_customer?customer={{email}}")
-            try {
-                fetch("{{sc}}/list_orders_by_customer?customer={{email}}", {
-                    method: 'GET',
-                    mode:'no-cors',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                }).then(resp => resp.text())
-                    .then(results => {
-
-                        result_converted=results.replace(/'/g, '"');
-                        json_results=JSON.parse(result_converted)
-                        // alert(json_results.length)
-                        if(json_results.length>0){
+             result_converted=decode_order.replace(/'/g, '"');
+             json_results=JSON.parse(result_converted);
+             // alert(json_results.length)
+                if(json_results.length>0){
                             json_results.forEach(
                                 data=>{
 
@@ -83,19 +68,35 @@
                                     tempCount++;
                                 }
                             )}
-                        else
-                        {
 
-                            var row = table.insertRow(tempCount + 1);
-                            var status = row.insertCell(0);
-                            status.innerHTML="No recent orders"
-                        }
-                    });
-            } catch (e) {
-                console.log(e);
-                console.log('----------------');
 
-            }
+    document.getElementById("user_balance").innerHTML="{{user_balance}}"
+            // user_type="{{profile.RegistrationType}}"
+            // var xhttp_balance = new XMLHttpRequest();
+            // req = "{{sc}}user_balance?user_id={{email}}"
+            //
+            // xhttp_balance.open("GET", req, true);
+            //
+            // xhttp_balance.onload = function() {
+            //
+            //     document.getElementById("user_balance").innerHTML = xhttp_balance.responseText;
+            // };
+            // xhttp_balance.send();
+            //
+            // var table = document.getElementById('order_history');
+            // user_type="{{profile.RegistrationType}}"
+            // var xhttp_balance = new XMLHttpRequest();
+            // req = "{{sc}}/list_orders_by_customer?customer={{email}}"
+            //
+            // xhttp_balance.open("GET", req, true);
+            // xhttp_balance.setRequestHeader('Access-Control-Allow-Origin','*')
+            // xhttp_balance.onload = function() {
+            //    document.getElementById("user_balance").innerHTML=( xhttp_balance.responseText);
+            // };
+            // xhttp_balance.send();
+
+
+
         });
     </script>
 </head>
