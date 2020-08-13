@@ -20,11 +20,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="M-favicon.png">
 
-    <link rel="stylesheet" href="../static/css/custom_style.css">
+
     <!-- Custom Tailwind CSS -->
     <link rel="stylesheet" href="../static/css/custom_tailwind.css">
 
-
+    <link rel="stylesheet" href="../static/css/custom_style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script>
@@ -115,19 +115,19 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet">
+                <a href="/wallet?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
             </li>
 
             <!-- Services | Offer -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
                 <a href="/servicesoffer">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Services.png"/>&nbsp;&nbsp;&nbsp;&nbsp;Services | Offer</span>
                 </a>
-            </li>
+            </li> -->
             <!-- Shop -->
             <li class="menu-item">
                 <a href="/shop?user_id={{email}}">
@@ -137,7 +137,7 @@
             </li>
             <!-- My Business -->
             <li class="menu-item">
-                <a href="/myBusiness">
+                <a href="/myBusiness?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
                 <img src="../static/images/Business.png">&nbsp;&nbsp;&nbsp;&nbsp;MyBusiness
               </span>
@@ -354,7 +354,7 @@
                             <div class="tw-flex">
                                 <div class="tw-h-25s tw-w-44s tw-pt-6 tw-pl-3">
                                     <br/>
-                                    <img src="../static/images/pizza_example.jpeg" class="" />
+                                    <img src="../static/images/Generic business profile.jpg" class="" />
                                 </div>
                                 <div class="tw-mt-5 tw-ml-4 tw-w-40s">
                                     <br/>
@@ -365,14 +365,39 @@
                                     <br/>
 
                                     <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        {{business_profile.description}}
                                     </p>
                                     <hr class="tw-mt-5">
-                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">Enjoy a range delicious pizza <br/> at a discounted price</p>
+                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
                                 </div>
                             </div>
-                            <div class="vertical-line-2 tw-ml-20 tw-mt-5"></div>
+                            <div class="vertical-line-2s tw-ml-20 tw-mt-5"></div>
+
                             <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
+                                <br/>
+                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Business Address</h>
+                                <div class="tw-flex tw-space-x-6 tw-items-center">
+                                    <div class="tw-w-64 tw-mt-2">
+                                        <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
+                                        <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
+                                        <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
+                                <br/>
+                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
+                                <div class="tw-flex tw-space-x-6 tw-items-center">
+                                    <div class="tw-w-64 tw-mt-2">
+    
+                                        <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                                        <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
+                                        <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
                                 <br/>
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Choose your pizza</h>
                                 <form class="tw-mt-2">
@@ -431,39 +456,20 @@
                         </label>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
+
+                        
                         </div>
                     </div>
-                    <br/>
+                    <br/> <br/>
                     <div class="tw-ml-10 tw-flex">
-                        <div class="tw-w-20s tw-h-40 tw-mt-16">
-                            <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Buisness Address</h>
-                            <div class="tw-flex tw-space-x-6 tw-items-center">
-                                <div class="tw-w-64 tw-mt-2">
-                                    <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
-                                    <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                    <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vertical-line-2 tw-ml-10 tw-mt-10"></div>
-                        <div class="tw-w-20s tw-h-40 tw-ml-10 tw-mt-16">
-                            <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
-                            <div class="tw-flex tw-space-x-6 tw-items-center">
-                                <div class="tw-w-64 tw-mt-2">
-
-                                    <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
-                                    <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
-                                    <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tw-w-82s bg-darkpurple tw-ml-4 tw-px-12 tw-py-8 tw-space-y-5">
+                       
+                        <div class="tw-w-82s bg-darkpurple tw-ml-4s tw-px-12 tw-py-8 tw-space-y-5">
                             <h class="tw-text-white tw-text-xl">Order Summary</h>
                             <div class="tw-space-y-2">
                                 <div class="tw-flex tw-justify-between tw-items-center">
-                                    <p class="tw-text-white text-left tw-float-left tw-w-40">Chicago thin crust pizza + Garlic Bread + Cold Drink</p>
-                                    <p class="tw-text-white tw-text-lg">50</p>
+                                    <p class="tw-text-white text-left tw-w-40s">Please take a moment to review your summary</p>
+                                    <p class="tw-text-white tw-text-lg">{{price}}</p>
                                 </div>
                             </div>
                             <hr style="height:1px;color:white;background-color:white">
