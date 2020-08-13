@@ -626,7 +626,7 @@ pre{
 /* Body Content */
 .body-content {
   position: relative;
-  background: #f0f0fa;
+  background: #F0F0FA !important;
   -webkit-transition: padding 0.3s;
   transition: padding 0.3s;
   min-height: 100vh;
@@ -635,7 +635,7 @@ pre{
   padding-left: 0;
 }
 .ms-has-quickbar .body-content{
-  padding-right: 60px;
+  padding-right: 0px;
 }
 .ms-aside-open .body-content{
   padding-left: 255px;
@@ -643,7 +643,7 @@ pre{
 
 .ms-content-wrapper {
   padding: 30px;
-  background-color: whitesmoke;
+  background-color: #F0F0FA;
 }
 
 .has-chevron{

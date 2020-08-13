@@ -153,7 +153,7 @@ img.delivery-icons{
 }
 
 .bg-darkpurple{
-    background-color: #472F92;
+    background-color: #472F92 !important;
 }
 
 .bg-aqua{
@@ -232,3 +232,10 @@ img.delivery-icons{
     width: 45rem;
 
 }
+.ms-content-wrapper-2{
+    background-color: #F0F0FA !important;
+}
+
+/* .body-content{
+    padding-right: 0 !important;
+} */
