@@ -75,7 +75,9 @@
                                     supplier.innerHTML = data.supplier;
                                     status.innerHTML=data.status;
                                     orderid.innerHTML=data.order_id;
-                                    orderdesc.innerHTML=data.delivery_address;
+                                    if(data.deliveryAddress!=undefined)
+                                    orderdesc.innerHTML=data.deliveryAddress;
+
                                     tempCount++;
                                 }
                             )}
@@ -381,7 +383,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Order Status</th>
                                     <th scope="col">Order ID</th>
-                                    <th scope="col">Delivery Address</th>
+                                    <th scope="col"> Address</th>
                                 </tr>
                                 </thead>
                                 <tbody>

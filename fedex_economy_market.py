@@ -2,7 +2,7 @@ import requests
 import os 
 import json
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 ctx = {'user_id':'',
@@ -228,7 +228,50 @@ def dronedelivery():
     print(str(order))
     return render_template('droneOrder.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
 
-    
+@app.route('/generaldelivery', methods=["POST"])
+def generaldelivery():
+    print(request.form)
+    order = eval(request.form['order'])
+    print(order)
+    user_id = order['customer']
+    business_id = order['supplier']
+
+    svc = '/user_profile'
+    params = '?user_id=' + business_id
+    url = smart_contract + svc + params
+    business_profile = requests.get(url).content
+
+    svc = '/user_profile'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+    print(str(order))
+
+    svc='/update_order'
+
+    order_id=order['order_id']
+    order_for_service = {
+                            'order_id':str(order_id),
+                            'supplier': business_id,
+                            'customer': user_id,
+                            'payment_method': 'tokens',
+                            'price': order['price'],
+                            'delivery_provider': '',
+                            'order_details': '',
+                            'delivery_address':'',
+                            'nameandphone':'',
+                            'terms_and_conditions': 'must not harm drone',
+                            'status': 'complete',
+                            'status_date': '08/06/2020'
+                            }
+    params = '?order=' + str(order_for_service)
+    url = smart_contract + svc + params
+    user_profile = requests.get(url).content
+
+    return redirect(url_for("myBusiness",user_id=business_id))
+    # myBusiness()
+    # return render_template('business_review_order.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+
 
 
 @app.route('/shop')
