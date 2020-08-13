@@ -255,7 +255,7 @@
 
         <!-- Body Content Wrapper -->
         <div class="ms-content-wrapper">
-            <div class="row tw-mb-10">
+            <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="tw-info-card-content card-gradient-green">
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
@@ -298,13 +298,50 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row tw-mt-5">
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center">
+                    <div class="tw-w-64 tw-bg-white">
+                        <img src="../static/images/Amazon-logo.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center">
+                    <div class="tw-w-64 tw-bg-white tw-flex tw-items-center">
+                        <img src="../static/images/Walmart-logo.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center">
+                    <div class="tw-w-64 tw-bg-white tw-flex tw-items-center">
+                        <img src="../static/images/Costco-logo.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row tw-mt-5">
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center tw-h-32">
+                    <div class="tw-bg-white tw-w-64 tw-flex tw-justify-center tw-items-center">
+                        <div class="tw-w-48">
+                            <img src="../static/images/Kroger-logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center tw-h-32">
+                    <div class="tw-bg-white tw-w-64 tw-flex tw-justify-center ">
+                        <div class="tw-w-32">
+                            <img src="../static/images/HomeDepot-logo.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 tw-flex tw-justify-center tw-h-32">
+                    <div class="tw-w-64 tw-bg-white tw-flex tw-items-center">
+                        <img src="../static/images/Target-Logo.jpg" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="content-container-2 tw-mx-10 tw-my-5">
+        <div class="ms-content-wrapper-2 tw-px-10">
             <div class="row">
                 {% for shop in shops%}
-                <div class="col-xl-3 col-md-6 h-80 tw-my-5">
+                <div class="col-xl-3 col-md-6 h-80 tw-mb-5">
                     <form action="/order" method="POST">
                         <div class="tw-bg-white tw-w-full tw-h-full tw-rounded-md tw-shadow-md">
                             <div class="">
