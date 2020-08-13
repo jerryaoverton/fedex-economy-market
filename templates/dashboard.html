@@ -64,6 +64,7 @@
                                     var supplier = row.insertCell(0);
                                     var status = row.insertCell(1);
                                     var orderid=row.insertCell(2);
+                                    var orderdesc=row.insertCell(3);
                                     // if(user_type!='Individual'){
                                     //     supplier.innerHTML=data.customer;
                                     //
@@ -74,6 +75,7 @@
                                     supplier.innerHTML = data.supplier;
                                     status.innerHTML=data.status;
                                     orderid.innerHTML=data.order_id;
+                                    orderdesc.innerHTML=data.delivery_address;
                                     tempCount++;
                                 }
                             )}
@@ -122,7 +124,7 @@
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
 
     <!-- Logo -->
-    <div class="logo-sn ms-d-block-lg tw-ml-10 tw-mt-3">
+    <div class="logo-sn ms-d-block-lg tw-flex tw-justify-center tw-mt-3">
         <a class="pl-0 ml-0 text-center" href="/index"> <img src="../static/images/main_logo_white.png" alt="logo"> </a>
     </div>
 
@@ -379,6 +381,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Order Status</th>
                                     <th scope="col">Order ID</th>
+                                    <th scope="col">Delivery Address</th>
                                 </tr>
                                 </thead>
                                 <tbody>
