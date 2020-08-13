@@ -232,7 +232,14 @@ def dronedelivery():
     url = smart_contract + svc + params
     user_profile = requests.get(url).content
     print(str(order))
-    return render_template('droneOrder.html', order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
+
+    svc = '/user_balance'
+    params = '?user_id=' + user_id
+    url = smart_contract + svc + params
+    # Todo : redirect to register if no profile is there
+    user_balance = requests.get(url).content
+
+    return render_template('droneOrder.html', user_balance=user_balance.decode('utf-8') ,order=(order), sc=smart_contract , email=business_id, business_id = user_id, price=8, user_profile=json.loads(user_profile.decode('utf-8')),business_profile=json.loads(business_profile.decode('utf-8')))
 
 @app.route('/generaldelivery', methods=["POST"])
 def generaldelivery():

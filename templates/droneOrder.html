@@ -117,7 +117,7 @@
             </li>
             <!-- Wallet -->
             <li class="menu-item">
-                <a href="/wallet">
+                <a href="/wallet?user_id={{email}}">
                     <span class="tw-flex tw-items-center tw-text-xl tw-py-2">
               <img src="../static/images/Wallet.png"></img>&nbsp;&nbsp;&nbsp;&nbsp;Wallet</span>
                 </a>
@@ -271,7 +271,7 @@
                         <img class="ms-user-img ms-img-round float-right" src="https://via.placeholder.com/270x270" alt="people"> </a>
                     <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
                         <li class="dropdown-menu-header">
-                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{user_profile.first_name + ' ' + user_profile.last_name}}</span></h6>
+                            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">{{business_profile.first_name + ' ' + business_profile.last_name}}</span></h6>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="ms-dropdown-list">
@@ -344,7 +344,7 @@
         </div>
         <div class="tw-h-20 tw-w-full background-orange tw-flex tw-pl-5 tw-items-center tw-font-semibold tw-space-x-4">
             <img src="../static/images/Business.png" class="tw-h-8 tw-w-8" />
-            <h class="tw-text-white tw-text-2xl tw-underline">Ann Pizza Corner</h>
+            <h class="tw-text-white tw-text-2xl tw-underline">{{business_profile.first_name + ' ' + business_profile.last_name}}</h>
         </div>
         <div class="ms-content-wrapper-2 tw-flex">
             <div class="bg-aqua tw-w-74 tw-px-10 tw-py-5">
