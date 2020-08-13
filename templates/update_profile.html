@@ -444,113 +444,85 @@
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper" >
-
-      <br/><br/>
-
-      <div class="row" style="margin-left: 150px;">
-
-       
-        <div class="col-xl-10 col-md-16">
+      <!-- <div class="row">
+        <div class="col-xl-10 col-md-16"> -->
           <div class="ms-panel ms-panel-fh">
-            <div class="ms-panel-body" style="width: 1000px;">
-              <br/>
-              <h1 class="title" style="color: #472F92; padding-left: 40%; font-size: xx-large"><b>-----&nbsp;Basic Information&nbsp;-----</b></h1>
-<br/><br/>
-              <table class="table ms-profile-information" style="width: 1000px;margin-left: 50px; ">
+            <div class="ms-panel-body tw-p-16">
+              <h1 class="title tw-text-center tw-text-purple-800 tw-text-3xl tw-font-semibold" >Basic Information</h1>
+              <table class="table ms-profile-information tw-mt-5">
                 <tbody>
-                <tr >
+                  <tr class= "tw-py-2">
                     <th>Image URL</th>
                     <td><input class="form-control"  name="image_url_Txt" type="text" id="image_url_Txt" value="{{profile.image_url}}" /></td>
-                </tr>
-                <tr>
+                  </tr>
+                  <tr>
                     <th>First Name</th>
                     <td><input class="form-control" name="first_name_Txt" type="text" id="first_name_Txt" value="{{profile.first_name}}" /></td>
-                </tr>
+                  </tr>
+                  <tr>
+                    <th>Last Name</th>
+                    <td><input class="form-control" name="last_name_Txt" type="text" id="last_name_Txt" value="{{profile.last_name}}" /></td>
+                  </tr>
+                  <tr>
+                    <th>Street</th>
+                    <td><input class="form-control" name="street_Txt" type="text" id="street_Txt" value="{{profile.street}}" /></td>
+                  </tr>
                 <tr>
-                  <th>Last Name</th>
-                  <td><input class="form-control" name="last_name_Txt" type="text" id="last_name_Txt" value="{{profile.last_name}}" /></td>
+                  <th>City</th>
+                  <td><input class="form-control" name="city_Txt" type="text" id="city_Txt" value="{{profile.city}}" /></td>
+               </tr>
+                <tr>
+                  <th>State/Province</th>
+                  <td><input class="form-control" name="state_Txt" type="text" id="state_Txt" value="{{profile.stateorprovince}}" /></td>
+               </tr>
+                <tr>
+                  <th>Postal Code</th>
+                  <td><input class="form-control" name="postal_code_Txt" type="text" id="postal_code_Txt" value="{{profile.postalcode}}" /></td>
+               </tr>
+               <tr>
+                 <th>Country code</th>
+                 <td><input class="form-control" name="country_code_Txt" type="text" id="country_code_Txt" value="{{profile.countrycode}}" /></td>
               </tr>
-              <tr>
-                <th>Street</th>
-                <td><input class="form-control" name="street_Txt" type="text" id="street_Txt" value="{{profile.street}}" /></td>
-            </tr>
-
-            <tr>
-              <th>City</th>
-              <td><input class="form-control" name="city_Txt" type="text" id="city_Txt" value="{{profile.city}}" /></td>
-          </tr>
-
-          <tr>
-            <th>State/Province</th>
-            <td><input class="form-control" name="state_Txt" type="text" id="state_Txt" value="{{profile.stateorprovince}}" /></td>
-        </tr>
-
-        <tr>
-          <th>Postal Code</th>
-          <td><input class="form-control" name="postal_code_Txt" type="text" id="postal_code_Txt" value="{{profile.postalcode}}" /></td>
-      </tr>
-
-      <tr>
-        <th>Country code</th>
-        <td><input class="form-control" name="country_code_Txt" type="text" id="country_code_Txt" value="{{profile.countrycode}}" /></td>
-    </tr>
               <tr>
                 <th>Area code</th>
                 <td><input class="form-control" name="area_code_Txt" type="text" id="area_code_Txt" value="{{profile.area_code}}" /></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td><input class="form-control" name="phone_Txt" type="text" id="phone_Txt" value="{{profile.phone}}"/></td>
             </tr>
-            <tr>
-              <th>Phone</th>
-              <td><input class="form-control" name="phone_Txt" type="text" id="phone_Txt" value="{{profile.phone}}"/></td>
-          </tr>
-                <tr>
-                    <th>Description</th>
-                    <td><input class="form-control" name="description_Txt" type="text" id="description_Txt" value="{{profile.description}}"></td>
+              <tr>
+                <th>Description</th>
+                <td><input class="form-control" name="description_Txt" type="text" id="description_Txt" value="{{profile.description}}"></td>
+              </tr>
+              <tr>
+                  <th>Tags</th>
+                  <td><input class="form-control" name="tags_Txt" type="text" id="tags_Txt" value="{{profile.tags}}" placeholder="Enter comma separated tags"/></td>
+              </tr>
+              <tr>
+                  <th>Rating</th>
+                  <td><input class="form-control" name="rating_Txt" type="text" id="rating_Txt" value="{{profile.rating}}"/></td>
+              </tr>
+              <tr>
+                  <th>Status</th>
+                  <td>
+                    <select class="custom-select" name="status_Txt" id="status_Txt">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    </select>
+                  </td>
                 </tr>
-                <tr>
-                    <th>Tags</th>
-                    <td><input class="form-control" name="tags_Txt" type="text" id="tags_Txt" value="{{profile.tags}}" placeholder="Enter comma separated tags"/></td>
-                </tr>
-                <tr>
-                    <th>Rating</th>
-                    <td><input class="form-control" name="rating_Txt" type="text" id="rating_Txt" value="{{profile.rating}}"/></td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>
-                         <select class="custom-select" name="status_Txt" id="status_Txt">
-                          <option value="active">Active</option>
-                          <option value="inactive">Inactive</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td/>
-                    <td>
-                      <div class="container-login100-form-btn">
-                        <button onclick="update_profile()" class="login100-form-btn btn btn--radius-2 btn--red" type="submit" style="color:whitesmoke;background-color: #F26522" >Update Your Profile</button>
-					</div>
-                    </td>
-                </tr>
-                </tbody>
-
-            </table>
-
-              
-            </div>
-          </div>
+            </tbody>
+          </table> 
+          <div class="container-login100-form-btn tw-flex tw-justify-center">
+            <button onclick="update_profile()" class="login100-form-btn btn btn--radius-2 btn--red" type="submit" style="color:whitesmoke;background-color: #F26522" >Update Your Profile</button>
         </div>
-
-
-
+        </div>
       </div>
-
-
-    </div>
-
-  </main>
-
-
- 
+    <!-- </div>
+  </div> -->
+  </div>
+</main>
 
 
   <!-- SCRIPTS -->
