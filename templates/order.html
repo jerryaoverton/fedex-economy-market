@@ -346,24 +346,18 @@
                     </div>
                 </div>
 
-                <div class="ms-content-wrapper-2 tw-h-screen bg-whitesmoke">
-
-                    <div class="tw-flex">
-                        <div class="tw-bg-white tw-h-50 tw-w-100 tw-mt-10 tw-ml-10 tw-flex">
-                            <br/><br/>
-                            <div class="tw-flex">
-                                <div class="tw-h-25s tw-w-44s tw-pt-6 tw-pl-3">
-                                    <br/>
+                <div class="ms-content-wrapper-2 bg-whitesmoke">
+                    <div class="tw-flex tw-h-72 tw-space-x-3">
+                        <div class="tw-bg-white tw-py-5 tw-px-5 tw-flex">
+                            <div class="tw-flex tw-justify-center">
+                                <div class="tw-h-64 tw-w-64 tw-flex tw-items-center">
                                     <img src="../static/images/Generic business profile.jpg" class="" />
                                 </div>
-                                <div class="tw-mt-5 tw-ml-4 tw-w-40s">
-                                    <br/>
+                                <div class="tw-text-center tw-py-5">
                                     <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
 
                                         {{business_profile.first_name}} {{business_profile.last_name}}
                                     </h1>
-                                    <br/>
-
                                     <p class="tw-text-2xs tw-mt-1 tw-text-gray-700">
                                         {{business_profile.description}}
                                     </p>
@@ -371,32 +365,30 @@
                                     <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
                                 </div>
                             </div>
-                            <div class="vertical-line-2s tw-ml-20 tw-mt-5"></div>
-
-                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
-                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Business Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-                                        <address class="tw-text-purple-800">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
-                                        <input class="form-control" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                        <input class="form-control" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
+                            <!-- <div class="vertical-line-2s tw-mt-4 tw-ml-2"></div> -->
+                        <div class = "tw-flex tw-justify-center tw-px-2">
+                            <div class="tw-text-center tw-py-5 tw-float-left">
+                                <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl ">Business Address</h>
+                                <div class="tw-flex tw-items-center">
+                                    <div class="">
+                                        <address class="tw-text-color-darkpurple tw-w-56">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
+                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
+                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
-                                <br/>
+                            <div class="tw-text-center tw-py-5 tw-float-right">
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Delivery Address</h>
-                                <div class="tw-flex tw-space-x-6 tw-items-center">
-                                    <div class="tw-w-64 tw-mt-2">
-    
-                                        <address class="tw-text-purple-800">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
-                                        <input class="form-control" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
-                                        <input class="form-control" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
+                                <div class="tw-flex tw-items-center">
+                                    <div class="tw-text-center">
+                                        <address class="tw-text-color-darkpurple tw-w-56">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
+                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <!-- <div class="tw-w-56 tw-h-40 tw-ml-16 tw-mt-4">
                                 <br/>
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl">Choose your pizza</h>
@@ -461,27 +453,25 @@
                         
                         </div>
                     </div>
-                    <br/> <br/>
-                    <div class="tw-ml-10 tw-flex">
-                       
-                        <div class="tw-w-82s bg-darkpurple tw-ml-4s tw-px-12 tw-py-8 tw-space-y-5">
+                    <div class="tw-flex tw-justify-center">
+                        <div class="tw-w-82s tw-h-72 bg-darkpurple tw-px-12 tw-py-6">
                             <h class="tw-text-white tw-text-xl">Order Summary</h>
-                            <div class="tw-space-y-2">
+                            <div class="tw-py-5">
                                 <div class="tw-flex tw-justify-between tw-items-center">
                                     <p class="tw-text-white text-left tw-w-40s">Please take a moment to review your summary</p>
                                     <p class="tw-text-white tw-text-lg">{{price}}</p>
                                 </div>
                             </div>
                             <hr style="height:1px;color:white;background-color:white">
-                            <div class="tw-flex tw-justify-between tw-items-center">
+                            <div class="tw-flex tw-justify-between tw-items-center tw-py-5">
                                 <p class="tw-text-white text-left tw-float-left tw-text-lg">Order Total</p>
                                 <div class="tw-flex tw-items-center">
                                     <img class="tw-h-6 tw-w-6 tw-mr-2" src="../static/images/FEx-coin.png" />
                                     <p class="tw-text-white tw-text-lg">{{price}}</p>
                                 </div>
                             </div>
-                            <div class="tw-flex tw-justify-center">
-                                <button class="tw-mt-5 background-orange tw-w-48 tw-h-12 tw-rounded tw-text-white tw-text-lg" type="submit" onclick="placeOrder()">Place order</button>
+                            <div class="tw-flex tw-justify-center tw-mt-5">
+                                <button class="background-orange tw-w-48 tw-h-12 tw-rounded tw-text-white tw-text-lg" type="submit" onclick="placeOrder()">Place order</button>
 
                             </div>
                         </div>
