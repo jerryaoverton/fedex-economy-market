@@ -367,7 +367,7 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="tw-info-card-content card-gradient-green">
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
+                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                     &nbsp;{{user_balance}}
                 </span>
@@ -399,7 +399,9 @@
                     </svg>
                         </div>
                         <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
+                            <button id="addcoins" onclick="window.location.href='/wallet?user_id={{email}}'">
                             <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
+                            </button>
                         </div>
                     </div>
                 </div>

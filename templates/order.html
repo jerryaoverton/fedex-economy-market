@@ -335,7 +335,9 @@
                     </svg>
                         </div>
                         <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
+                            <button id="addcoins" onclick="window.location.href='/wallet?user_id={{email}}'">
                             <span class="tw-text-2xl tw-text-white tw-font-black">Add <br> FEx Coins</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -350,13 +352,13 @@
 
                 <div class="ms-content-wrapper-2 bg-whitesmoke">
                     <div class="tw-flex tw-h-72 tw-space-x-3">
-                        <div class="tw-bg-white tw-py-5 tw-px-5 tw-flex">
+                        <div class="tw-bg-white tw-py-5 tw-px-5 tw-flex tw-w-full tw-justify-between">
                             <div class="tw-flex tw-justify-center">
                                 <div class="tw-h-64 tw-w-64 tw-flex tw-items-center">
                                     <img src="../static/images/Generic business profile.jpg" class="" />
                                 </div>
                                 <div class="tw-text-center tw-py-5">
-                                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base">
+                                    <h1 class="tw-text-purple-900 tw-font-semibold tw-text-base tw-w-48">
 
                                         {{business_profile.first_name}} {{business_profile.last_name}}
                                     </h1>
@@ -364,18 +366,18 @@
                                         <!-- {{business_profile.description}} -->
                                     </p>
                                     <hr class="tw-mt-5">
-                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3">{{business_profile.description}}</p>
+                                    <p class="tw-text-xs tw-text-gray-700 tw-pt-3 tw-w-48">{{business_profile.description}}</p>
                                 </div>
                             </div>
-                            <!-- <div class="vertical-line-2s tw-mt-4 tw-ml-2"></div> -->
+                            <!-- <div class="vertical-line-2s tw-mt-4 tw-ml-10"></div> -->
                         <div class = "tw-flex tw-justify-center tw-px-2">
                             <div class="tw-text-center tw-py-5 tw-float-left">
                                 <h class="tw-text-color-darkpurple tw-font-semibold tw-text-xl ">Business Address</h>
                                 <div class="tw-flex tw-items-center">
                                     <div class="">
                                         <address class="tw-text-color-darkpurple tw-w-56">{{business_profile.street}} {{business_profile.city}} {{business_profile.countrycode}} {{business_profile.stateorprovince}} {{business_profile.postalcode}}</address>
-                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" disabled/>
-                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}" /></td>
+                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="supplier_name_Txt" type="text" id="supplier_name_Txt" value="{{business_id}}" />
+                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="business_phone_Txt" type="text" id="business_phone_Txt" value="{{business_profile.phone}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -385,8 +387,8 @@
                                 <div class="tw-flex tw-items-center">
                                     <div class="tw-text-center">
                                         <address class="tw-text-color-darkpurple tw-w-56">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
-                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
-                                        <input class="form-control w-75 tw-ml-8 tw-text-color-darkpurple" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" /></td>
+                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="customer_name_Txt" type="text" id="customer_name_Txt" value="{{email}}" />
+                                        <input class="form-control w-75 tw-ml-8 tw-my-5 tw-text-color-darkpurple" name="user_phone_Txt" type="text" id="user_phone_Txt" value="{{user_profile.phone}}" />
                                     </div>
                                 </div>
                             </div>

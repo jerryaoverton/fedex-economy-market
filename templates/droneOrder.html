@@ -304,7 +304,7 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="tw-info-card-content card-gradient-green">
                         <span class="tw-text-base tw-text-xs tw-text-white">FEx COIN Balance</span>
-                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black">
+                        <span class="tw-flex tw-items-center tw-text-xl tw-py-2 tw-font-black tw-text-white">
                     <img src="../static/images/FEx-coin.png" class="thumbnail tw-mr-2" />
                     &nbsp;{{user_balance}}
                 </span>
@@ -336,7 +336,9 @@
                     </svg>
                         </div>
                         <div class="card-gradient-blue tw-pl-8 tw-w-full tw-h-full tw-rounded-r tw-flex tw-items-center">
+                            <button id="addcoins" onclick="window.location.href='/wallet?user_id={{email}}'">
                             <span class="tw-text-2xl tw-text-white tw-font-black tw-text-white">Add <br> FEx Coins</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -361,21 +363,18 @@
                 <div class="tw-flex tw-pt-2 tw-justify-between">
                     <div class="">
                         <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Deliver to</h>
-                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
-                  <p class="tw-text-gray-600">{{user_profile.first_name + ' ' + user_profile.last_name}}</p>
+                        <div class="">
+                            <input class="form-control w-75 tw-my-5 tw-text-color-darkpurple" name="customer_name_Txt" type="text" id="supplier_name_Txt" value="{{user_profile.first_name + ' ' + user_profile.last_name}}" />
                         </div>
-                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
-                  <p class="tw-text-gray-600">{{user_profile.phone}}</p>
+                        <div class="">
+                            <input class="form-control w-75 tw-my-5 tw-text-color-darkpurple" name="customer_phone_Txt" type="text" id="business_phone_Txt" value="{{user_profile.phone}}" />  
                         </div>
                     </div>
-                    <div class="">
+                    <div class="tw-text-center">
                         <h class="tw-text-lg tw-text-purple-800 tw-font-medium">Address</h>
-                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-3">
-                <p class="tw-text-gray-600">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
-                        </div>
-                        <div class="tw-bg-white tw-h-8 tw-w-40 tw-py-1 tw-px-2x tw-mt-5">
-                <p class="tw-text-gray-600">{{user_profile.stateorprovince}} {{user_profile.postalcode}}</p>
-                        </div>
+                        <div class="tw-mt-6">
+                            <address class="tw-text-color-darkpurple tw-w-40">{{user_profile.street}} {{user_profile.city}} {{user_profile.countrycode}} {{user_profile.stateorprovince}} {{user_profile.postalcode}}</address>
+                       </div>   
                     </div>
                 </div>
                 <hr style="height:1px;margin-top: 2rem;color:black">
