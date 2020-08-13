@@ -381,7 +381,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content border-modal">
                     <div class="modal-header">
-                        <h5 class="modal-title tw-text-purple-700 tw-text-2xl tw-pl-2 tw-font-semibold" id="exampleModalCenterTitle">Add FX Coins</h5>
+                        <h5 class="modal-title tw-text-purple-700 tw-text-2xl tw-pl-2 tw-font-semibold" id="exampleModalCenterTitle">Add FEx Coins</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -467,7 +467,7 @@
 <script type="text/javascript">
     function update_wallet() {
         var coins = document.getElementById("moneyEnter").value;
-
+        var current_coins = document.getElementById("user_balance").value
         var xhttp = new XMLHttpRequest();
         var sender = "fedex"
 
@@ -475,15 +475,8 @@
         xhttp.open("GET", req, true);
 
         xhttp.send();
-        var xhttp_balance = new XMLHttpRequest();
-        req = "{{sc}}user_balance?user_id={{email}}"
 
-        xhttp_balance.open("GET", req, true);
-
-        xhttp_balance.onload = function() {
-            document.getElementById("user_balance").innerHTML = xhttp_balance.responseText;
-        };
-        xhttp_balance.send();
+        document.getElementById("user_balance").innerHTML = parseInt(coins) + parseInt("{{user_balance}}")
 
         window.close();
 
