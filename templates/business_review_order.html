@@ -67,7 +67,7 @@
                 var status_td = ""
 
                 if (parse_order.status == 'Placed') {
-                    status_td = "<td class='text-center tw-space-x-10'> \
+                    status_td = "<td class='text-center tw-w-48'> \
                               <form action='/dronedelivery'method='POST'> \
                                 <input name='order' type='hidden' value='" + order + "' />\
                               <button class='bg-lightblue tw-w-16 tw-h-16 tw-rounded' type='submit' > \
@@ -79,7 +79,7 @@
                             </td>"
                 }
                 if (parse_order.status == 'ServicesforDrone') {
-                    status_td = "<td class='text-center tw-space-x-10'> \
+                    status_td = "<td class='text-center tw-w-48'> \
                               <form action='/generaldelivery'method='POST'> \
                                 <input name='order' type='hidden' value='" + order + "' />\
                               <button class='bg-lightblue tw-w-16 tw-h-16 tw-rounded' type='submit' > \
@@ -92,16 +92,16 @@
                 }
 
                 if (parse_order.status == 'active') {
-                    status_td = "<td class='text-center tw-space-x-10'>Order has been added in the Drone queue </td>"
+                    status_td = "<td class='text-center tw-w-48'>Order has been added in the Drone queue </td>"
                 }
 
 
                 if (parse_order.status == 'processing') {
-                    status_td = "<td class='text-center tw-space-x-10'> Drone is processing the order </td>"
+                    status_td = "<td class='text-center tw-w-48'> Drone is processing the order </td>"
                 }
 
                 if (parse_order.status == 'complete') {
-                    status_td = "<td class='text-center tw-space-x-10'>Order successfully delivered </td>"
+                    status_td = "<td class='text-center tw-w-48'>Order successfully delivered </td>"
                 }
                 console.log(parse_order.nameandphone)
 
@@ -427,7 +427,7 @@
                         <td class="text-center tw-w-40">{{order.nameandphone}}</td>
                         <td class="text-center tw-w-48">{{order.deliveryAddress}}</td>
                         {% if order.status|string() == "Placed" %}
-                        <td class="text-center tw-space-x-10 tw-flex tw-justify-center">
+                        <td class="text-center tw-flex tw-w-48 tw-justify-center">
                             <form action='/dronedelivery' method='POST'>
                                 <input name='order' type='hidden' value='{{order}}' />
                                 <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded tw-flex tw-items-center tw-justify-center" type="submit">
@@ -436,24 +436,24 @@
                             </form>
                         </td>
                         {%endif%} {% if order.status|string() == "ServicesforDrone" %}
-                        <td class="text-center tw-space-x-10 tw-flex tw-justify-center">
+                        <td class="text-center tw-flex tw-w-48 tw-justify-center">
                             <form action='/generaldelivery' method='POST'>
                                 <input name='order' type='hidden' value='{{order}}' />
                                 <button class="bg-lightblue tw-w-16 tw-h-16 tw-rounded tw-flex tw-items-center tw-justify-center" type="submit">
                 <img src="../static/images/ground_delivery.png" class="tw-rounded-none tw-mr-0 delivery-icons"/>
               </button>
                             </form>
-                        </td>
+                        </td >
                         {%endif%}{% if order.status|string() == "active" %}
-                        <td>
+                        <td class="text-center tw-w-48">
                             Order has been added in the Drone queue
                         </td>
                         {%endif%} {% if order.status|string() == "processing" %}
-                        <td>
+                        <td class="text-center tw-w-48">
                             Drone is processing the order
                         </td>
                         {%endif%} {% if order.status|string() == "complete" %}
-                        <td>
+                        <td class="text-center tw-w-48"> 
                             Order succesfully delivered
                         </td>
                         {%endif%}
